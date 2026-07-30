@@ -1,0 +1,73 @@
+{#
+| Variable          | Type      | Description                                         |
+|-------------------|-----------|-----------------------------------------------------|
+| products          | Product[] | The chosen product, first one is used               |
+| eyebrow           | string    | Small label above the product name                  |
+| perks[]           | array     | Bullet list of what the buyer gets                  |
+| perks[].text      | string    | One bullet                                          |
+| image             | string    | Optional artwork override; product image is default |
+| position          | int       | Sorting number, starts at zero                      |
+#}
+{% set product = products|first %}
+{% if product %}
+<section data-testid="store-home-steamory-spotlight"
+         class="s-block st-section st-spotlight"
+         id="steamory-spotlight-{{ position }}">
+  <div class="container">
+    <div class="st-spotlight__card">
+
+      <div class="st-spotlight__media">
+        <a href="{{ product.url }}" aria-label="{{ product.name }}">
+          <img src="{{ image|default(product.image.url) }}"
+               alt="{{ product.image.alt|default(product.name) }}" loading="lazy">
+        </a>
+      </div>
+
+      <div class="st-spotlight__body">
+        {% if eyebrow %}
+          <span class="st-spotlight__eyebrow">{{ eyebrow }}</span>
+        {% endif %}
+
+        <h2 class="st-spotlight__title">
+          <a href="{{ product.url }}">{{ product.name }}</a>
+        </h2>
+
+        {% if product.subtitle %}
+          <p class="st-spotlight__subtitle">{{ product.subtitle }}</p>
+        {% endif %}
+
+        {% if perks is not empty %}
+          <ul class="st-spotlight__perks">
+            {% for perk in perks %}
+              {% if perk.text %}
+                <li><i class="sicon-check" aria-hidden="true"></i><span>{{ perk.text }}</span></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="st-spotlight__foot">
+          <div class="st-spotlight__price">
+            {% if product.is_on_sale %}
+              <strong>{{ product.sale_price|money }}</strong>
+              <span>{{ product.regular_price|money }}</span>
+            {% else %}
+              <strong>{{ product.price|money }}</strong>
+            {% endif %}
+          </div>
+
+          {# Salla's own button so cart behaviour, stock state and labels stay
+             the platform's job rather than this theme's. #}
+          <salla-add-product-button
+            width="wide"
+            product-id="{{ product.id }}"
+            product-status="{{ product.status }}"
+            product-type="{{ product.type }}">
+          </salla-add-product-button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %}

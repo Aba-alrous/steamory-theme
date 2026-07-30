@@ -98,7 +98,11 @@
  * STEAMORY
  * Base.................Dark canvas, brand typography, grain, focus rings.
  * Dark Surfaces........Re-points Raed's light Tailwind utilities at the tokens.
+ * Buttons..............Tactile buttons for the editorial sections.
  * Product Card.........The store's main unit of persuasion.
+ * Home Hero............Tilted, self-scrolling wall of merchant cover art.
+ * Home Sections........Trust bar, marquee, steps, value, FAQ, spotlight,
+ *                      comparison table, testimonials rail, closing CTA.
  *
  * Loaded last on purpose: source order is what lets this layer win at equal
  * specificity, so nothing here needs !important and upstream Raed files stay
@@ -106,4 +110,8 @@
  */
 @import './06-steamory/base';
 @import './06-steamory/dark-surfaces';
+@import './06-steamory/buttons';
 @import './06-steamory/product-card';
+@import './06-steamory/home-hero';
+@import './06-steamory/home-sections';
+@import './06-steamory/settings';

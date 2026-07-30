@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>STEAMORY theme — visual harness</title>
   <link rel="stylesheet" href="/app.css">
+
+  <!-- Faithful copy of what master.twig injects after app.css. Salla writes
+       the merchant's panel font and colour here, so the harness has to include
+       it or the brand-font toggle and the accent override cannot be tested. -->
+  <style>
+    :root {
+      --font-main: 'Tajawal';          /* stands in for theme.font.name */
+      --color-primary: #5ee36a;        /* stands in for theme.color.primary */
+      --color-primary-dark: #37c24c;
+      --color-primary-light: #8af59a;
+      --color-primary-reverse: #06130a;
+    }
+  </style>
+
   <style>
     /* Harness chrome only — never part of the theme. */
     .h-label { font: 600 12px/1 monospace; letter-spacing: .08em; text-transform: uppercase;
@@ -15,6 +29,41 @@
   </style>
 </head>
 <body>
+
+  <!-- Mirrors views/components/home/steamory-hero.twig: 4 columns, each
+       rendering the merchant's cover set twice so the loop is seamless. -->
+  <section class="s-block st-hero st-hero--h-tall st-hero--overlay-medium" id="steamory-hero-0">
+    <div class="st-hero__wall" aria-hidden="true" id="hWall"></div>
+    <div class="st-hero__veil" aria-hidden="true"></div>
+    <div class="container st-hero__inner">
+      <span class="st-hero__eyebrow">أكثر من 1000 لعبة</span>
+      <h1 class="st-hero__title">مكتبة ألعابك تبدأ من هنا</h1>
+      <p class="st-hero__desc">تفعيل فوري، ضمان مدى الحياة، ودعم مباشر على واتساب.</p>
+      <div class="st-hero__actions">
+        <a href="#" class="st-btn st-btn--primary">تصفّح الباقات</a>
+        <a href="#" class="st-btn st-btn--ghost">كيف يتم التفعيل؟</a>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Stand-in for the merchant's uploaded covers.
+    const shades = ['#1b2a1f', '#121a14', '#16211a', '#0e1410', '#23331f', '#182b22'];
+    const cover = i => "data:image/svg+xml;utf8," + encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 900'><rect width='600' height='900' fill='${shades[i % shades.length]}'/><text x='300' y='460' fill='#5ee36a' font-size='60' text-anchor='middle' font-family='sans-serif'>${i + 1}</text></svg>`);
+    const wall = document.getElementById('hWall');
+    for (let col = 1; col <= 4; col++) {
+      const c = document.createElement('div');
+      c.className = 'st-hero__col st-hero__col--' + col;
+      for (let pass = 0; pass < 2; pass++) {
+        for (let i = 0; i < 8; i++) {
+          c.insertAdjacentHTML('beforeend',
+            `<div class="st-hero__tile"><img src="${cover(i + col)}" alt=""></div>`);
+        }
+      }
+      wall.appendChild(c);
+    }
+  </script>
+
   <div class="container py-8">
 
     <div class="h-label">tokens</div>
@@ -171,5 +220,112 @@
     </div>
 
   </div>
+
+  <!-- ── the twilight.json-driven sections ─────────────────────────────── -->
+
+  <section class="s-block st-trust st-trust--overlap">
+    <div class="container">
+      <div class="st-trust__bar">
+        <div class="st-trust__item"><i class="sicon-shield-check st-trust__icon"></i>
+          <div class="st-trust__text"><strong class="st-trust__value">+1000</strong><span class="st-trust__label">لعبة في المكتبة</span></div></div>
+        <div class="st-trust__item"><i class="sicon-clock st-trust__icon"></i>
+          <div class="st-trust__text"><strong class="st-trust__value">دقائق</strong><span class="st-trust__label">تفعيل فوري</span></div></div>
+        <div class="st-trust__item"><i class="sicon-star2 st-trust__icon"></i>
+          <div class="st-trust__text"><strong class="st-trust__value">4.9</strong><span class="st-trust__label">من 98 تقييماً</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-block st-marquee st-marquee--normal">
+    <div class="st-marquee__row st-marquee__row--1" aria-hidden="true"><div class="st-marquee__track" id="mq1"></div></div>
+    <div class="st-marquee__row st-marquee__row--2" aria-hidden="true"><div class="st-marquee__track" id="mq2"></div></div>
+  </section>
+
+  <section class="s-block st-section st-steps">
+    <div class="container">
+      <div class="st-section__head">
+        <h2 class="st-section__title">كيف تستلم طلبك؟</h2>
+        <p class="st-section__desc">ثلاث خطوات لا تأخذ أكثر من دقائق.</p>
+      </div>
+      <div class="st-steps__grid">
+        <div class="st-steps__panel"><span class="st-steps__numeral" aria-hidden="true">1</span>
+          <i class="sicon-shopping-bag st-steps__icon"></i><h3 class="st-steps__title">اختر باقتك</h3>
+          <p class="st-steps__text">حدّد الباقة المناسبة وأكمل الدفع.</p></div>
+        <div class="st-steps__panel"><span class="st-steps__numeral" aria-hidden="true">2</span>
+          <i class="sicon-whatsapp st-steps__icon"></i><h3 class="st-steps__title">راسلنا</h3>
+          <p class="st-steps__text">نتواصل معك لتأكيد التفاصيل.</p></div>
+        <div class="st-steps__panel"><span class="st-steps__numeral" aria-hidden="true">3</span>
+          <i class="sicon-game-controller-alt st-steps__icon"></i><h3 class="st-steps__title">ابدأ اللعب</h3>
+          <p class="st-steps__text">نفعّل المكتبة على حسابك مباشرة.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-block st-section st-value">
+    <div class="container">
+      <div class="st-section__head"><h2 class="st-section__title">ليش تشتري منّا؟</h2></div>
+      <div class="st-value__grid">
+        <div class="st-value__card"><span class="st-value__icon"><i class="sicon-shield-check"></i></span>
+          <h3 class="st-value__title">ضمان مدى الحياة</h3><p class="st-value__text">أي مشكلة نحلّها لك بدون رسوم.</p></div>
+        <div class="st-value__card"><span class="st-value__icon"><i class="sicon-clock"></i></span>
+          <h3 class="st-value__title">تفعيل فوري</h3><p class="st-value__text">خلال دقائق من إتمام الدفع.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-block st-section st-faq st-faq--two">
+    <div class="container">
+      <div class="st-section__head"><h2 class="st-section__title">الأسئلة الشائعة</h2></div>
+      <div class="st-faq__grid">
+        <details class="st-faq__item"><summary class="st-faq__q"><span>هل الحساب يبقى لي؟</span>
+          <i class="sicon-keyboard_arrow_down st-faq__chevron"></i></summary>
+          <div class="st-faq__a">نعم، الحساب يبقى لك مدى الحياة.</div></details>
+        <details class="st-faq__item" open><summary class="st-faq__q"><span>كم يستغرق التفعيل؟</span>
+          <i class="sicon-keyboard_arrow_down st-faq__chevron"></i></summary>
+          <div class="st-faq__a">من دقائق إلى ساعة كحد أقصى.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-block st-section st-testi">
+    <div class="container">
+      <div class="st-section__head"><h2 class="st-section__title">وش يقولون عنّا؟</h2>
+        <div class="st-testi__summary"><strong>4.9</strong><span>من 98 تقييماً</span></div></div>
+    </div>
+    <div class="st-testi__rail"><div class="st-testi__track" id="tr"></div></div>
+  </section>
+
+  <section class="s-block st-cta st-cta--accent">
+    <div class="container">
+      <div class="st-cta__inner">
+        <h2 class="st-cta__title">جاهز تبدأ؟</h2>
+        <p class="st-cta__desc">اختر باقتك الآن وابدأ اللعب اليوم.</p>
+        <div class="st-cta__actions">
+          <a href="#" class="st-btn st-btn--on-accent">اشترِ الآن</a>
+          <a href="#" class="st-btn st-btn--ghost">تواصل معنا</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a class="st-whatsapp" href="#" aria-label="واتساب"><i class="sicon-whatsapp"></i></a>
+
+  <script>
+    // Marquee tiles + testimonial cards, standing in for merchant content.
+    const tile = i => `<div class="st-marquee__tile"><img src="${cover(i)}" alt=""></div>`;
+    for (const [id, offset] of [['mq1', 0], ['mq2', 3]]) {
+      const el = document.getElementById(id);
+      for (let pass = 0; pass < 2; pass++)
+        for (let i = 0; i < 10; i++) el.insertAdjacentHTML('beforeend', tile(i + offset));
+    }
+    const reviews = [['أحمد', 'وصلني التفعيل بسرعة، تعامل محترم.'], ['نورة', 'أفضل سعر لقيته، وخدمة ممتازة.'], ['خالد', 'المكتبة ضخمة فعلاً، أنصح بها.']];
+    const tr = document.getElementById('tr');
+    for (let pass = 0; pass < 2; pass++)
+      reviews.forEach(([name, text]) => tr.insertAdjacentHTML('beforeend',
+        `<figure class="st-testi__card"><div class="st-testi__stars">${'<i class="sicon-star2"></i>'.repeat(5)}</div>
+         <blockquote class="st-testi__text">${text}</blockquote><figcaption class="st-testi__name">${name}</figcaption></figure>`));
+    // Default design-panel state, so the harness matches a fresh install.
+    document.body.classList.add('st-brand-fonts', 'st-grain-normal', 'st-radius-round');
+  </script>
 </body>
 </html>

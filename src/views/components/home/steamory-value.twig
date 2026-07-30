@@ -1,0 +1,37 @@
+{#
+| Variable        | Type   | Description                                              |
+|-----------------|--------|----------------------------------------------------------|
+| title           | string | Section heading                                          |
+| description     | string | Supporting line under the heading                        |
+| items[]         | array  | Selling points                                           |
+| items[].icon    | string | SallaIcons css class `sicon-*`                            |
+| items[].title   | string | Point heading                                            |
+| items[].text    | string | Point body                                               |
+| position        | int    | Sorting number, starts at zero                            |
+#}
+<section data-testid="store-home-steamory-value"
+         class="s-block st-section st-value"
+         id="steamory-value-{{ position }}">
+  <div class="container">
+    {% if title %}
+      <div class="st-section__head">
+        <h2 class="st-section__title">{{ title }}</h2>
+        {% if description %}
+          <p class="st-section__desc">{{ description }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="st-value__grid">
+      {% for item in items %}
+        <div class="st-value__card">
+          {% if item.icon %}
+            <span class="st-value__icon"><i class="{{ item.icon }}" aria-hidden="true"></i></span>
+          {% endif %}
+          <h3 class="st-value__title">{{ item.title }}</h3>
+          <p class="st-value__text">{{ item.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

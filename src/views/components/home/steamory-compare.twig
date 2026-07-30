@@ -1,0 +1,58 @@
+{#
+| Variable          | Type      | Description                                        |
+|-------------------|-----------|----------------------------------------------------|
+| title             | string    | Section heading                                    |
+| products          | Product[] | Two products to compare, in column order           |
+| rows[]            | array     | Comparison rows                                    |
+| rows[].label      | string    | What is being compared                             |
+| rows[].a          | string    | Value for the first product                        |
+| rows[].b          | string    | Value for the second product                       |
+| position          | int       | Sorting number, starts at zero                     |
+#}
+{% set left = products[0]|default(null) %}
+{% set right = products[1]|default(null) %}
+{% if left and right %}
+<section data-testid="store-home-steamory-compare"
+         class="s-block st-section st-compare"
+         id="steamory-compare-{{ position }}">
+  <div class="container">
+    {% if title %}
+      <div class="st-section__head">
+        <h2 class="st-section__title">{{ title }}</h2>
+      </div>
+    {% endif %}
+
+    {# Horizontal scroll container: a two-column comparison still overflows on
+       small phones, and a scrollbar beats squeezing the labels. #}
+    <div class="st-compare__scroll">
+      <table class="st-compare__table">
+        <thead>
+          <tr>
+            <th scope="col" class="st-compare__corner"><span class="sr-only">المقارنة</span></th>
+            {% for product in [left, right] %}
+              <th scope="col" class="st-compare__col">
+                <a href="{{ product.url }}" class="st-compare__product">
+                  <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
+                  <span class="st-compare__name">{{ product.name }}</span>
+                  <span class="st-compare__price">
+                    {{ (product.is_on_sale ? product.sale_price : product.price)|money }}
+                  </span>
+                </a>
+              </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+            <tr>
+              <th scope="row" class="st-compare__label">{{ row.label }}</th>
+              <td>{{ row.a }}</td>
+              <td>{{ row.b }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endif %}

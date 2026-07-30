@@ -1,0 +1,35 @@
+{#
+| Variable          | Type   | Description                                            |
+|-------------------|--------|--------------------------------------------------------|
+| title             | string | Section heading                                        |
+| items[]           | array  | Question and answer pairs                              |
+| items[].question  | string | The question                                           |
+| items[].answer    | string | The answer                                             |
+| columns           | string | one | two                                              |
+| position          | int    | Sorting number, starts at zero                         |
+#}
+<section data-testid="store-home-steamory-faq"
+         class="s-block st-section st-faq st-faq--{{ columns|default('two') }}"
+         id="steamory-faq-{{ position }}">
+  <div class="container">
+    {% if title %}
+      <div class="st-section__head">
+        <h2 class="st-section__title">{{ title }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="st-faq__grid">
+      {% for item in items %}
+        {# <details> gives keyboard support and open/close for free — no JS,
+           and it still works if scripts fail to load. #}
+        <details class="st-faq__item">
+          <summary class="st-faq__q">
+            <span>{{ item.question }}</span>
+            <i class="sicon-keyboard_arrow_down st-faq__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="st-faq__a">{{ item.answer|raw }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

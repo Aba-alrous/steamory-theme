@@ -1,0 +1,63 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — buttons used by the custom homepage components
+   Salla's own <salla-button> keeps its markup for cart and account actions;
+   these are for the editorial sections, where the link is a plain anchor and
+   the styling needs to be tactile rather than utilitarian.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--st-font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s var(--st-ease), background-color 0.3s var(--st-ease),
+    border-color 0.3s var(--st-ease), box-shadow 0.3s var(--st-ease),
+    color 0.3s var(--st-ease);
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.st-btn--primary {
+  background: var(--st-accent-grad);
+  color: var(--st-accent-ink);
+  box-shadow: 0 12px 28px -12px rgba(94, 227, 106, 0.55);
+
+  &:hover {
+    color: var(--st-accent-ink);
+    box-shadow: 0 16px 36px -12px rgba(94, 227, 106, 0.75);
+  }
+}
+
+.st-btn--ghost {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: var(--st-line-strong);
+  color: var(--st-text);
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+    color: var(--st-accent-hi);
+  }
+}
+
+/* Inverted band: on the accent-filled CTA section the buttons have to flip so
+   they stay readable against green. */
+.st-btn--on-accent {
+  background-color: var(--st-accent-ink);
+  color: var(--st-text);
+
+  &:hover {
+    color: var(--st-accent-hi);
+  }
+}

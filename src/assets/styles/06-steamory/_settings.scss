@@ -1,0 +1,102 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — design panel options
+   Each rule here is the other half of a setting in twilight.json. The
+   merchant flips a switch, master.twig writes a class on <body>, and the
+   look changes with no code edit.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── brand fonts ────────────────────────────────────────────────────────────
+   Salla injects `--font-main: '<panel font>'` into a <style> that lands after
+   app.css, so :root cannot hold the brand font. Declaring it on <body> works
+   because the nearest ancestor wins a custom-property lookup, and it stays
+   opt-out: turn the setting off and the panel's font applies again. */
+
+body.st-brand-fonts {
+  --font-main: 'IBM Plex Sans Arabic';
+}
+
+/* ── grain ──────────────────────────────────────────────────────────────── */
+
+body.st-grain-none::after {
+  display: none;
+}
+body.st-grain-soft::after {
+  opacity: 0.018;
+}
+body.st-grain-normal::after {
+  opacity: 0.035;
+}
+body.st-grain-strong::after {
+  opacity: 0.06;
+}
+
+/* ── corner radius ──────────────────────────────────────────────────────── */
+
+body.st-radius-sharp {
+  --st-radius: 4px;
+  --st-radius-sm: 3px;
+}
+body.st-radius-soft {
+  --st-radius: 12px;
+  --st-radius-sm: 8px;
+}
+body.st-radius-round {
+  --st-radius: 20px;
+  --st-radius-sm: 12px;
+}
+
+/* ── alternating section bands ──────────────────────────────────────────── */
+
+body.st-no-bands .st-section:nth-of-type(even) {
+  background-color: transparent;
+}
+
+/* ── hover lift ─────────────────────────────────────────────────────────────
+   Some merchants find the movement fussy, so it is a switch. Borders and
+   shadows stay — only the translate is dropped. */
+
+body.st-no-lift {
+  .s-product-card-entry:hover,
+  .st-value__card:hover {
+    transform: none;
+  }
+}
+
+/* ── floating WhatsApp button ───────────────────────────────────────────── */
+
+.st-whatsapp {
+  position: fixed;
+  inset-inline-end: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 999px;
+  background-color: #25d366;
+  color: #04240f;
+  font-size: 1.6rem;
+  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s var(--st-ease), box-shadow 0.3s var(--st-ease);
+
+  &:hover {
+    color: #04240f;
+    box-shadow: 0 18px 38px -10px rgba(37, 211, 102, 0.55);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Raed lifts the add-to-cart bar on mobile product pages; the button has to
+     clear it or it covers the price. */
+  body.is-sticky-product-bar & {
+    @media (max-width: 767px) {
+      bottom: 5.5rem;
+    }
+  }
+}

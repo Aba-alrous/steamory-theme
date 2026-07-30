@@ -1,0 +1,29 @@
+{#
+| Variable        | Type   | Description                                              |
+|-----------------|--------|----------------------------------------------------------|
+| items[]         | array  | Trust figures shown as one glass bar                     |
+| items[].icon    | string | SallaIcons css class `sicon-*`                            |
+| items[].value   | string | The figure itself, e.g. 1000+                            |
+| items[].label   | string | What the figure means                                     |
+| overlap         | bool   | Pull the bar up over the section above it                 |
+| position        | int    | Sorting number, starts at zero                            |
+#}
+<section data-testid="store-home-steamory-trust"
+         class="s-block st-trust {{ overlap ? 'st-trust--overlap' : '' }}"
+         id="steamory-trust-{{ position }}">
+  <div class="container">
+    <div class="st-trust__bar">
+      {% for item in items %}
+        <div class="st-trust__item">
+          {% if item.icon %}
+            <i class="{{ item.icon }} st-trust__icon" aria-hidden="true"></i>
+          {% endif %}
+          <div class="st-trust__text">
+            <strong class="st-trust__value">{{ item.value }}</strong>
+            <span class="st-trust__label">{{ item.label }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

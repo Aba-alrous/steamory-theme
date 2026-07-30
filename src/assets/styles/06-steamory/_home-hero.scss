@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — hero with a tilted, self-scrolling wall of cover art
+   The merchant uploads the artwork from the design panel; everything here
+   is layout and motion only, so the section never depends on fixed assets.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.st-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--st-bg);
+
+  &--h-full {
+    min-height: 100svh;
+  }
+  &--h-tall {
+    min-height: 82svh;
+  }
+  &--h-medium {
+    min-height: 62svh;
+  }
+
+  @media (max-width: 767px) {
+    &--h-full,
+    &--h-tall {
+      min-height: 74svh;
+    }
+  }
+}
+
+/* ── the wall ───────────────────────────────────────────────────────────── */
+
+.st-hero__wall {
+  position: absolute;
+  /* Oversized and rotated: the tilt would otherwise expose the container
+     corners, so the wall extends past every edge. */
+  inset: -22% -12%;
+  z-index: -2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  transform: rotate(-8deg) scale(1.08);
+  pointer-events: none;
+}
+
+.st-hero__col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  will-change: transform;
+  animation: st-hero-scroll 62s linear infinite;
+
+  /* Alternating direction and speed stops the columns from reading as one
+     sliding sheet. */
+  &--2 {
+    animation-duration: 78s;
+    animation-direction: reverse;
+  }
+  &--3 {
+    animation-duration: 70s;
+  }
+  &--4 {
+    animation-duration: 88s;
+    animation-direction: reverse;
+  }
+
+  /* Mid columns start offset so the rows never line up into a visible grid. */
+  &--2 .st-hero__tile:first-child,
+  &--4 .st-hero__tile:first-child {
+    margin-top: 70px;
+  }
+}
+
+.st-hero__tile {
+  flex: none;
+  aspect-ratio: 2 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--st-line);
+  background-color: var(--st-surface);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+@keyframes st-hero-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    /* The template renders the set twice, so half the track is one full set. */
+    transform: translateY(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .st-hero__col {
+    animation: none;
+  }
+}
+
+/* Two narrow columns on phones — four would render the covers too small to
+   read as artwork. */
+@media (max-width: 767px) {
+  .st-hero__wall {
+    grid-template-columns: repeat(2, 1fr);
+    inset: -25% -20%;
+  }
+  .st-hero__col--3,
+  .st-hero__col--4 {
+    display: none;
+  }
+}
+
+/* ── legibility veil ────────────────────────────────────────────────────────
+   The wall is busy artwork, so the copy needs a gradient floor rather than a
+   flat scrim: dark where the text sits, clearer toward the top edge. */
+
+.st-hero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+      to top,
+      var(--st-bg) 0%,
+      rgba(10, 14, 11, 0.92) 28%,
+      rgba(10, 14, 11, 0.62) 62%,
+      rgba(10, 14, 11, 0.38) 100%
+    ),
+    radial-gradient(
+      120% 80% at 50% 100%,
+      rgba(10, 14, 11, 0.95) 0%,
+      rgba(10, 14, 11, 0) 70%
+    );
+}
+
+.st-hero--overlay-soft .st-hero__veil {
+  opacity: 0.72;
+}
+.st-hero--overlay-strong .st-hero__veil {
+  opacity: 1;
+  backdrop-filter: blur(2px);
+}
+
+/* ── copy ───────────────────────────────────────────────────────────────── */
+
+.st-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  max-width: 46rem;
+}
+
+.st-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--st-accent-line);
+  border-radius: 999px;
+  background-color: var(--st-accent-soft);
+  color: var(--st-accent-hi);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.st-hero__title {
+  font-family: var(--st-font-display);
+  font-weight: 900;
+  font-size: clamp(2.1rem, 6vw, 4.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0;
+
+  /* Metallic sheen on the display face — reads as depth without adding a
+     second brand colour. */
+  background: linear-gradient(180deg, #ffffff 0%, #dcf3e0 42%, #8fbf98 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.st-hero__desc {
+  margin: 1.25rem 0 0;
+  color: var(--st-muted);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.9;
+  max-width: 34rem;
+}
+
+.st-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2.25rem;
+}

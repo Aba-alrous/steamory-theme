@@ -1,0 +1,40 @@
+{#
+| Variable         | Type   | Description                                             |
+|------------------|--------|---------------------------------------------------------|
+| title            | string | Optional section heading                                |
+| rows             | array  | Rows of cover art, each scrolling the opposite way      |
+| rows[].image     | string | Cover artwork                                           |
+| rows[].row       | string | Which row the cover belongs to: 1 or 2                  |
+| speed            | string | slow | normal | fast                                     |
+| position         | int    | Sorting number, starts at zero                          |
+#}
+<section data-testid="store-home-steamory-marquee"
+         class="s-block st-marquee st-marquee--{{ speed|default('normal') }}"
+         id="steamory-marquee-{{ position }}">
+
+  {% if title %}
+    <div class="container">
+      <div class="s-block__title"><div class="right-side"><h2>{{ title }}</h2></div></div>
+    </div>
+  {% endif %}
+
+  {% for row_number in ['1', '2'] %}
+    {# Only render a row that actually has covers assigned to it. #}
+    {% set row_items = rows|filter(item => item.image and (item.row|default('1')) == row_number) %}
+    {% if row_items is not empty %}
+      <div class="st-marquee__row st-marquee__row--{{ row_number }}" aria-hidden="true">
+        {# Rendered twice: the track shifts by 50%, so the second pass closes
+           the loop with no visible jump. #}
+        <div class="st-marquee__track">
+          {% for pass in 1..2 %}
+            {% for item in row_items %}
+              <div class="st-marquee__tile">
+                <img src="{{ item.image }}" alt="" loading="lazy" decoding="async">
+              </div>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</section>

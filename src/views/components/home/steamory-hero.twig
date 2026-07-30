@@ -1,0 +1,73 @@
+{#
+| Variable            | Type   | Description                                                     |
+|---------------------|--------|-----------------------------------------------------------------|
+| eyebrow             | string | Small label above the headline                                  |
+| title               | string | Headline, shown in the display face                             |
+| description         | string | Supporting line under the headline                              |
+| primary_label       | string | Main call-to-action label                                       |
+| primary_url         | string | Main call-to-action link                                        |
+| secondary_label     | string | Secondary call-to-action label                                  |
+| secondary_url       | string | Secondary call-to-action link                                   |
+| covers[]            | array  | Cover images the merchant uploads by hand                       |
+| covers[].image      | string | Cover artwork, portrait                                         |
+| height              | string | full | tall | medium                                              |
+| overlay             | string | soft | medium | strong                                            |
+| position            | int    | Sorting number, starts at zero                                  |
+#}
+<section data-testid="store-home-steamory-hero"
+         class="s-block st-hero st-hero--h-{{ height|default('tall') }} st-hero--overlay-{{ overlay|default('medium') }}"
+         id="steamory-hero-{{ position }}">
+
+  {# Tilted wall of cover art. Built from the merchant's uploaded images and
+     duplicated per column so each column can scroll as a seamless loop. #}
+  {% if covers is not empty %}
+    <div class="st-hero__wall" aria-hidden="true">
+      {% for column in 1..4 %}
+        <div class="st-hero__col st-hero__col--{{ column }}">
+          {# Two passes of the same set: the animation translates by 50%, so the
+             second pass is what makes the loop seamless. #}
+          {% for pass in 1..2 %}
+            {% for cover in covers %}
+              {% if cover.image %}
+                <div class="st-hero__tile">
+                  <img src="{{ cover.image }}" alt="" loading="lazy" decoding="async">
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="st-hero__veil" aria-hidden="true"></div>
+
+  <div class="container st-hero__inner">
+    {% if eyebrow %}
+      <span class="st-hero__eyebrow">{{ eyebrow }}</span>
+    {% endif %}
+
+    {% if title %}
+      <h1 class="st-hero__title">{{ title }}</h1>
+    {% endif %}
+
+    {% if description %}
+      <p class="st-hero__desc">{{ description }}</p>
+    {% endif %}
+
+    {% if primary_label or secondary_label %}
+      <div class="st-hero__actions">
+        {% if primary_label %}
+          <a href="{{ primary_url|default('#') }}" class="st-btn st-btn--primary">
+            {{ primary_label }}
+          </a>
+        {% endif %}
+        {% if secondary_label %}
+          <a href="{{ secondary_url|default('#') }}" class="st-btn st-btn--ghost">
+            {{ secondary_label }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>

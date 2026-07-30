@@ -1,0 +1,40 @@
+{#
+| Variable        | Type   | Description                                              |
+|-----------------|--------|----------------------------------------------------------|
+| title           | string | Section heading                                          |
+| description     | string | Supporting line under the heading                        |
+| items[]         | array  | The steps, numbered automatically in source order         |
+| items[].icon    | string | SallaIcons css class `sicon-*`                            |
+| items[].title   | string | Step heading                                             |
+| items[].text    | string | Step body                                                |
+| position        | int    | Sorting number, starts at zero                            |
+#}
+<section data-testid="store-home-steamory-steps"
+         class="s-block st-section st-steps"
+         id="steamory-steps-{{ position }}">
+  <div class="container">
+    {% if title %}
+      <div class="st-section__head">
+        <h2 class="st-section__title">{{ title }}</h2>
+        {% if description %}
+          <p class="st-section__desc">{{ description }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="st-steps__grid">
+      {% for item in items %}
+        <div class="st-steps__panel">
+          {# The oversized numeral is decorative; the readable order comes from
+             the document order, so it is hidden from assistive tech. #}
+          <span class="st-steps__numeral" aria-hidden="true">{{ loop.index }}</span>
+          {% if item.icon %}
+            <i class="{{ item.icon }} st-steps__icon" aria-hidden="true"></i>
+          {% endif %}
+          <h3 class="st-steps__title">{{ item.title }}</h3>
+          <p class="st-steps__text">{{ item.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

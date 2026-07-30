@@ -99,6 +99,14 @@
   {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
+  {# STEAMORY design options. Salla injects --font-main and --color-primary in a
+     <style> after app.css, so the brand font has to be set on <body> — the
+     nearest ancestor wins the variable lookup for everything inside it. #}
+  {{ theme.settings.get('st_use_theme_fonts', true) ? ' st-brand-fonts' : '' }}
+  st-grain-{{ theme.settings.get('st_grain', 'normal') }}
+  st-radius-{{ theme.settings.get('st_radius', 'round') }}
+  {{ theme.settings.get('st_alt_bands', true) ? '' : ' st-no-bands' }}
+  {{ theme.settings.get('st_hover_lift', true) ? '' : ' st-no-lift' }}
   ">
 <noscript>
     To get full functionality of this site you need to enable JavaScript. Here is how
@@ -114,6 +122,17 @@
     {% component 'footer.footer' %}
 </div>
 {% hook 'body:end' %}
+
+{# STEAMORY floating WhatsApp button, toggled from the design panel. #}
+{% if theme.settings.get('st_whatsapp_enabled') and theme.settings.get('st_whatsapp_number') %}
+    <a class="st-whatsapp"
+       href="https://wa.me/{{ theme.settings.get('st_whatsapp_number') }}?text={{ theme.settings.get('st_whatsapp_text', '')|url_encode }}"
+       target="_blank" rel="noopener"
+       aria-label="{{ 'واتساب' }}">
+        <i class="sicon-whatsapp" aria-hidden="true"></i>
+    </a>
+{% endif %}
+
 {% if theme.settings.get('enable_add_product_toast', true) %}
     <salla-add-product-toast data-testid="store-add-product-toast"></salla-add-product-toast>
 {% endif %}

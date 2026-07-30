@@ -1,0 +1,41 @@
+{#
+| Variable          | Type   | Description                                            |
+|-------------------|--------|--------------------------------------------------------|
+| title             | string | Closing headline                                       |
+| description       | string | Supporting line                                        |
+| primary_label     | string | Main call-to-action label                              |
+| primary_url       | string | Main call-to-action link                               |
+| secondary_label   | string | Secondary call-to-action label                         |
+| secondary_url     | string | Secondary call-to-action link                          |
+| style             | string | accent (green band) | dark (quiet band)                |
+| position          | int    | Sorting number, starts at zero                         |
+#}
+<section data-testid="store-home-steamory-cta"
+         class="s-block st-cta st-cta--{{ style|default('accent') }}"
+         id="steamory-cta-{{ position }}">
+  <div class="container">
+    <div class="st-cta__inner">
+      {% if title %}
+        <h2 class="st-cta__title">{{ title }}</h2>
+      {% endif %}
+      {% if description %}
+        <p class="st-cta__desc">{{ description }}</p>
+      {% endif %}
+      {% if primary_label or secondary_label %}
+        <div class="st-cta__actions">
+          {% if primary_label %}
+            <a href="{{ primary_url|default('#') }}"
+               class="st-btn {{ style|default('accent') == 'accent' ? 'st-btn--on-accent' : 'st-btn--primary' }}">
+              {{ primary_label }}
+            </a>
+          {% endif %}
+          {% if secondary_label %}
+            <a href="{{ secondary_url|default('#') }}" class="st-btn st-btn--ghost">
+              {{ secondary_label }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
