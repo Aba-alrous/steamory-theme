@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — product page and cart
+   Raed bakes the light palette straight into its own component rules with
+   @apply (`.product-entry { @apply bg-white }`), so a utility remap cannot
+   reach them. These are the specific rules that carry the light look, matched
+   at the same specificity and answered from this layer.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── product shell ──────────────────────────────────────────────────────── */
+
+.product-entry {
+  background-color: var(--st-bg-raise);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+
+  &:hover {
+    box-shadow: var(--st-shadow-card);
+  }
+}
+
+.product-details {
+  h1,
+  .product-title {
+    font-family: var(--st-font-display);
+    font-weight: 800;
+    color: var(--st-text);
+  }
+}
+
+.product-sku,
+.product-brand {
+  color: var(--st-muted-2);
+  font-size: 0.8125rem;
+}
+
+.product__description {
+  color: var(--st-muted);
+  line-height: 1.95;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  strong,
+  b {
+    color: var(--st-text);
+  }
+
+  a {
+    color: var(--st-accent);
+
+    &:hover {
+      color: var(--st-accent-hi);
+    }
+  }
+
+  /* Merchant-pasted descriptions often carry their own light backgrounds and
+     black text from Word or another store. Neutralising the two most common
+     cases keeps a pasted block from punching a white hole in the page. */
+  *[style*='background-color: rgb(255, 255, 255)'],
+  *[style*='background: white'] {
+    background-color: transparent !important;
+  }
+
+  *[style*='color: rgb(0, 0, 0)'] {
+    color: var(--st-muted) !important;
+  }
+}
+
+/* ── tabs and reviews ───────────────────────────────────────────────────── */
+
+.s-tabs-header * {
+  color: var(--st-muted);
+}
+
+.s-tabs-header .s-tabs-tab-active,
+.s-tabs-header [aria-selected='true'] {
+  color: var(--st-accent);
+  border-color: var(--st-accent);
+}
+
+.s-comments {
+  background-color: var(--st-bg-raise);
+}
+
+.s-reviews-container,
+.s-reviews-testimonial {
+  background-color: var(--st-surface);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius-sm);
+  color: var(--st-text);
+}
+
+.s-reviews-header,
+.s-reviews-header-wrapper {
+  color: var(--st-text);
+}
+
+/* ── share popover ──────────────────────────────────────────────────────── */
+
+.share-btns-list {
+  background-color: var(--st-surface-2);
+  border: 1px solid var(--st-line-strong);
+  box-shadow: var(--st-shadow-deep);
+}
+
+/* ── option toggles ─────────────────────────────────────────────────────── */
+
+.s-toggle .s-toggle-switcher-has-text::before {
+  color: var(--st-muted-2);
+}
+
+.s-toggle .s-toggle-input:checked + div.s-toggle-switcher-bg-white::before {
+  background-color: var(--st-accent);
+  border-color: var(--st-accent);
+  color: var(--st-accent-ink);
+}
+
+/* ── file upload dropzone ───────────────────────────────────────────────── */
+
+.product-option-uploader label,
+.product-option-uploader .uploader-box {
+  background-color: var(--st-surface);
+  border-color: var(--st-line-strong);
+  color: var(--st-muted);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+  }
+}
+
+/* ── notify-when-available button ───────────────────────────────────────────
+   Raed deliberately makes this button grey rather than primary so it does not
+   compete with add-to-cart, and cites WCAG AA contrast for the light theme.
+   The intent is kept — a quiet button — but re-derived for a dark background,
+   where grey-200 on grey-800 text would fail the same check. */
+
+salla-add-product-button[product-status='out-and-notify'],
+.s-product-availability-wrap {
+  .s-button-solid.s-button-primary,
+  .s-button-primary {
+    background-color: var(--st-surface-3);
+    border-color: var(--st-line-strong);
+    color: var(--st-text);
+
+    &:hover {
+      background-color: var(--st-surface-2);
+      border-color: var(--st-accent-line);
+      color: var(--st-accent-hi);
+    }
+
+    .s-button-text {
+      color: var(--st-text);
+    }
+  }
+}
+
+.s-product-card-full-image salla-add-product-button {
+  background-color: rgba(10, 14, 11, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+/* Raed points the filled wishlist heart at red-500; on this palette the accent
+   is the "on" colour everywhere else, so it stays consistent. */
+.s-product-card-wishlist-added i {
+  color: var(--st-accent);
+}
+
+/* ── sticky mobile add-to-cart bar ──────────────────────────────────────── */
+
+.sticky-product-bar {
+  background-color: rgba(10, 14, 11, 0.9);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--st-line-strong);
+}
+
+/* ── availability chips and stock notes ─────────────────────────────────── */
+
+.s-product-availability-wrap {
+  color: var(--st-muted);
+}
+
+/* ── cart ───────────────────────────────────────────────────────────────── */
+
+.cart-item {
+  background-color: var(--st-bg-raise);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius-sm);
+}
+
+.cart-options {
+  background-color: var(--st-surface);
+  border-color: var(--st-line-strong);
+
+  salla-product-options {
+    .s-form-control,
+    .s-datetime-picker-input {
+      border-color: var(--st-line);
+    }
+  }
+}
+
+/* Salla renders the totals and coupon rows as web components in light DOM. */
+.s-cart-summary,
+.s-cart-total,
+.s-coupon-wrapper {
+  color: var(--st-text);
+}
+
+.s-cart-total-value,
+.s-cart-summary-total-value {
+  font-family: var(--st-font-display);
+  font-weight: 800;
+  color: var(--st-accent);
+}
