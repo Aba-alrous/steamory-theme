@@ -1,0 +1,222 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — header and footer
+   The frame every page shares. Raed drives the header colours from Salla's
+   panel variables (--topnav-bg, --mainnav-bg), which stay respected; what is
+   added here is the dark default, the glass sticky state and the accent
+   behaviour on links and counters.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── top bar ────────────────────────────────────────────────────────────── */
+
+.top-navbar {
+  background-color: var(--st-bg);
+  border-bottom: 1px solid var(--st-line);
+  color: var(--st-muted);
+
+  a,
+  button {
+    color: var(--st-muted);
+
+    &:hover {
+      color: var(--st-accent-hi);
+    }
+  }
+}
+
+.topnav-link-item {
+  border-color: var(--st-line) !important; /* Raed sets border-gray-200 inline via @apply */
+  color: var(--st-muted);
+
+  &:hover {
+    color: var(--st-accent-hi);
+    opacity: 1;
+  }
+}
+
+/* ── main nav ───────────────────────────────────────────────────────────── */
+
+.main-nav-container {
+  border-bottom: 1px solid var(--st-line);
+  box-shadow: none;
+
+  /* Scrolled state: the nav sits over content, so it becomes translucent
+     glass rather than a solid slab. */
+  &.fixed-pinned {
+    background-color: rgba(10, 14, 11, 0.78);
+    backdrop-filter: blur(16px) saturate(1.2);
+    border-bottom-color: var(--st-line-strong);
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.9);
+
+    .inner {
+      background-color: transparent;
+    }
+  }
+}
+
+.navbar-brand img {
+  /* Store logos arrive at wildly different sizes; capping the height keeps the
+     bar from jumping between pages. */
+  max-height: 46px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ── menu items ─────────────────────────────────────────────────────────── */
+
+.menu-item {
+  position: relative;
+  color: var(--st-muted);
+  font-weight: 500;
+
+  &:hover {
+    color: var(--st-text);
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  /* Accent underline instead of a filled block: lighter, and it reads as a
+     navigation state rather than a button. */
+  &::after {
+    content: '';
+    position: absolute;
+    inset-inline: 1.5rem;
+    bottom: 0.35rem;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--st-accent-grad);
+    transform: scaleX(0);
+    transition: transform 0.3s var(--st-ease);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &.is-active,
+  &.active {
+    color: var(--st-text);
+    background-color: transparent;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* Dropdown panels inside the mega menu. */
+.main-nav-container .sub-menu,
+.main-nav-container .menu-dropdown {
+  background-color: var(--st-bg-raise);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius-sm);
+  box-shadow: var(--st-shadow-deep);
+}
+
+/* ── header buttons and cart ────────────────────────────────────────────── */
+
+.header-btn__icon {
+  border-color: var(--st-line-strong) !important; /* Raed applies border-gray-200 */
+  color: var(--st-text) !important; /* Raed applies text-gray-700 */
+  background-color: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s var(--st-ease), color 0.3s var(--st-ease);
+
+  &:hover {
+    border-color: var(--st-accent-line) !important;
+    color: var(--st-accent) !important;
+  }
+}
+
+.s-cart-summary-count {
+  background-color: var(--st-accent);
+  color: var(--st-accent-ink);
+  font-weight: 700;
+}
+
+.s-cart-summary-total {
+  color: var(--st-text);
+  font-family: var(--st-font-display);
+}
+
+/* ── mobile menu (mmenu-light) ──────────────────────────────────────────────
+   The plugin ships a light panel; without this the mobile menu is the one
+   bright surface left in the theme. */
+
+.mm-ocd__content,
+.mm-spn {
+  background-color: var(--st-bg-raise);
+  color: var(--st-text);
+}
+
+.mm-spn a,
+.mm-spn span {
+  color: var(--st-text);
+
+  &::after {
+    border-color: var(--st-line-strong);
+  }
+}
+
+.mm-spn.mm-spn--navbar::after {
+  color: var(--st-muted-2);
+  border-color: var(--st-line);
+}
+
+.mm-spn li::after {
+  border-color: var(--st-line);
+}
+
+.mm-ocd__backdrop {
+  background-color: rgba(6, 10, 7, 0.72);
+}
+
+/* ── footer ─────────────────────────────────────────────────────────────── */
+
+.store-footer {
+  background-color: var(--st-bg);
+  border-top: 1px solid var(--st-line);
+  color: var(--st-muted);
+
+  h3 {
+    font-family: var(--st-font-display);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    color: var(--st-text);
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--st-muted);
+    transition: color 0.25s var(--st-ease);
+
+    &:hover {
+      color: var(--st-accent-hi);
+    }
+  }
+}
+
+.store-footer__inner {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--st-line);
+}
+
+.copyright-text {
+  color: var(--st-muted-2);
+}
+
+/* Salla renders the footer menu, socials and payment icons as web components
+   in light DOM, so their inner links inherit the colours above; only the
+   icon tiles need their own surface. */
+.store-footer {
+  .s-social-link,
+  .s-apps-icons-item,
+  .s-payments-item {
+    background-color: var(--st-surface);
+    border: 1px solid var(--st-line);
+    border-radius: var(--st-radius-sm);
+    transition: border-color 0.3s var(--st-ease);
+
+    &:hover {
+      border-color: var(--st-accent-line);
+    }
+  }
+}

@@ -30,6 +30,40 @@
 </head>
 <body>
 
+  <!-- Mirrors views/components/header/header.twig -->
+  <header class="store-header">
+    <div class="top-navbar">
+      <div class="container flex justify-between">
+        <div class="flex-1 flex items-center gap-2">
+          <a href="#" class="topnav-link-item">من نحن</a>
+          <a href="#" class="topnav-link-item">المدونة</a>
+          <button class="btn--rounded-gray bg-gray-200/50">الفروع</button>
+        </div>
+      </div>
+    </div>
+    <div id="mainnav" class="main-nav-container shadow-default bg-white flex items-center">
+      <div class="inner bg-inherit w-full">
+        <div class="container">
+          <div class="flex items-stretch justify-between relative">
+            <div class="flex items-center">
+              <a class="navbar-brand" href="#">
+                <img alt="logo" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 60'><text x='0' y='42' font-family='sans-serif' font-size='34' font-weight='900' fill='%23eef4ee'>STEAM</text><text x='128' y='42' font-family='sans-serif' font-size='34' font-weight='900' fill='%235ee36a'>ORY</text></svg>">
+              </a>
+              <a href="#" class="menu-item is-active">الرئيسية</a>
+              <a href="#" class="menu-item">الباقات</a>
+              <a href="#" class="menu-item">المكتبة</a>
+            </div>
+            <div class="flex items-center justify-end my-2.5">
+              <button class="header-btn"><i class="header-btn__icon icon sicon-user"></i></button>
+              <span class="s-cart-summary-count">3</span>
+              <span class="s-cart-summary-total">149.99 ر.س</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <!-- Mirrors views/components/home/steamory-hero.twig: 4 columns, each
        rendering the merchant's cover set twice so the loop is seamless. -->
   <section class="s-block st-hero st-hero--h-tall st-hero--overlay-medium" id="steamory-hero-0">
@@ -307,6 +341,30 @@
       </div>
     </div>
   </section>
+
+  <!-- Mirrors views/components/footer/footer.twig -->
+  <footer class="store-footer">
+    <div class="store-footer__inner">
+      <div class="container grid grid-col-1 lg:grid-cols-6 gap-8">
+        <div class="lg:col-span-2">
+          <h3>STEAMORY</h3>
+          <div class="max-w-sm leading-6 mb-6">مكتبة ألعاب رقمية بأسعار تنافسية وتفعيل فوري.</div>
+          <div class="flex gap-4">
+            <a href="#" class="s-social-link p-3"><i class="sicon-whatsapp"></i></a>
+            <a href="#" class="s-social-link p-3"><i class="sicon-instagram"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>روابط الصفحات</h3>
+          <a href="#" class="block">الشروط والأحكام</a>
+          <a href="#" class="block">سياسة الاستبدال</a>
+        </div>
+      </div>
+    </div>
+    <div class="md:flex items-center justify-between py-4 container text-center">
+      <span class="text-sm copyright-text">جميع الحقوق محفوظة © STEAMORY</span>
+    </div>
+  </footer>
 
   <a class="st-whatsapp" href="#" aria-label="واتساب"><i class="sicon-whatsapp"></i></a>
 

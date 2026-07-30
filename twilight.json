@@ -1,10 +1,10 @@
 {
     "name": {
-        "ar": "رائد",
-        "en": "Theme Raed"
+        "ar": "ستيموري",
+        "en": "STEAMORY"
     },
-    "repository": "https://github.com/SallaApp/theme-raed",
-    "author_email": "support@salla.sa",
+    "repository": "https://github.com/Aba-alrous/steamory-theme",
+    "author_email": "aba.alrous@hotmail.com",
     "features": [
         "mega-menu",
         "fonts",
@@ -2595,9 +2595,9 @@
             ]
         }
     ],
-    "support_url": "https://salla.com/",
+    "support_url": "https://stmory.com",
     "description": {
-        "ar": "مجموعة كبيرة من المزايا لدعم تجارتك وتقديم تجربة تسوق مثيرة لعملائك",
-        "en": "A wide range of features to support your business and provide an exciting shopping experience for your customers"
+        "ar": "ثيم داكن سينمائي لمتاجر الألعاب والمنتجات الرقمية، بعناصر رئيسية قابلة للتخصيص بالكامل",
+        "en": "A cinematic dark theme for game and digital-goods stores, with fully customisable homepage components"
     }
 }

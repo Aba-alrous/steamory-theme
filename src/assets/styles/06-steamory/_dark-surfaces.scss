@@ -48,6 +48,29 @@
   background-color: var(--st-surface);
 }
 
+/* Opacity modifiers compile to their own escaped class, so `.bg-gray-200`
+   above never reaches `.bg-gray-200/50`. These four are header and menu hover
+   states — light grey at 20–70% reads as a grey wash over the dark canvas, so
+   they become low-alpha white instead. The remaining modifier utilities in the
+   markup (bg-black/60, border-white/10, bg-gray-100/10, text-white/90) are
+   already correct against a dark background and are left alone. */
+
+.bg-gray-200\/20 {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.bg-gray-200\/30 {
+  background-color: rgba(255, 255, 255, 0.045);
+}
+
+.bg-gray-200\/50 {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.bg-gray-200\/70 {
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
 /* ── inks ───────────────────────────────────────────────────────────────── */
 
 .text-black,
