@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — dark surface remap
+   ───────────────────────────────────────────────────────────────────────
+   Raed's markup uses ~274 light-palette Tailwind utilities (bg-white,
+   text-gray-500, border-gray-200 …). Rather than editing every template,
+   the handful of utilities that carry the LIGHT look are re-pointed at the
+   dark tokens here.
+
+   Why not just invert the palette in tailwind.config.js: `bg-white` needs to
+   become dark while `text-white` must stay light — same token, opposite
+   needs. So the flip has to happen per utility, not per color.
+
+   No !important anywhere. This file is imported last in app.scss, so it wins
+   on source order at equal specificity. That keeps Salla's design panel
+   working and lets `git merge` pull upstream Raed updates cleanly.
+
+   Note: overriding these utilities with flat colors means Tailwind's
+   bg-opacity/text-opacity modifiers no longer affect them. Nothing in the
+   theme pairs those with the utilities below.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── surfaces ───────────────────────────────────────────────────────────── */
+
+.bg-white,
+.bg-gray-50 {
+  background-color: var(--st-bg-raise);
+}
+
+.bg-gray-100 {
+  background-color: var(--st-surface);
+}
+
+.bg-gray-200 {
+  background-color: var(--st-surface-2);
+}
+
+.bg-gray-300 {
+  background-color: var(--st-surface-3);
+}
+
+/* Already-dark utilities: pull them onto the green-black ramp so they don't
+   read as neutral charcoal next to the brand surfaces. */
+.bg-gray-600 {
+  background-color: var(--st-surface-3);
+}
+
+.bg-gray-800 {
+  background-color: var(--st-surface);
+}
+
+/* ── inks ───────────────────────────────────────────────────────────────── */
+
+.text-black,
+.text-gray-900,
+.text-gray-800 {
+  color: var(--st-text);
+}
+
+.text-gray-700,
+.text-gray-600 {
+  color: var(--st-muted);
+}
+
+.text-gray-500,
+.text-gray-400 {
+  color: var(--st-muted-2);
+}
+
+/* Light-on-dark inks in the source stay light — only re-tinted to the
+   brand's warm-green white. */
+.text-gray-300,
+.text-gray-100 {
+  color: var(--st-text);
+}
+
+/* ── hairlines ──────────────────────────────────────────────────────────── */
+
+.border-gray-100,
+.border-gray-200,
+.border-gray-300 {
+  border-color: var(--st-line);
+}
+
+.border-gray-400,
+.border-gray-600,
+.border-white {
+  border-color: var(--st-line-strong);
+}
+
+.divide-gray-100 > :not([hidden]) ~ :not([hidden]),
+.divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--st-line);
+}
+
+.ring-gray-100 {
+  --tw-ring-color: var(--st-line);
+}
+
+/* ── form controls ──────────────────────────────────────────────────────────
+   @tailwindcss/forms resets inputs to a white background with gray borders.
+   Those are element selectors, so they need matching element selectors here. */
+
+[type='text'],
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+textarea,
+select {
+  background-color: var(--st-surface);
+  border-color: var(--st-line);
+  color: var(--st-text);
+
+  &::placeholder {
+    color: var(--st-muted-2);
+  }
+
+  &:focus {
+    border-color: var(--st-accent-line);
+    box-shadow: 0 0 0 3px var(--st-accent-soft);
+  }
+}
+
+[type='checkbox'],
+[type='radio'] {
+  background-color: var(--st-surface-2);
+  border-color: var(--st-line-strong);
+
+  &:checked {
+    background-color: var(--st-accent);
+    border-color: var(--st-accent);
+  }
+}
+
+/* Chrome/Safari autofill paints its own near-white background. The huge
+   inset shadow is the only way to repaint it. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--st-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--st-surface) inset;
+  caret-color: var(--st-text);
+}

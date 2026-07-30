@@ -60,7 +60,14 @@ module.exports = {
     plugins: [
         new ThemeWatcher(),
         new MiniCssExtractPlugin(),
-        new CopyPlugin({patterns: [{from: asset('images'), to: public('images')}]}),
+        new CopyPlugin({
+            patterns: [
+                {from: asset('images'), to: public('images')},
+                // css-loader runs with url:false, so @font-face paths in
+                // 01-settings/_fonts.scss stay relative to public/app.css.
+                {from: asset('fonts'), to: public('fonts')},
+            ]
+        }),
     ],
     optimization: {
         minimizer: [

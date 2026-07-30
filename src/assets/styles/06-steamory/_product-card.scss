@@ -1,0 +1,152 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — product card
+   The card is the store's main unit of persuasion, so it gets designed
+   rather than merely darkened.
+
+   Two rules below carry !important. That is not brute force: Raed's
+   04-components/product.scss ships `@apply text-red-800 !important` on the
+   sale price and `@apply !bg-white` on the wishlist button, so an equally
+   weighted declaration is the only way to answer them without editing
+   upstream files and losing clean `git merge` of Raed updates.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.s-product-card-entry {
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  overflow: hidden;
+  transition: transform 0.45s var(--st-ease), border-color 0.45s var(--st-ease),
+    box-shadow 0.45s var(--st-ease);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+    box-shadow: var(--st-shadow-card);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+/* The image sits on a slightly deeper surface so cover art edges stay visible
+   against the card even when the artwork itself is dark. */
+.s-product-card-image,
+.s-product-card-image-full {
+  background-color: var(--st-bg);
+}
+
+.s-product-card-content-title {
+  font-family: var(--st-font-display);
+  font-weight: 700;
+
+  a {
+    color: var(--st-text);
+    transition: color 0.25s var(--st-ease);
+
+    &:hover {
+      color: var(--st-accent);
+    }
+  }
+}
+
+.s-product-card-content-subtitle {
+  color: var(--st-muted);
+}
+
+/* ── prices ─────────────────────────────────────────────────────────────────
+   Raed uses dark red (#991b1b) for discounted prices — a light-theme
+   convention that is close to unreadable on the near-black canvas. On dark,
+   the brand's neon green is the "price" colour, matching stmory.com, and the
+   old price recedes into muted strike-through. One accent, maximum contrast. */
+
+.s-product-card-price {
+  font-family: var(--st-font-display);
+  font-size: 1rem;
+  color: var(--st-text);
+}
+
+.s-product-card-sale-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+
+  h4 {
+    /* answers `@apply text-red-800 !important` in Raed's product.scss */
+    color: var(--st-accent) !important;
+    font-family: var(--st-font-display);
+    font-size: 1rem;
+  }
+
+  span {
+    color: var(--st-muted-2);
+    text-decoration-line: line-through;
+    font-size: 0.8125rem;
+  }
+}
+
+.s-product-card-starting-price {
+  h4 {
+    color: var(--st-accent);
+    font-family: var(--st-font-display);
+    font-size: 1rem;
+  }
+
+  p {
+    color: var(--st-muted-2);
+    font-size: 0.75rem;
+  }
+}
+
+/* ── badges ─────────────────────────────────────────────────────────────── */
+
+.s-product-card-promotion-title {
+  background-color: var(--st-accent);
+  color: var(--st-accent-ink);
+  font-family: var(--st-font-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.s-product-card-out-badge {
+  background-color: rgba(10, 14, 11, 0.82);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--st-line-strong);
+  color: var(--st-muted);
+}
+
+.s-product-card-out-of-stock .s-product-card-image img {
+  filter: grayscale(0.85);
+  opacity: 0.55;
+}
+
+/* ── rating ─────────────────────────────────────────────────────────────── */
+
+.s-product-card-rating {
+  color: var(--st-muted);
+
+  span svg {
+    fill: var(--st-accent-hi);
+  }
+}
+
+/* ── wishlist ───────────────────────────────────────────────────────────── */
+
+.s-product-card-vertical .s-product-card-wishlist-btn button {
+  /* answers `@apply !bg-white` in the Salla design-system layer */
+  background-color: rgba(10, 14, 11, 0.72) !important;
+  backdrop-filter: blur(6px);
+  border-color: var(--st-line-strong);
+
+  svg {
+    fill: var(--st-text);
+  }
+
+  &:hover svg {
+    fill: var(--st-accent);
+  }
+}
+
+.s-product-card-wishlist-added button svg {
+  fill: var(--st-accent) !important;
+}

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STEAMORY theme — visual harness</title>
+  <link rel="stylesheet" href="/app.css">
+  <style>
+    /* Harness chrome only — never part of the theme. */
+    .h-label { font: 600 12px/1 monospace; letter-spacing: .08em; text-transform: uppercase;
+               color: #7e937f; padding: 28px 0 10px; border-top: 1px dashed rgba(255,255,255,.12); margin-top: 32px; }
+    .h-swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+    .h-swatch { width: 96px; height: 64px; border-radius: 8px; border: 1px solid rgba(255,255,255,.12);
+                font: 500 10px/1.4 monospace; padding: 6px; color: #eef4ee; }
+  </style>
+</head>
+<body>
+  <div class="container py-8">
+
+    <div class="h-label">tokens</div>
+    <div class="h-swatches">
+      <div class="h-swatch" style="background:var(--st-bg)">bg</div>
+      <div class="h-swatch" style="background:var(--st-bg-raise)">bg-raise</div>
+      <div class="h-swatch" style="background:var(--st-surface)">surface</div>
+      <div class="h-swatch" style="background:var(--st-surface-2)">surface-2</div>
+      <div class="h-swatch" style="background:var(--st-surface-3)">surface-3</div>
+      <div class="h-swatch" style="background:var(--st-accent);color:var(--st-accent-ink)">accent</div>
+      <div class="h-swatch" style="background:var(--st-accent-grad);color:var(--st-accent-ink)">accent-grad</div>
+    </div>
+
+    <div class="h-label">typography — Alexandria display / IBM Plex Sans Arabic body</div>
+    <h1 class="text-4xl font-black">اشترِ مكتبة ألعابك الآن</h1>
+    <h2 class="text-2xl">بكج الأسطورة — أكثر من 1000 لعبة</h2>
+    <p class="text-gray-500">نص ثانوي بلون باهت: تفعيل فوري، ضمان مدى الحياة، ودعم على واتساب.</p>
+    <p class="text-gray-800">نص أساسي بلون واضح على خلفية داكنة. PLAY MORE. OWN MORE. 149.99 SAR</p>
+
+    <div class="h-label">section block — .s-block with title</div>
+    <section class="s-block s-block--products">
+      <div class="s-block__title">
+        <div class="right-side"><h2>الأكثر مبيعاً</h2></div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <!-- normal card -->
+        <div class="s-product-card-entry s-product-card-vertical">
+          <div class="s-product-card-image">
+            <a href="#" aria-label="بكج الأسطورة">
+              <img class="s-product-card-image-cover" alt="بكج الأسطورة"
+                   src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 900'><rect width='600' height='900' fill='%231b2a1f'/><text x='300' y='450' fill='%235ee36a' font-size='48' text-anchor='middle' font-family='sans-serif'>GAME</text></svg>">
+            </a>
+          </div>
+          <div class="s-product-card-content">
+            <div class="s-product-card-content-main">
+              <h3 class="s-product-card-content-title"><a href="#">بكج الأسطورة +1000 لعبة</a></h3>
+              <p class="s-product-card-content-subtitle opacity-80">تفعيل فوري على حسابك</p>
+            </div>
+            <div class="s-product-card-content-sub">
+              <h4 class="s-product-card-price">149.99 ر.س</h4>
+              <div class="s-product-card-rating"><span>4.9</span></div>
+            </div>
+            <div class="s-product-card-content-footer gap-2">
+              <button class="s-button-element s-button-primary s-button-wide">أضف للسلة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- on sale -->
+        <div class="s-product-card-entry s-product-card-vertical">
+          <div class="s-product-card-image">
+            <a href="#" aria-label="بكج فار كراي">
+              <img class="s-product-card-image-cover" alt="بكج فار كراي"
+                   src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 900'><rect width='600' height='900' fill='%23121a14'/><text x='300' y='450' fill='%238af59a' font-size='48' text-anchor='middle' font-family='sans-serif'>SALE</text></svg>">
+            </a>
+          </div>
+          <div class="s-product-card-content">
+            <div class="s-product-card-content-main">
+              <h3 class="s-product-card-content-title"><a href="#">بكج فار كراي</a></h3>
+            </div>
+            <div class="s-product-card-content-sub">
+              <div class="s-product-card-sale-price">
+                <h4>15.00 ر.س</h4>
+                <span>50.00 ر.س</span>
+              </div>
+            </div>
+            <div class="s-product-card-content-footer gap-2">
+              <button class="s-button-element s-button-primary s-button-wide">أضف للسلة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- out of stock -->
+        <div class="s-product-card-entry s-product-card-vertical s-product-card-out-of-stock">
+          <div class="s-product-card-image">
+            <a href="#" aria-label="ستيم أوكراني">
+              <img class="s-product-card-image-cover" alt="ستيم أوكراني"
+                   src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 900'><rect width='600' height='900' fill='%230e1410'/><text x='300' y='450' fill='%237e937f' font-size='42' text-anchor='middle' font-family='sans-serif'>OUT</text></svg>">
+              <span class="s-product-card-out-badge">نفذت الكمية</span>
+            </a>
+          </div>
+          <div class="s-product-card-content">
+            <div class="s-product-card-content-main">
+              <h3 class="s-product-card-content-title"><a href="#">ستيم أوكراني حساب جاهز</a></h3>
+            </div>
+            <div class="s-product-card-content-sub">
+              <h4 class="s-product-card-price">10.00 ر.س</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- starting price -->
+        <div class="s-product-card-entry s-product-card-vertical">
+          <div class="s-product-card-image">
+            <a href="#" aria-label="بكج الميجا">
+              <img class="s-product-card-image-cover" alt="بكج الميجا"
+                   src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 900'><rect width='600' height='900' fill='%2316211a'/><text x='300' y='450' fill='%235ee36a' font-size='48' text-anchor='middle' font-family='sans-serif'>MEGA</text></svg>">
+            </a>
+          </div>
+          <div class="s-product-card-content">
+            <div class="s-product-card-content-main">
+              <h3 class="s-product-card-content-title"><a href="#">بكج الميجا</a></h3>
+            </div>
+            <div class="s-product-card-content-sub">
+              <div class="s-product-card-starting-price">
+                <p>يبدأ من</p>
+                <h4>50.00 ر.س</h4>
+              </div>
+            </div>
+            <div class="s-product-card-content-footer gap-2">
+              <button class="s-button-element s-button-primary s-button-wide">أضف للسلة</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="h-label">surfaces the remap has to catch</div>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="bg-white border border-gray-200 rounded p-4">
+        <p class="text-gray-800 font-bold">.bg-white</p>
+        <p class="text-gray-500 text-sm">مع .border-gray-200 و .text-gray-500</p>
+      </div>
+      <div class="bg-gray-100 border border-gray-300 rounded p-4">
+        <p class="text-gray-900 font-bold">.bg-gray-100</p>
+        <p class="text-gray-600 text-sm">مع .border-gray-300 و .text-gray-600</p>
+      </div>
+      <div class="bg-gray-200 rounded p-4">
+        <p class="text-gray-700 font-bold">.bg-gray-200</p>
+        <p class="text-gray-400 text-sm">مع .text-gray-400</p>
+      </div>
+    </div>
+
+    <div class="h-label">form controls</div>
+    <div class="grid grid-cols-2 gap-4">
+      <input type="text" class="s-form-control" placeholder="أدخل بريدك الإلكتروني">
+      <select class="s-form-control"><option>اختر طريقة الدفع</option></select>
+      <textarea class="s-form-control" rows="2" placeholder="ملاحظات على الطلب"></textarea>
+      <div class="flex items-center gap-3 p-3">
+        <input type="checkbox" checked> <span>أوافق على الشروط</span>
+        <input type="radio" checked> <span>تحويل بنكي</span>
+      </div>
+    </div>
+
+    <div class="h-label">buttons</div>
+    <div class="flex flex-wrap gap-3 pb-16">
+      <button class="s-button-element s-button-primary">زر رئيسي</button>
+      <button class="s-button-element s-button-primary s-button-outline">زر محدد</button>
+      <button class="btn btn--primary">btn--primary</button>
+      <button class="btn btn--outline">btn--outline</button>
+    </div>
+
+  </div>
+</body>
+</html>
