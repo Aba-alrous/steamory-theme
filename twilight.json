@@ -439,8 +439,8 @@
         {
             "key": "362e0b06-ec9f-48f2-9d7f-29e85b832f5c",
             "title": {
-                "en": "STEAMORY — Animated cover wall hero",
-                "ar": "بنر متحرك بجدار أغلفة"
+                "en": "STM · Animated cover wall hero",
+                "ar": "STM · بنر متحرك بجدار أغلفة"
             },
             "icon": "sicon-game-controller-alt",
             "path": "home.steamory-hero",
@@ -711,6 +711,1165 @@
                             "label": "قوي",
                             "value": "strong",
                             "key": "35ac9a39-de53-4339-8fbf-35e1daf31579"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "key": "668b107f-d1a1-4f4a-97e0-c8858e763e9e",
+            "title": {
+                "en": "STM · Trust bar",
+                "ar": "STM · شريط الأرقام والثقة"
+            },
+            "icon": "sicon-shield-check",
+            "path": "home.steamory-trust",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "trust-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شريط زجاجي بأرقام متجرك. <strong style=\"color:#5ee36a;\">فعّل \"الإزاحة للأعلى\"</strong> إذا وضعته مباشرة تحت البنر ليتراكب معه.</div>"
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "العناصر",
+                    "description": "يُنصح بـ 3 أو 4 عناصر",
+                    "item_label": "عنصر",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 6,
+                    "value": [
+                        {
+                            "items.icon": "sicon-game-controller-alt",
+                            "items.value": "+1000",
+                            "items.label": "لعبة في المكتبة"
+                        },
+                        {
+                            "items.icon": "sicon-clock",
+                            "items.value": "دقائق",
+                            "items.label": "تفعيل فوري بعد الدفع"
+                        },
+                        {
+                            "items.icon": "sicon-shield-check",
+                            "items.value": "مدى الحياة",
+                            "items.label": "ضمان على الحساب"
+                        },
+                        {
+                            "items.icon": "sicon-star2",
+                            "items.value": "4.9",
+                            "items.label": "تقييم العملاء"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-shapes",
+                            "label": "الأيقونة",
+                            "id": "items.icon",
+                            "value": "sicon-shield-check",
+                            "required": false,
+                            "format": "icon",
+                            "class": "form--inline",
+                            "description": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "الرقم",
+                            "multilanguage": true,
+                            "id": "items.value",
+                            "value": "+1000",
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": "مثال: +1000",
+                            "minLength": 0,
+                            "maxLength": 24
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "الوصف",
+                            "multilanguage": true,
+                            "id": "items.label",
+                            "value": "لعبة في المكتبة",
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 60
+                        }
+                    ]
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "إزاحة الشريط للأعلى ليتراكب مع القسم السابق",
+                    "description": null,
+                    "id": "overlap",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                }
+            ]
+        },
+        {
+            "key": "43ef2720-f71a-4224-ad44-624961ac70a4",
+            "title": {
+                "en": "STM · Cover marquee",
+                "ar": "STM · شريط أغلفة متحرك"
+            },
+            "icon": "sicon-image-carousel",
+            "path": "home.steamory-marquee",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "marquee-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>صفّان من أغلفة الألعاب يتحركان في اتجاهين متعاكسين ويتوقفان عند مرور المؤشر. <strong style=\"color:#5ee36a;\">أضف الصور يدوياً</strong> وحدّد لكل صورة رقم صفّها.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان (اختياري)",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "مثال: أبرز العناوين",
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "id": "rows",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الأغلفة",
+                    "description": "يُنصح بـ 8 صور أو أكثر لكل صف",
+                    "item_label": "غلاف",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 60,
+                    "value": [],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "صورة الغلاف",
+                            "id": "rows.image",
+                            "value": null,
+                            "format": "image",
+                            "required": true,
+                            "placeholder": null,
+                            "description": "* المقاس المناسب 600×900 بكسل (طولي)",
+                            "settings": {
+                                "width": 600,
+                                "height": 900
+                            }
+                        },
+                        {
+                            "id": "rows.row",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "الصف",
+                            "description": "أي صف تظهر فيه هذه الصورة",
+                            "labelHTML": null,
+                            "icon": "sicon-list",
+                            "selected": [
+                                {
+                                    "label": "الصف الأول",
+                                    "value": "1",
+                                    "key": "e7c889e0-8dc9-452b-bf4d-ba716cee7aab"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "الصف الأول",
+                                    "value": "1",
+                                    "key": "e7c889e0-8dc9-452b-bf4d-ba716cee7aab"
+                                },
+                                {
+                                    "label": "الصف الثاني",
+                                    "value": "2",
+                                    "key": "d4b0dfef-f9d4-42de-8226-1f053bda9ed5"
+                                }
+                            ],
+                            "source": "Manual",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "id": "speed",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "سرعة الحركة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "عادية (يُنصح بها)",
+                            "value": "normal",
+                            "key": "4f5e795d-9555-41ca-91d3-3c32c90edbd1"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "بطيئة",
+                            "value": "slow",
+                            "key": "fd1a5ae8-fb3e-46b6-ae53-925e831efadc"
+                        },
+                        {
+                            "label": "عادية (يُنصح بها)",
+                            "value": "normal",
+                            "key": "4f5e795d-9555-41ca-91d3-3c32c90edbd1"
+                        },
+                        {
+                            "label": "سريعة",
+                            "value": "fast",
+                            "key": "924f9c45-efad-40fd-a445-354ae1ceeb3a"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "key": "08648a3b-d454-4c74-8397-4f75c42cb213",
+            "title": {
+                "en": "STM · Product spotlight",
+                "ar": "STM · منتج مميز بعرض كامل"
+            },
+            "icon": "sicon-star2",
+            "path": "home.steamory-spotlight",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "spotlight-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>بطاقة أفقية بعرض الصفحة لمنتج واحد، مع قائمة مزايا وزر إضافة للسلة. مناسبة لباقتك الرئيسية.</div>"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "المنتج",
+                    "id": "products",
+                    "format": "dropdown-list",
+                    "description": "اختر منتجاً واحداً",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "minLength": 1,
+                    "maxLength": 1,
+                    "value": []
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص علوي صغير",
+                    "multilanguage": true,
+                    "id": "eyebrow",
+                    "value": "الأكثر مبيعاً",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "label": "صورة بديلة (اختياري)",
+                    "id": "image",
+                    "value": null,
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": "اتركها فارغة لاستخدام صورة المنتج نفسها",
+                    "settings": {
+                        "width": 880,
+                        "height": 1100
+                    }
+                },
+                {
+                    "id": "perks",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "المزايا",
+                    "description": "تظهر كقائمة بعلامات صح",
+                    "item_label": "ميزة",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "value": [
+                        {
+                            "perks.text": "أكثر من 1000 لعبة على حسابك الشخصي"
+                        },
+                        {
+                            "perks.text": "تفعيل فوري خلال دقائق من إتمام الدفع"
+                        },
+                        {
+                            "perks.text": "ضمان مدى الحياة على الحساب"
+                        },
+                        {
+                            "perks.text": "دعم مباشر على واتساب في أي وقت"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "نص الميزة",
+                            "multilanguage": true,
+                            "id": "perks.text",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": "مثال: تفعيل فوري خلال دقائق",
+                            "minLength": 0,
+                            "maxLength": 120
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "27d1c9e6-98e2-4d11-ab7d-aecaa96029f5",
+            "title": {
+                "en": "STM · Bundles comparison",
+                "ar": "STM · جدول مقارنة الباقات"
+            },
+            "icon": "sicon-list-view",
+            "path": "home.steamory-compare",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "compare-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>جدول يقارن باقتين. <strong style=\"color:#5ee36a;\">اختر منتجين بالترتيب</strong> — الأول يظهر في العمود الأول. الصور والأسعار تُسحب من المنتجين تلقائياً.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "وش الفرق بين الباقات؟",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "المنتجان",
+                    "id": "products",
+                    "format": "dropdown-list",
+                    "description": "اختر منتجين بالترتيب",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "minLength": 1,
+                    "maxLength": 2,
+                    "value": []
+                },
+                {
+                    "id": "rows",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "صفوف المقارنة",
+                    "description": null,
+                    "item_label": "صف",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 15,
+                    "value": [
+                        {
+                            "rows.label": "عدد الألعاب",
+                            "rows.a": "أكثر من 1000 لعبة",
+                            "rows.b": "24 لعبة مختارة"
+                        },
+                        {
+                            "rows.label": "طريقة التفعيل",
+                            "rows.a": "على حسابك الشخصي",
+                            "rows.b": "على حسابك الشخصي"
+                        },
+                        {
+                            "rows.label": "مدة التفعيل",
+                            "rows.a": "خلال دقائق",
+                            "rows.b": "خلال دقائق"
+                        },
+                        {
+                            "rows.label": "الضمان",
+                            "rows.a": "مدى الحياة",
+                            "rows.b": "مدى الحياة"
+                        },
+                        {
+                            "rows.label": "الأنسب لـ",
+                            "rows.a": "من يريد مكتبة كاملة",
+                            "rows.b": "من يريد أشهر الألعاب فقط"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "بند المقارنة",
+                            "multilanguage": true,
+                            "id": "rows.label",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": "مثال: عدد الألعاب",
+                            "minLength": 0,
+                            "maxLength": 60
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "قيمة المنتج الأول",
+                            "multilanguage": true,
+                            "id": "rows.a",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 90
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "قيمة المنتج الثاني",
+                            "multilanguage": true,
+                            "id": "rows.b",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 90
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "2157593a-6ed4-4b1c-a6dc-907559e2b535",
+            "title": {
+                "en": "STM · Steps",
+                "ar": "STM · خطوات الشراء"
+            },
+            "icon": "sicon-numbered-list",
+            "path": "home.steamory-steps",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "steps-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>لوحات مرقّمة تلقائياً بأرقام كبيرة مفرّغة. الترتيب هو ترتيب العناصر أدناه.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "كيف تستلم طلبك؟",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "النص التوضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الخطوات",
+                    "description": null,
+                    "item_label": "خطوة",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "value": [
+                        {
+                            "items.icon": "sicon-shopping-bag",
+                            "items.title": "اختر باقتك",
+                            "items.text": "حدّد الباقة المناسبة لك وأكمل عملية الدفع بالطريقة التي تفضّلها."
+                        },
+                        {
+                            "items.icon": "sicon-whatsapp",
+                            "items.title": "نتواصل معك",
+                            "items.text": "نراسلك على واتساب مباشرة بعد الطلب لتأكيد تفاصيل التفعيل."
+                        },
+                        {
+                            "items.icon": "sicon-game-controller-alt",
+                            "items.title": "ابدأ اللعب",
+                            "items.text": "نفعّل المكتبة على حسابك وتصير جاهزة للتحميل واللعب فوراً."
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-shapes",
+                            "label": "الأيقونة",
+                            "id": "items.icon",
+                            "value": "sicon-shield-check",
+                            "required": false,
+                            "format": "icon",
+                            "class": "form--inline",
+                            "description": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "عنوان الخطوة",
+                            "multilanguage": true,
+                            "id": "items.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 60
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "شرح الخطوة",
+                            "multilanguage": true,
+                            "id": "items.text",
+                            "value": null,
+                            "required": false,
+                            "format": "textarea",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 220
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "ba3a2889-3478-4f37-bc1e-775b1183fea2",
+            "title": {
+                "en": "STM · Why us",
+                "ar": "STM · لماذا نحن / المميزات"
+            },
+            "icon": "sicon-award-ribbon",
+            "path": "home.steamory-value",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "value-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>بطاقات مزايا بأيقونات في إطار أخضر. مناسبة لقسم \"لماذا نحن\".</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "ليش تشتري منّا؟",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "النص التوضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "المزايا",
+                    "description": null,
+                    "item_label": "ميزة",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "value": [
+                        {
+                            "items.icon": "sicon-shield-check",
+                            "items.title": "ضمان مدى الحياة",
+                            "items.text": "أي مشكلة في الحساب نحلّها لك بدون أي رسوم إضافية."
+                        },
+                        {
+                            "items.icon": "sicon-clock",
+                            "items.title": "تفعيل فوري",
+                            "items.text": "لا انتظار ولا مواعيد — التفعيل يتم خلال دقائق من الدفع."
+                        },
+                        {
+                            "items.icon": "sicon-credit-card",
+                            "items.title": "دفع آمن",
+                            "items.text": "جميع طرق الدفع المحلية مدعومة عبر بوابة سلة الآمنة."
+                        },
+                        {
+                            "items.icon": "sicon-headphone",
+                            "items.title": "دعم حقيقي",
+                            "items.text": "تتكلم مع شخص فعلي على واتساب، لا ردود آلية."
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-shapes",
+                            "label": "الأيقونة",
+                            "id": "items.icon",
+                            "value": "sicon-shield-check",
+                            "required": false,
+                            "format": "icon",
+                            "class": "form--inline",
+                            "description": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "العنوان",
+                            "multilanguage": true,
+                            "id": "items.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 60
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "الشرح",
+                            "multilanguage": true,
+                            "id": "items.text",
+                            "value": null,
+                            "required": false,
+                            "format": "textarea",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 220
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "9423fd55-0b7b-48b5-9f17-825cc638a82f",
+            "title": {
+                "en": "STM · Testimonials rail",
+                "ar": "STM · آراء العملاء (شريط متحرك)"
+            },
+            "icon": "sicon-chat-bubbles",
+            "path": "home.steamory-testimonials",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "testi-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شريط آراء يتحرك تلقائياً ويتوقف عند مرور المؤشر، مع ملخّص تقييم بارز.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "وش يقولون عنّا؟",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "التقييم البارز",
+                    "multilanguage": true,
+                    "id": "summary_value",
+                    "value": "4.9",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "مثال: 4.9",
+                    "minLength": 0,
+                    "maxLength": 10
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "وصف التقييم",
+                    "multilanguage": true,
+                    "id": "summary_label",
+                    "value": "من 98 تقييماً",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الآراء",
+                    "description": null,
+                    "item_label": "رأي",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 30,
+                    "value": [
+                        {
+                            "items.name": "أحمد",
+                            "items.stars": 5,
+                            "items.text": "وصلني التفعيل بسرعة وتعامل محترم، أنصح بالتعامل معهم."
+                        },
+                        {
+                            "items.name": "نورة",
+                            "items.stars": 5,
+                            "items.text": "أفضل سعر لقيته بعد ما دوّرت كثير، والخدمة ممتازة."
+                        },
+                        {
+                            "items.name": "خالد",
+                            "items.stars": 5,
+                            "items.text": "المكتبة ضخمة فعلاً وفيها ألعاب ما توقعت ألقاها."
+                        },
+                        {
+                            "items.name": "عبدالله",
+                            "items.stars": 5,
+                            "items.text": "سألت أسئلة كثيرة قبل الشراء وردّوا على الكل بصبر."
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "اسم العميل",
+                            "multilanguage": true,
+                            "id": "items.name",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 40
+                        },
+                        {
+                            "id": "items.stars",
+                            "type": "number",
+                            "format": "integer",
+                            "label": "عدد النجوم",
+                            "description": null,
+                            "labelHTML": "من 1 إلى 5",
+                            "placeholder": "القيمة",
+                            "icon": "sicon-star2",
+                            "value": 5,
+                            "required": false,
+                            "minimum": 1,
+                            "maximum": 5
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "نص الرأي",
+                            "multilanguage": true,
+                            "id": "items.text",
+                            "value": null,
+                            "required": false,
+                            "format": "textarea",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 300
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "9db129f5-0319-472f-bda9-196c7f6e9da4",
+            "title": {
+                "en": "STM · FAQ",
+                "ar": "STM · الأسئلة الشائعة"
+            },
+            "icon": "sicon-help-circle",
+            "path": "home.steamory-faq",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "faq-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>أسئلة قابلة للفتح والإغلاق بدون جافاسكربت، تعمل بالكيبورد.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "الأسئلة الشائعة",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الأسئلة",
+                    "description": null,
+                    "item_label": "سؤال",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 30,
+                    "value": [
+                        {
+                            "items.question": "هل الحساب يبقى لي بشكل دائم؟",
+                            "items.answer": "نعم، الحساب يبقى لك مدى الحياة مع ضمان منّا على أي مشكلة تطرأ عليه."
+                        },
+                        {
+                            "items.question": "كم يستغرق التفعيل؟",
+                            "items.answer": "من دقائق إلى ساعة كحد أقصى، ونتواصل معك على واتساب خلال هذه المدة."
+                        },
+                        {
+                            "items.question": "هل أستطيع اللعب أونلاين؟",
+                            "items.answer": "يعتمد على اللعبة نفسها. راسلنا قبل الشراء وسنوضح لك حالة اللعبة التي تريدها."
+                        },
+                        {
+                            "items.question": "ما طرق الدفع المتاحة؟",
+                            "items.answer": "جميع طرق الدفع المتوفرة في المتجر: مدى، أبل باي، البطاقات الائتمانية والتحويل البنكي."
+                        },
+                        {
+                            "items.question": "هل يمكنني ترقية باقتي لاحقاً؟",
+                            "items.answer": "نعم، تواصل معنا وسنحسب لك فرق السعر بين الباقتين فقط."
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "السؤال",
+                            "multilanguage": true,
+                            "id": "items.question",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 140
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "الجواب",
+                            "multilanguage": true,
+                            "id": "items.answer",
+                            "value": null,
+                            "required": false,
+                            "format": "textarea",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 600
+                        }
+                    ]
+                },
+                {
+                    "id": "columns",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عدد الأعمدة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "عمودان (يُنصح به)",
+                            "value": "two",
+                            "key": "97717a2c-3cd4-4101-9419-e0a4a4b161f6"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "عمودان (يُنصح به)",
+                            "value": "two",
+                            "key": "97717a2c-3cd4-4101-9419-e0a4a4b161f6"
+                        },
+                        {
+                            "label": "عمود واحد",
+                            "value": "one",
+                            "key": "2b51ff88-3e11-487d-9aa7-b051a23751cf"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "key": "08d04ba2-48c9-4183-908d-bc730016d216",
+            "title": {
+                "en": "STM · Closing CTA band",
+                "ar": "STM · شريط دعوة للشراء"
+            },
+            "icon": "sicon-cursor-click",
+            "path": "home.steamory-cta",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "cta-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شريط ختامي بخلفية خضراء بارزة أو داكنة هادئة. أفضل مكان له آخر الصفحة.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "جاهز تبدأ؟",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "النص التوضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-cursor-click",
+                    "label": "نص الزر الرئيسي",
+                    "multilanguage": true,
+                    "id": "primary_label",
+                    "value": "اشترِ الآن",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر الرئيسي",
+                    "id": "primary_url",
+                    "value": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-cursor-click",
+                    "label": "نص الزر الثانوي",
+                    "multilanguage": true,
+                    "id": "secondary_label",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر الثانوي",
+                    "id": "secondary_url",
+                    "value": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "id": "style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نمط الشريط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "أخضر بارز (يُنصح به)",
+                            "value": "accent",
+                            "key": "96a661e8-20d8-4448-b1bf-9a4c1e45fbc8"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "أخضر بارز (يُنصح به)",
+                            "value": "accent",
+                            "key": "96a661e8-20d8-4448-b1bf-9a4c1e45fbc8"
+                        },
+                        {
+                            "label": "داكن هادئ",
+                            "value": "dark",
+                            "key": "bc4fa1d2-740b-4b49-8dd5-229302a4b147"
                         }
                     ],
                     "source": "Manual",
@@ -1571,1165 +2730,6 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 30
-                }
-            ]
-        },
-        {
-            "key": "668b107f-d1a1-4f4a-97e0-c8858e763e9e",
-            "title": {
-                "en": "STEAMORY — Trust bar",
-                "ar": "شريط الأرقام والثقة"
-            },
-            "icon": "sicon-shield-check",
-            "path": "home.steamory-trust",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "trust-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شريط زجاجي بأرقام متجرك. <strong style=\"color:#5ee36a;\">فعّل \"الإزاحة للأعلى\"</strong> إذا وضعته مباشرة تحت البنر ليتراكب معه.</div>"
-                },
-                {
-                    "id": "items",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "العناصر",
-                    "description": "يُنصح بـ 3 أو 4 عناصر",
-                    "item_label": "عنصر",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 6,
-                    "value": [
-                        {
-                            "items.icon": "sicon-game-controller-alt",
-                            "items.value": "+1000",
-                            "items.label": "لعبة في المكتبة"
-                        },
-                        {
-                            "items.icon": "sicon-clock",
-                            "items.value": "دقائق",
-                            "items.label": "تفعيل فوري بعد الدفع"
-                        },
-                        {
-                            "items.icon": "sicon-shield-check",
-                            "items.value": "مدى الحياة",
-                            "items.label": "ضمان على الحساب"
-                        },
-                        {
-                            "items.icon": "sicon-star2",
-                            "items.value": "4.9",
-                            "items.label": "تقييم العملاء"
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-shapes",
-                            "label": "الأيقونة",
-                            "id": "items.icon",
-                            "value": "sicon-shield-check",
-                            "required": false,
-                            "format": "icon",
-                            "class": "form--inline",
-                            "description": null
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "الرقم",
-                            "multilanguage": true,
-                            "id": "items.value",
-                            "value": "+1000",
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": "مثال: +1000",
-                            "minLength": 0,
-                            "maxLength": 24
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "الوصف",
-                            "multilanguage": true,
-                            "id": "items.label",
-                            "value": "لعبة في المكتبة",
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 60
-                        }
-                    ]
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "إزاحة الشريط للأعلى ليتراكب مع القسم السابق",
-                    "description": null,
-                    "id": "overlap",
-                    "format": "switch",
-                    "required": false,
-                    "value": true,
-                    "selected": true
-                }
-            ]
-        },
-        {
-            "key": "43ef2720-f71a-4224-ad44-624961ac70a4",
-            "title": {
-                "en": "STEAMORY — Cover marquee",
-                "ar": "شريط أغلفة متحرك"
-            },
-            "icon": "sicon-image-carousel",
-            "path": "home.steamory-marquee",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "marquee-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>صفّان من أغلفة الألعاب يتحركان في اتجاهين متعاكسين ويتوقفان عند مرور المؤشر. <strong style=\"color:#5ee36a;\">أضف الصور يدوياً</strong> وحدّد لكل صورة رقم صفّها.</div>"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان (اختياري)",
-                    "multilanguage": true,
-                    "id": "title",
-                    "value": null,
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": "مثال: أبرز العناوين",
-                    "minLength": 0,
-                    "maxLength": 90
-                },
-                {
-                    "id": "rows",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الأغلفة",
-                    "description": "يُنصح بـ 8 صور أو أكثر لكل صف",
-                    "item_label": "غلاف",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 60,
-                    "value": [],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-image",
-                            "label": "صورة الغلاف",
-                            "id": "rows.image",
-                            "value": null,
-                            "format": "image",
-                            "required": true,
-                            "placeholder": null,
-                            "description": "* المقاس المناسب 600×900 بكسل (طولي)",
-                            "settings": {
-                                "width": 600,
-                                "height": 900
-                            }
-                        },
-                        {
-                            "id": "rows.row",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "الصف",
-                            "description": "أي صف تظهر فيه هذه الصورة",
-                            "labelHTML": null,
-                            "icon": "sicon-list",
-                            "selected": [
-                                {
-                                    "label": "الصف الأول",
-                                    "value": "1",
-                                    "key": "e7c889e0-8dc9-452b-bf4d-ba716cee7aab"
-                                }
-                            ],
-                            "options": [
-                                {
-                                    "label": "الصف الأول",
-                                    "value": "1",
-                                    "key": "e7c889e0-8dc9-452b-bf4d-ba716cee7aab"
-                                },
-                                {
-                                    "label": "الصف الثاني",
-                                    "value": "2",
-                                    "key": "d4b0dfef-f9d4-42de-8226-1f053bda9ed5"
-                                }
-                            ],
-                            "source": "Manual",
-                            "required": true
-                        }
-                    ]
-                },
-                {
-                    "id": "speed",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "سرعة الحركة",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-list",
-                    "selected": [
-                        {
-                            "label": "عادية (يُنصح بها)",
-                            "value": "normal",
-                            "key": "4f5e795d-9555-41ca-91d3-3c32c90edbd1"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "بطيئة",
-                            "value": "slow",
-                            "key": "fd1a5ae8-fb3e-46b6-ae53-925e831efadc"
-                        },
-                        {
-                            "label": "عادية (يُنصح بها)",
-                            "value": "normal",
-                            "key": "4f5e795d-9555-41ca-91d3-3c32c90edbd1"
-                        },
-                        {
-                            "label": "سريعة",
-                            "value": "fast",
-                            "key": "924f9c45-efad-40fd-a445-354ae1ceeb3a"
-                        }
-                    ],
-                    "source": "Manual",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "key": "08648a3b-d454-4c74-8397-4f75c42cb213",
-            "title": {
-                "en": "STEAMORY — Product spotlight",
-                "ar": "منتج مميز بعرض كامل"
-            },
-            "icon": "sicon-star2",
-            "path": "home.steamory-spotlight",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "spotlight-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>بطاقة أفقية بعرض الصفحة لمنتج واحد، مع قائمة مزايا وزر إضافة للسلة. مناسبة لباقتك الرئيسية.</div>"
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "label": "المنتج",
-                    "id": "products",
-                    "format": "dropdown-list",
-                    "description": "اختر منتجاً واحداً",
-                    "selected": [],
-                    "options": [],
-                    "required": true,
-                    "multichoice": true,
-                    "source": "products",
-                    "searchable": true,
-                    "minLength": 1,
-                    "maxLength": 1,
-                    "value": []
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "نص علوي صغير",
-                    "multilanguage": true,
-                    "id": "eyebrow",
-                    "value": "الأكثر مبيعاً",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 40
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-image",
-                    "label": "صورة بديلة (اختياري)",
-                    "id": "image",
-                    "value": null,
-                    "format": "image",
-                    "required": false,
-                    "placeholder": null,
-                    "description": "اتركها فارغة لاستخدام صورة المنتج نفسها",
-                    "settings": {
-                        "width": 880,
-                        "height": 1100
-                    }
-                },
-                {
-                    "id": "perks",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "المزايا",
-                    "description": "تظهر كقائمة بعلامات صح",
-                    "item_label": "ميزة",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 8,
-                    "value": [
-                        {
-                            "perks.text": "أكثر من 1000 لعبة على حسابك الشخصي"
-                        },
-                        {
-                            "perks.text": "تفعيل فوري خلال دقائق من إتمام الدفع"
-                        },
-                        {
-                            "perks.text": "ضمان مدى الحياة على الحساب"
-                        },
-                        {
-                            "perks.text": "دعم مباشر على واتساب في أي وقت"
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "نص الميزة",
-                            "multilanguage": true,
-                            "id": "perks.text",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": "مثال: تفعيل فوري خلال دقائق",
-                            "minLength": 0,
-                            "maxLength": 120
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "27d1c9e6-98e2-4d11-ab7d-aecaa96029f5",
-            "title": {
-                "en": "STEAMORY — Bundles comparison",
-                "ar": "جدول مقارنة الباقات"
-            },
-            "icon": "sicon-list-view",
-            "path": "home.steamory-compare",
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "compare-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>جدول يقارن باقتين. <strong style=\"color:#5ee36a;\">اختر منتجين بالترتيب</strong> — الأول يظهر في العمود الأول. الصور والأسعار تُسحب من المنتجين تلقائياً.</div>"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "title",
-                    "value": "وش الفرق بين الباقات؟",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 90
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "label": "المنتجان",
-                    "id": "products",
-                    "format": "dropdown-list",
-                    "description": "اختر منتجين بالترتيب",
-                    "selected": [],
-                    "options": [],
-                    "required": true,
-                    "multichoice": true,
-                    "source": "products",
-                    "searchable": true,
-                    "minLength": 1,
-                    "maxLength": 2,
-                    "value": []
-                },
-                {
-                    "id": "rows",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "صفوف المقارنة",
-                    "description": null,
-                    "item_label": "صف",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 15,
-                    "value": [
-                        {
-                            "rows.label": "عدد الألعاب",
-                            "rows.a": "أكثر من 1000 لعبة",
-                            "rows.b": "24 لعبة مختارة"
-                        },
-                        {
-                            "rows.label": "طريقة التفعيل",
-                            "rows.a": "على حسابك الشخصي",
-                            "rows.b": "على حسابك الشخصي"
-                        },
-                        {
-                            "rows.label": "مدة التفعيل",
-                            "rows.a": "خلال دقائق",
-                            "rows.b": "خلال دقائق"
-                        },
-                        {
-                            "rows.label": "الضمان",
-                            "rows.a": "مدى الحياة",
-                            "rows.b": "مدى الحياة"
-                        },
-                        {
-                            "rows.label": "الأنسب لـ",
-                            "rows.a": "من يريد مكتبة كاملة",
-                            "rows.b": "من يريد أشهر الألعاب فقط"
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "بند المقارنة",
-                            "multilanguage": true,
-                            "id": "rows.label",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": "مثال: عدد الألعاب",
-                            "minLength": 0,
-                            "maxLength": 60
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "قيمة المنتج الأول",
-                            "multilanguage": true,
-                            "id": "rows.a",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 90
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "قيمة المنتج الثاني",
-                            "multilanguage": true,
-                            "id": "rows.b",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 90
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "2157593a-6ed4-4b1c-a6dc-907559e2b535",
-            "title": {
-                "en": "STEAMORY — Steps",
-                "ar": "خطوات الشراء"
-            },
-            "icon": "sicon-numbered-list",
-            "path": "home.steamory-steps",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "steps-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>لوحات مرقّمة تلقائياً بأرقام كبيرة مفرّغة. الترتيب هو ترتيب العناصر أدناه.</div>"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "title",
-                    "value": "كيف تستلم طلبك؟",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 90
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-typography",
-                    "label": "النص التوضيحي",
-                    "multilanguage": true,
-                    "id": "description",
-                    "value": null,
-                    "required": false,
-                    "format": "textarea",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 220
-                },
-                {
-                    "id": "items",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الخطوات",
-                    "description": null,
-                    "item_label": "خطوة",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 8,
-                    "value": [
-                        {
-                            "items.icon": "sicon-shopping-bag",
-                            "items.title": "اختر باقتك",
-                            "items.text": "حدّد الباقة المناسبة لك وأكمل عملية الدفع بالطريقة التي تفضّلها."
-                        },
-                        {
-                            "items.icon": "sicon-whatsapp",
-                            "items.title": "نتواصل معك",
-                            "items.text": "نراسلك على واتساب مباشرة بعد الطلب لتأكيد تفاصيل التفعيل."
-                        },
-                        {
-                            "items.icon": "sicon-game-controller-alt",
-                            "items.title": "ابدأ اللعب",
-                            "items.text": "نفعّل المكتبة على حسابك وتصير جاهزة للتحميل واللعب فوراً."
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-shapes",
-                            "label": "الأيقونة",
-                            "id": "items.icon",
-                            "value": "sicon-shield-check",
-                            "required": false,
-                            "format": "icon",
-                            "class": "form--inline",
-                            "description": null
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "عنوان الخطوة",
-                            "multilanguage": true,
-                            "id": "items.title",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 60
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-typography",
-                            "label": "شرح الخطوة",
-                            "multilanguage": true,
-                            "id": "items.text",
-                            "value": null,
-                            "required": false,
-                            "format": "textarea",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 220
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "ba3a2889-3478-4f37-bc1e-775b1183fea2",
-            "title": {
-                "en": "STEAMORY — Why us",
-                "ar": "لماذا نحن / المميزات"
-            },
-            "icon": "sicon-award-ribbon",
-            "path": "home.steamory-value",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "value-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>بطاقات مزايا بأيقونات في إطار أخضر. مناسبة لقسم \"لماذا نحن\".</div>"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "title",
-                    "value": "ليش تشتري منّا؟",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 90
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-typography",
-                    "label": "النص التوضيحي",
-                    "multilanguage": true,
-                    "id": "description",
-                    "value": null,
-                    "required": false,
-                    "format": "textarea",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 220
-                },
-                {
-                    "id": "items",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "المزايا",
-                    "description": null,
-                    "item_label": "ميزة",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 8,
-                    "value": [
-                        {
-                            "items.icon": "sicon-shield-check",
-                            "items.title": "ضمان مدى الحياة",
-                            "items.text": "أي مشكلة في الحساب نحلّها لك بدون أي رسوم إضافية."
-                        },
-                        {
-                            "items.icon": "sicon-clock",
-                            "items.title": "تفعيل فوري",
-                            "items.text": "لا انتظار ولا مواعيد — التفعيل يتم خلال دقائق من الدفع."
-                        },
-                        {
-                            "items.icon": "sicon-credit-card",
-                            "items.title": "دفع آمن",
-                            "items.text": "جميع طرق الدفع المحلية مدعومة عبر بوابة سلة الآمنة."
-                        },
-                        {
-                            "items.icon": "sicon-headphone",
-                            "items.title": "دعم حقيقي",
-                            "items.text": "تتكلم مع شخص فعلي على واتساب، لا ردود آلية."
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-shapes",
-                            "label": "الأيقونة",
-                            "id": "items.icon",
-                            "value": "sicon-shield-check",
-                            "required": false,
-                            "format": "icon",
-                            "class": "form--inline",
-                            "description": null
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "العنوان",
-                            "multilanguage": true,
-                            "id": "items.title",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 60
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-typography",
-                            "label": "الشرح",
-                            "multilanguage": true,
-                            "id": "items.text",
-                            "value": null,
-                            "required": false,
-                            "format": "textarea",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 220
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "9423fd55-0b7b-48b5-9f17-825cc638a82f",
-            "title": {
-                "en": "STEAMORY — Testimonials rail",
-                "ar": "آراء العملاء (شريط متحرك)"
-            },
-            "icon": "sicon-chat-bubbles",
-            "path": "home.steamory-testimonials",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "testi-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شريط آراء يتحرك تلقائياً ويتوقف عند مرور المؤشر، مع ملخّص تقييم بارز.</div>"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "title",
-                    "value": "وش يقولون عنّا؟",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 90
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "التقييم البارز",
-                    "multilanguage": true,
-                    "id": "summary_value",
-                    "value": "4.9",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": "مثال: 4.9",
-                    "minLength": 0,
-                    "maxLength": 10
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "وصف التقييم",
-                    "multilanguage": true,
-                    "id": "summary_label",
-                    "value": "من 98 تقييماً",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 40
-                },
-                {
-                    "id": "items",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الآراء",
-                    "description": null,
-                    "item_label": "رأي",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 30,
-                    "value": [
-                        {
-                            "items.name": "أحمد",
-                            "items.stars": 5,
-                            "items.text": "وصلني التفعيل بسرعة وتعامل محترم، أنصح بالتعامل معهم."
-                        },
-                        {
-                            "items.name": "نورة",
-                            "items.stars": 5,
-                            "items.text": "أفضل سعر لقيته بعد ما دوّرت كثير، والخدمة ممتازة."
-                        },
-                        {
-                            "items.name": "خالد",
-                            "items.stars": 5,
-                            "items.text": "المكتبة ضخمة فعلاً وفيها ألعاب ما توقعت ألقاها."
-                        },
-                        {
-                            "items.name": "عبدالله",
-                            "items.stars": 5,
-                            "items.text": "سألت أسئلة كثيرة قبل الشراء وردّوا على الكل بصبر."
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "اسم العميل",
-                            "multilanguage": true,
-                            "id": "items.name",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 40
-                        },
-                        {
-                            "id": "items.stars",
-                            "type": "number",
-                            "format": "integer",
-                            "label": "عدد النجوم",
-                            "description": null,
-                            "labelHTML": "من 1 إلى 5",
-                            "placeholder": "القيمة",
-                            "icon": "sicon-star2",
-                            "value": 5,
-                            "required": false,
-                            "minimum": 1,
-                            "maximum": 5
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-typography",
-                            "label": "نص الرأي",
-                            "multilanguage": true,
-                            "id": "items.text",
-                            "value": null,
-                            "required": false,
-                            "format": "textarea",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 300
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "9db129f5-0319-472f-bda9-196c7f6e9da4",
-            "title": {
-                "en": "STEAMORY — FAQ",
-                "ar": "الأسئلة الشائعة"
-            },
-            "icon": "sicon-help-circle",
-            "path": "home.steamory-faq",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "faq-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>أسئلة قابلة للفتح والإغلاق بدون جافاسكربت، تعمل بالكيبورد.</div>"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "title",
-                    "value": "الأسئلة الشائعة",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 90
-                },
-                {
-                    "id": "items",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الأسئلة",
-                    "description": null,
-                    "item_label": "سؤال",
-                    "icon": "sicon-list-add",
-                    "required": false,
-                    "minLength": 1,
-                    "maxLength": 30,
-                    "value": [
-                        {
-                            "items.question": "هل الحساب يبقى لي بشكل دائم؟",
-                            "items.answer": "نعم، الحساب يبقى لك مدى الحياة مع ضمان منّا على أي مشكلة تطرأ عليه."
-                        },
-                        {
-                            "items.question": "كم يستغرق التفعيل؟",
-                            "items.answer": "من دقائق إلى ساعة كحد أقصى، ونتواصل معك على واتساب خلال هذه المدة."
-                        },
-                        {
-                            "items.question": "هل أستطيع اللعب أونلاين؟",
-                            "items.answer": "يعتمد على اللعبة نفسها. راسلنا قبل الشراء وسنوضح لك حالة اللعبة التي تريدها."
-                        },
-                        {
-                            "items.question": "ما طرق الدفع المتاحة؟",
-                            "items.answer": "جميع طرق الدفع المتوفرة في المتجر: مدى، أبل باي، البطاقات الائتمانية والتحويل البنكي."
-                        },
-                        {
-                            "items.question": "هل يمكنني ترقية باقتي لاحقاً؟",
-                            "items.answer": "نعم، تواصل معنا وسنحسب لك فرق السعر بين الباقتين فقط."
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "type": "string",
-                            "icon": "sicon-format-text-alt",
-                            "label": "السؤال",
-                            "multilanguage": true,
-                            "id": "items.question",
-                            "value": null,
-                            "required": false,
-                            "format": "text",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 140
-                        },
-                        {
-                            "type": "string",
-                            "icon": "sicon-typography",
-                            "label": "الجواب",
-                            "multilanguage": true,
-                            "id": "items.answer",
-                            "value": null,
-                            "required": false,
-                            "format": "textarea",
-                            "description": null,
-                            "placeholder": null,
-                            "minLength": 0,
-                            "maxLength": 600
-                        }
-                    ]
-                },
-                {
-                    "id": "columns",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "عدد الأعمدة",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-list",
-                    "selected": [
-                        {
-                            "label": "عمودان (يُنصح به)",
-                            "value": "two",
-                            "key": "97717a2c-3cd4-4101-9419-e0a4a4b161f6"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "عمودان (يُنصح به)",
-                            "value": "two",
-                            "key": "97717a2c-3cd4-4101-9419-e0a4a4b161f6"
-                        },
-                        {
-                            "label": "عمود واحد",
-                            "value": "one",
-                            "key": "2b51ff88-3e11-487d-9aa7-b051a23751cf"
-                        }
-                    ],
-                    "source": "Manual",
-                    "required": true
-                }
-            ]
-        },
-        {
-            "key": "08d04ba2-48c9-4183-908d-bc730016d216",
-            "title": {
-                "en": "STEAMORY — Closing CTA band",
-                "ar": "شريط دعوة للشراء"
-            },
-            "icon": "sicon-cursor-click",
-            "path": "home.steamory-cta",
-            "is_default": true,
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "cta-note",
-                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شريط ختامي بخلفية خضراء بارزة أو داكنة هادئة. أفضل مكان له آخر الصفحة.</div>"
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "title",
-                    "value": "جاهز تبدأ؟",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 90
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-typography",
-                    "label": "النص التوضيحي",
-                    "multilanguage": true,
-                    "id": "description",
-                    "value": null,
-                    "required": false,
-                    "format": "textarea",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 220
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-cursor-click",
-                    "label": "نص الزر الرئيسي",
-                    "multilanguage": true,
-                    "id": "primary_label",
-                    "value": "اشترِ الآن",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 40
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-link",
-                    "label": "رابط الزر الرئيسي",
-                    "id": "primary_url",
-                    "value": null,
-                    "required": false,
-                    "format": "variable-list",
-                    "searchable": true,
-                    "source": "custom",
-                    "sources": [
-                        {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "تصنيف",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "منتجات مع وسم",
-                            "key": "products_tags",
-                            "value": "products_tags"
-                        },
-                        {
-                            "label": "صفحة تعريفية",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "التخفيضات",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "رابط خارجي",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
-                    "type": "string",
-                    "icon": "sicon-cursor-click",
-                    "label": "نص الزر الثانوي",
-                    "multilanguage": true,
-                    "id": "secondary_label",
-                    "value": null,
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": null,
-                    "minLength": 0,
-                    "maxLength": 40
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-link",
-                    "label": "رابط الزر الثانوي",
-                    "id": "secondary_url",
-                    "value": null,
-                    "required": false,
-                    "format": "variable-list",
-                    "searchable": true,
-                    "source": "custom",
-                    "sources": [
-                        {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "تصنيف",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "منتجات مع وسم",
-                            "key": "products_tags",
-                            "value": "products_tags"
-                        },
-                        {
-                            "label": "صفحة تعريفية",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "التخفيضات",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "رابط خارجي",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
-                    "id": "style",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "نمط الشريط",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-list",
-                    "selected": [
-                        {
-                            "label": "أخضر بارز (يُنصح به)",
-                            "value": "accent",
-                            "key": "96a661e8-20d8-4448-b1bf-9a4c1e45fbc8"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "أخضر بارز (يُنصح به)",
-                            "value": "accent",
-                            "key": "96a661e8-20d8-4448-b1bf-9a4c1e45fbc8"
-                        },
-                        {
-                            "label": "داكن هادئ",
-                            "value": "dark",
-                            "key": "bc4fa1d2-740b-4b49-8dd5-229302a4b147"
-                        }
-                    ],
-                    "source": "Manual",
-                    "required": true
                 }
             ]
         }

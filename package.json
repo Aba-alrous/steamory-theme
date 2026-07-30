@@ -10,7 +10,8 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "production": "webpack --mode production",
+    "check": "node scripts/check-fields.js",
+    "production": "node scripts/check-fields.js && webpack --mode production",
     "prod": "webpack --mode production",
     "development": "webpack --mode development",
     "watch": "webpack --mode development --watch"

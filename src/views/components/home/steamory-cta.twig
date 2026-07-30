@@ -10,6 +10,15 @@
 | style             | string | accent (green band) | dark (quiet band)                |
 | position          | int    | Sorting number, starts at zero                         |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set description = component.description %}
+{% set primary_label = component.primary_label %}
+{% set primary_url = component.primary_url %}
+{% set secondary_label = component.secondary_label %}
+{% set secondary_url = component.secondary_url %}
+{% set style = component.style %}
+
 <section data-testid="store-home-steamory-cta"
          class="s-block st-cta st-cta--{{ style|default('accent') }}"
          id="steamory-cta-{{ position }}">

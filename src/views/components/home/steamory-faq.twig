@@ -8,6 +8,11 @@
 | columns           | string | one | two                                              |
 | position          | int    | Sorting number, starts at zero                         |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set items = component.items %}
+{% set columns = component.columns %}
+
 {% set faq_items = items|default([])|filter((item) => item.question) %}
 {% if faq_items is not empty %}
 <section data-testid="store-home-steamory-faq"

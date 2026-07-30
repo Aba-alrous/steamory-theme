@@ -9,6 +9,11 @@
 | rows[].b          | string    | Value for the second product                       |
 | position          | int       | Sorting number, starts at zero                     |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set products = component.products %}
+{% set rows = component.rows %}
+
 {% set left = products[0]|default(null) %}
 {% set right = products[1]|default(null) %}
 {% if left and right %}

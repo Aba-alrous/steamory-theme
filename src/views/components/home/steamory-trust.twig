@@ -8,6 +8,10 @@
 | overlap         | bool   | Pull the bar up over the section above it                 |
 | position        | int    | Sorting number, starts at zero                            |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set items = component.items %}
+{% set overlap = component.overlap %}
+
 {# An unconfigured collection would render as an empty glass bar, so the whole
    section is skipped until at least one item has content. #}
 {% set trust_items = items|default([])|filter((item) => item.value or item.label) %}

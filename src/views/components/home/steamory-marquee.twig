@@ -8,6 +8,11 @@
 | speed            | string | slow | normal | fast                                     |
 | position         | int    | Sorting number, starts at zero                          |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set rows = component.rows %}
+{% set speed = component.speed %}
+
 {# Skip the section entirely until at least one cover has been uploaded,
    otherwise it renders as vertical padding and nothing else. #}
 {% set has_covers = rows|default([])|filter((item) => item.image) is not empty %}

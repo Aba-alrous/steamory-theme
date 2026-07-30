@@ -10,6 +10,12 @@
 | items[].text     | string | Review body                                             |
 | position         | int    | Sorting number, starts at zero                          |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set summary_value = component.summary_value %}
+{% set summary_label = component.summary_label %}
+{% set items = component.items %}
+
 {% set review_items = items|default([])|filter((item) => item.text or item.name) %}
 {% if review_items is not empty %}
 <section data-testid="store-home-steamory-testimonials"

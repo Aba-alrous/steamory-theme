@@ -14,6 +14,20 @@
 | overlay             | string | soft | medium | strong                                            |
 | position            | int    | Sorting number, starts at zero                                  |
 #}
+{# Fields configured in twilight.json arrive on `component`, not as bare
+   variables — bare names are only for the data Salla injects into its own
+   built-in blocks. Aliased once here so the markup below stays readable. #}
+{% set eyebrow = component.eyebrow %}
+{% set title = component.title %}
+{% set description = component.description %}
+{% set primary_label = component.primary_label %}
+{% set primary_url = component.primary_url %}
+{% set secondary_label = component.secondary_label %}
+{% set secondary_url = component.secondary_url %}
+{% set covers = component.covers %}
+{% set height = component.height %}
+{% set overlay = component.overlay %}
+
 <section data-testid="store-home-steamory-hero"
          class="s-block st-hero st-hero--h-{{ height|default('tall') }} st-hero--overlay-{{ overlay|default('medium') }}"
          id="steamory-hero-{{ position }}">

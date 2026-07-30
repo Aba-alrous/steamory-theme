@@ -9,6 +9,11 @@
 | items[].text    | string | Point body                                               |
 | position        | int    | Sorting number, starts at zero                            |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set description = component.description %}
+{% set items = component.items %}
+
 {% set value_items = items|default([])|filter((item) => item.title or item.text) %}
 {% if value_items is not empty %}
 <section data-testid="store-home-steamory-value"

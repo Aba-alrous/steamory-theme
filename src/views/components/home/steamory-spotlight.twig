@@ -8,6 +8,12 @@
 | image             | string    | Optional artwork override; product image is default |
 | position          | int       | Sorting number, starts at zero                      |
 #}
+{# twilight.json fields arrive on `component`. #}
+{% set products = component.products %}
+{% set eyebrow = component.eyebrow %}
+{% set perks = component.perks %}
+{% set image = component.image %}
+
 {% set product = products|first %}
 {% if product %}
 <section data-testid="store-home-steamory-spotlight"
