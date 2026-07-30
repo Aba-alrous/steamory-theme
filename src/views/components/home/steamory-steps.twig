@@ -9,6 +9,8 @@
 | items[].text    | string | Step body                                                |
 | position        | int    | Sorting number, starts at zero                            |
 #}
+{% set step_items = items|default([])|filter((item) => item.title or item.text) %}
+{% if step_items is not empty %}
 <section data-testid="store-home-steamory-steps"
          class="s-block st-section st-steps"
          id="steamory-steps-{{ position }}">
@@ -23,7 +25,7 @@
     {% endif %}
 
     <div class="st-steps__grid">
-      {% for item in items %}
+      {% for item in step_items %}
         <div class="st-steps__panel">
           {# The oversized numeral is decorative; the readable order comes from
              the document order, so it is hidden from assistive tech. #}
@@ -38,3 +40,4 @@
     </div>
   </div>
 </section>
+{% endif %}

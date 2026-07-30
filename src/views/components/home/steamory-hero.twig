@@ -20,25 +20,32 @@
 
   {# Tilted wall of cover art. Built from the merchant's uploaded images and
      duplicated per column so each column can scroll as a seamless loop. #}
-  {% if covers is not empty %}
-    <div class="st-hero__wall" aria-hidden="true">
-      {% for column in 1..4 %}
-        <div class="st-hero__col st-hero__col--{{ column }}">
-          {# Two passes of the same set: the animation translates by 50%, so the
-             second pass is what makes the loop seamless. #}
-          {% for pass in 1..2 %}
-            {% for cover in covers %}
-              {% if cover.image %}
-                <div class="st-hero__tile">
-                  <img src="{{ cover.image }}" alt="" loading="lazy" decoding="async">
-                </div>
-              {% endif %}
+  {% set cover_images = covers|default([])|filter((cover) => cover.image)|map((cover) => cover.image) %}
+
+  <div class="st-hero__wall" aria-hidden="true">
+    {% for column in 1..4 %}
+      <div class="st-hero__col st-hero__col--{{ column }}">
+        {# Two passes of the same set: the animation translates by 50%, so the
+           second pass is what makes the loop seamless. #}
+        {% for pass in 1..2 %}
+          {% if cover_images is empty %}
+            {# Nothing uploaded yet. Rather than collapsing to a bare section,
+               the wall falls back to tinted placeholder tiles so the layout
+               reads as intentional while the merchant fills it in. #}
+            {% for slot in 1..6 %}
+              <div class="st-hero__tile st-hero__tile--empty"></div>
             {% endfor %}
-          {% endfor %}
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
+          {% else %}
+            {% for cover_image in cover_images %}
+              <div class="st-hero__tile">
+                <img src="{{ cover_image }}" alt="" loading="lazy" decoding="async">
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
 
   <div class="st-hero__veil" aria-hidden="true"></div>
 

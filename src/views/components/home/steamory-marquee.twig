@@ -8,6 +8,10 @@
 | speed            | string | slow | normal | fast                                     |
 | position         | int    | Sorting number, starts at zero                          |
 #}
+{# Skip the section entirely until at least one cover has been uploaded,
+   otherwise it renders as vertical padding and nothing else. #}
+{% set has_covers = rows|default([])|filter((item) => item.image) is not empty %}
+{% if has_covers %}
 <section data-testid="store-home-steamory-marquee"
          class="s-block st-marquee st-marquee--{{ speed|default('normal') }}"
          id="steamory-marquee-{{ position }}">
@@ -20,7 +24,7 @@
 
   {% for row_number in ['1', '2'] %}
     {# Only render a row that actually has covers assigned to it. #}
-    {% set row_items = rows|filter(item => item.image and (item.row|default('1')) == row_number) %}
+    {% set row_items = rows|filter((item) => item.image and (item.row|default('1')) == row_number) %}
     {% if row_items is not empty %}
       <div class="st-marquee__row st-marquee__row--{{ row_number }}" aria-hidden="true">
         {# Rendered twice: the track shifts by 50%, so the second pass closes
@@ -38,3 +42,4 @@
     {% endif %}
   {% endfor %}
 </section>
+{% endif %}

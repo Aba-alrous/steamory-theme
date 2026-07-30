@@ -10,6 +10,8 @@
 | items[].text     | string | Review body                                             |
 | position         | int    | Sorting number, starts at zero                          |
 #}
+{% set review_items = items|default([])|filter((item) => item.text or item.name) %}
+{% if review_items is not empty %}
 <section data-testid="store-home-steamory-testimonials"
          class="s-block st-section st-testi"
          id="steamory-testimonials-{{ position }}">
@@ -28,10 +30,10 @@
 
   {# Full-bleed rail: the cards run past the container edge so the row reads as
      continuous motion rather than a boxed carousel. Pauses on hover. #}
-  <div class="st-testi__rail">
+  <div class="st-testi__rail" data-count="{{ review_items|length }}">
     <div class="st-testi__track">
       {% for pass in 1..2 %}
-        {% for item in items %}
+        {% for item in review_items %}
           <figure class="st-testi__card" {{ pass == 2 ? 'aria-hidden="true"' : '' }}>
             <div class="st-testi__stars" aria-label="{{ item.stars|default(5) }} من 5">
               {% for star in 1..(item.stars|default(5)) %}
@@ -46,3 +48,4 @@
     </div>
   </div>
 </section>
+{% endif %}

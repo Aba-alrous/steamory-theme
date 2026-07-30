@@ -8,12 +8,16 @@
 | overlap         | bool   | Pull the bar up over the section above it                 |
 | position        | int    | Sorting number, starts at zero                            |
 #}
+{# An unconfigured collection would render as an empty glass bar, so the whole
+   section is skipped until at least one item has content. #}
+{% set trust_items = items|default([])|filter((item) => item.value or item.label) %}
+{% if trust_items is not empty %}
 <section data-testid="store-home-steamory-trust"
          class="s-block st-trust {{ overlap ? 'st-trust--overlap' : '' }}"
          id="steamory-trust-{{ position }}">
   <div class="container">
     <div class="st-trust__bar">
-      {% for item in items %}
+      {% for item in trust_items %}
         <div class="st-trust__item">
           {% if item.icon %}
             <i class="{{ item.icon }} st-trust__icon" aria-hidden="true"></i>
@@ -27,3 +31,4 @@
     </div>
   </div>
 </section>
+{% endif %}

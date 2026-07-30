@@ -8,6 +8,8 @@
 | columns           | string | one | two                                              |
 | position          | int    | Sorting number, starts at zero                         |
 #}
+{% set faq_items = items|default([])|filter((item) => item.question) %}
+{% if faq_items is not empty %}
 <section data-testid="store-home-steamory-faq"
          class="s-block st-section st-faq st-faq--{{ columns|default('two') }}"
          id="steamory-faq-{{ position }}">
@@ -19,7 +21,7 @@
     {% endif %}
 
     <div class="st-faq__grid">
-      {% for item in items %}
+      {% for item in faq_items %}
         {# <details> gives keyboard support and open/close for free — no JS,
            and it still works if scripts fail to load. #}
         <details class="st-faq__item">
@@ -33,3 +35,4 @@
     </div>
   </div>
 </section>
+{% endif %}

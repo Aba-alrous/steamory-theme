@@ -1601,7 +1601,28 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 6,
-                    "value": [],
+                    "value": [
+                        {
+                            "items.icon": "sicon-game-controller-alt",
+                            "items.value": "+1000",
+                            "items.label": "لعبة في المكتبة"
+                        },
+                        {
+                            "items.icon": "sicon-clock",
+                            "items.value": "دقائق",
+                            "items.label": "تفعيل فوري بعد الدفع"
+                        },
+                        {
+                            "items.icon": "sicon-shield-check",
+                            "items.value": "مدى الحياة",
+                            "items.label": "ضمان على الحساب"
+                        },
+                        {
+                            "items.icon": "sicon-star2",
+                            "items.value": "4.9",
+                            "items.label": "تقييم العملاء"
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "string",
@@ -1857,7 +1878,20 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 8,
-                    "value": [],
+                    "value": [
+                        {
+                            "perks.text": "أكثر من 1000 لعبة على حسابك الشخصي"
+                        },
+                        {
+                            "perks.text": "تفعيل فوري خلال دقائق من إتمام الدفع"
+                        },
+                        {
+                            "perks.text": "ضمان مدى الحياة على الحساب"
+                        },
+                        {
+                            "perks.text": "دعم مباشر على واتساب في أي وقت"
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "string",
@@ -1934,7 +1968,33 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 15,
-                    "value": [],
+                    "value": [
+                        {
+                            "rows.label": "عدد الألعاب",
+                            "rows.a": "أكثر من 1000 لعبة",
+                            "rows.b": "24 لعبة مختارة"
+                        },
+                        {
+                            "rows.label": "طريقة التفعيل",
+                            "rows.a": "على حسابك الشخصي",
+                            "rows.b": "على حسابك الشخصي"
+                        },
+                        {
+                            "rows.label": "مدة التفعيل",
+                            "rows.a": "خلال دقائق",
+                            "rows.b": "خلال دقائق"
+                        },
+                        {
+                            "rows.label": "الضمان",
+                            "rows.a": "مدى الحياة",
+                            "rows.b": "مدى الحياة"
+                        },
+                        {
+                            "rows.label": "الأنسب لـ",
+                            "rows.a": "من يريد مكتبة كاملة",
+                            "rows.b": "من يريد أشهر الألعاب فقط"
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "string",
@@ -2037,7 +2097,23 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 8,
-                    "value": [],
+                    "value": [
+                        {
+                            "items.icon": "sicon-shopping-bag",
+                            "items.title": "اختر باقتك",
+                            "items.text": "حدّد الباقة المناسبة لك وأكمل عملية الدفع بالطريقة التي تفضّلها."
+                        },
+                        {
+                            "items.icon": "sicon-whatsapp",
+                            "items.title": "نتواصل معك",
+                            "items.text": "نراسلك على واتساب مباشرة بعد الطلب لتأكيد تفاصيل التفعيل."
+                        },
+                        {
+                            "items.icon": "sicon-game-controller-alt",
+                            "items.title": "ابدأ اللعب",
+                            "items.text": "نفعّل المكتبة على حسابك وتصير جاهزة للتحميل واللعب فوراً."
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "string",
@@ -2137,7 +2213,28 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 8,
-                    "value": [],
+                    "value": [
+                        {
+                            "items.icon": "sicon-shield-check",
+                            "items.title": "ضمان مدى الحياة",
+                            "items.text": "أي مشكلة في الحساب نحلّها لك بدون أي رسوم إضافية."
+                        },
+                        {
+                            "items.icon": "sicon-clock",
+                            "items.title": "تفعيل فوري",
+                            "items.text": "لا انتظار ولا مواعيد — التفعيل يتم خلال دقائق من الدفع."
+                        },
+                        {
+                            "items.icon": "sicon-credit-card",
+                            "items.title": "دفع آمن",
+                            "items.text": "جميع طرق الدفع المحلية مدعومة عبر بوابة سلة الآمنة."
+                        },
+                        {
+                            "items.icon": "sicon-headphone",
+                            "items.title": "دعم حقيقي",
+                            "items.text": "تتكلم مع شخص فعلي على واتساب، لا ردود آلية."
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "string",
@@ -2251,7 +2348,28 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 30,
-                    "value": [],
+                    "value": [
+                        {
+                            "items.name": "أحمد",
+                            "items.stars": 5,
+                            "items.text": "وصلني التفعيل بسرعة وتعامل محترم، أنصح بالتعامل معهم."
+                        },
+                        {
+                            "items.name": "نورة",
+                            "items.stars": 5,
+                            "items.text": "أفضل سعر لقيته بعد ما دوّرت كثير، والخدمة ممتازة."
+                        },
+                        {
+                            "items.name": "خالد",
+                            "items.stars": 5,
+                            "items.text": "المكتبة ضخمة فعلاً وفيها ألعاب ما توقعت ألقاها."
+                        },
+                        {
+                            "items.name": "عبدالله",
+                            "items.stars": 5,
+                            "items.text": "سألت أسئلة كثيرة قبل الشراء وردّوا على الكل بصبر."
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "string",
@@ -2340,7 +2458,28 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 30,
-                    "value": [],
+                    "value": [
+                        {
+                            "items.question": "هل الحساب يبقى لي بشكل دائم؟",
+                            "items.answer": "نعم، الحساب يبقى لك مدى الحياة مع ضمان منّا على أي مشكلة تطرأ عليه."
+                        },
+                        {
+                            "items.question": "كم يستغرق التفعيل؟",
+                            "items.answer": "من دقائق إلى ساعة كحد أقصى، ونتواصل معك على واتساب خلال هذه المدة."
+                        },
+                        {
+                            "items.question": "هل أستطيع اللعب أونلاين؟",
+                            "items.answer": "يعتمد على اللعبة نفسها. راسلنا قبل الشراء وسنوضح لك حالة اللعبة التي تريدها."
+                        },
+                        {
+                            "items.question": "ما طرق الدفع المتاحة؟",
+                            "items.answer": "جميع طرق الدفع المتوفرة في المتجر: مدى، أبل باي، البطاقات الائتمانية والتحويل البنكي."
+                        },
+                        {
+                            "items.question": "هل يمكنني ترقية باقتي لاحقاً؟",
+                            "items.answer": "نعم، تواصل معنا وسنحسب لك فرق السعر بين الباقتين فقط."
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "string",

@@ -9,6 +9,8 @@
 | items[].text    | string | Point body                                               |
 | position        | int    | Sorting number, starts at zero                            |
 #}
+{% set value_items = items|default([])|filter((item) => item.title or item.text) %}
+{% if value_items is not empty %}
 <section data-testid="store-home-steamory-value"
          class="s-block st-section st-value"
          id="steamory-value-{{ position }}">
@@ -23,7 +25,7 @@
     {% endif %}
 
     <div class="st-value__grid">
-      {% for item in items %}
+      {% for item in value_items %}
         <div class="st-value__card">
           {% if item.icon %}
             <span class="st-value__icon"><i class="{{ item.icon }}" aria-hidden="true"></i></span>
@@ -35,3 +37,4 @@
     </div>
   </div>
 </section>
+{% endif %}
