@@ -1,0 +1,107 @@
+{#
+| Variable        | Type      | Description                                            |
+|-----------------|-----------|--------------------------------------------------------|
+| products        | Product[] | The product, first one is used                         |
+| video_url       | string    | mp4/webm that autoplays muted on loop as the cover     |
+| youtube_url     | string    | Used when no file is given; click to play              |
+| poster          | string    | Frame shown before the video loads                     |
+| eyebrow         | string    | Small label above the product name                     |
+| meta_label      | string    | e.g. تاريخ الإصدار                                      |
+| meta_value      | string    | e.g. 20 مارس                                            |
+| meta_icon       | string    | SallaIcons css class `sicon-*`                          |
+| details_label   | string    | Label for the secondary button                         |
+| media_side      | string    | start = inline start (right in Arabic) | end        |
+| position        | int       | Sorting number, starts at zero                         |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set products = component.products %}
+{% set video_url = component.video_url %}
+{% set youtube_url = component.youtube_url %}
+{% set poster = component.poster %}
+{% set eyebrow = component.eyebrow %}
+{% set meta_label = component.meta_label %}
+{% set meta_value = component.meta_value %}
+{% set meta_icon = component.meta_icon %}
+{% set details_label = component.details_label %}
+{% set media_side = component.media_side|default('start') %}
+
+{% set product = products|first %}
+{% if product %}
+
+{# Accepts a full YouTube URL or a bare id, since merchants paste either. #}
+{% set youtube_id = youtube_url
+  ? youtube_url|split('/')|last|split('?v=')|last|split('&')|first
+  : null %}
+
+<section data-testid="store-home-steamory-video-product"
+         class="s-block st-section st-vprod st-vprod--media-{{ media_side }}"
+         id="steamory-video-product-{{ position }}">
+  <div class="container">
+    <div class="st-vprod__card">
+
+      <div class="st-vprod__media">
+        {% if video_url %}
+          {# Muted + playsinline is what lets a cover video autoplay at all on
+             mobile browsers; without both it silently refuses. #}
+          <video
+            src="{{ video_url }}"
+            {% if poster %}poster="{{ poster }}"{% endif %}
+            autoplay muted loop playsinline preload="metadata"
+            aria-label="{{ product.name }}"></video>
+        {% elseif youtube_id %}
+          <lite-youtube videoid="{{ youtube_id }}" playlabel="{{ product.name }}"></lite-youtube>
+        {% elseif poster %}
+          <img src="{{ poster }}" alt="{{ product.name }}" loading="lazy">
+        {% else %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
+        {% endif %}
+      </div>
+
+      <div class="st-vprod__body">
+        {% if eyebrow %}<span class="st-vprod__eyebrow">{{ eyebrow }}</span>{% endif %}
+
+        <h2 class="st-vprod__title">
+          <a href="{{ product.url }}">{{ product.name }}</a>
+        </h2>
+
+        <div class="st-vprod__price">
+          {% if product.is_on_sale %}
+            <strong>{{ product.sale_price|money }}</strong>
+            <span>{{ product.regular_price|money }}</span>
+          {% else %}
+            <strong>{{ product.price|money }}</strong>
+          {% endif %}
+        </div>
+
+        {% if meta_value %}
+          <div class="st-vprod__meta">
+            <span class="st-vprod__meta-icon">
+              <i class="{{ meta_icon|default('sicon-calendar-date') }}" aria-hidden="true"></i>
+            </span>
+            <div>
+              {% if meta_label %}<strong>{{ meta_label }}</strong>{% endif %}
+              <span>{{ meta_value }}</span>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="st-vprod__actions">
+          <salla-add-product-button
+            width="wide"
+            product-id="{{ product.id }}"
+            product-status="{{ product.status }}"
+            product-type="{{ product.type }}">
+          </salla-add-product-button>
+
+          {% if details_label %}
+            <a href="{{ product.url }}" class="st-btn st-btn--ghost">
+              {{ details_label }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %}

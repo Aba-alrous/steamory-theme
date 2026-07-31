@@ -115,6 +115,29 @@
 </noscript>
 <div class="app-inner flex flex-col min-h-full">
     {% hook 'body:start' %}
+
+    {# STEAMORY promo bar. Lives in the layout rather than as a homepage
+       component so the offer follows the customer onto product and cart
+       pages, which is where it actually changes a decision. #}
+    {% if theme.settings.get('st_promo_enabled') and theme.settings.get('st_promo_text') %}
+      <div class="st-promo st-promo--{{ theme.settings.get('st_promo_style', 'accent') }}">
+        <div class="container st-promo__inner">
+          <span class="st-promo__text">{{ theme.settings.get('st_promo_text') }}</span>
+
+          {% if theme.settings.get('st_promo_ends_at') %}
+            <salla-count-down date="{{ theme.settings.get('st_promo_ends_at') }}"
+                              class="st-promo__count"></salla-count-down>
+          {% endif %}
+
+          {% if theme.settings.get('st_promo_label') and theme.settings.get('st_promo_url') %}
+            <a href="{{ theme.settings.get('st_promo_url') }}" class="st-promo__cta">
+              {{ theme.settings.get('st_promo_label') }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
     {% component 'header.header' %}
     <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
     {% block content %}{% endblock %}

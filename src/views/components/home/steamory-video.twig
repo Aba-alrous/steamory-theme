@@ -1,0 +1,61 @@
+{#
+| Variable      | Type   | Description                                              |
+|---------------|--------|----------------------------------------------------------|
+| title         | string | Section heading                                          |
+| description   | string | Supporting copy beside or under the video                |
+| youtube_url   | string | Full YouTube URL or a bare video id                      |
+| video_url     | string | mp4/webm, used instead of YouTube when provided          |
+| poster        | string | Frame shown before an mp4 loads                          |
+| layout        | string | wide (video full width) | split (copy beside the video)  |
+| cta_label     | string | Optional button label                                    |
+| cta_url       | string | Optional button link                                     |
+| position      | int    | Sorting number, starts at zero                           |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set description = component.description %}
+{% set youtube_url = component.youtube_url %}
+{% set video_url = component.video_url %}
+{% set poster = component.poster %}
+{% set layout = component.layout|default('split') %}
+{% set cta_label = component.cta_label %}
+{% set cta_url = component.cta_url %}
+
+{# Accepts a full YouTube URL or a bare id, since merchants paste either. #}
+{% set youtube_id = youtube_url
+  ? youtube_url|split('/')|last|split('?v=')|last|split('&')|first
+  : null %}
+
+{% if youtube_id or video_url %}
+<section data-testid="store-home-steamory-video"
+         class="s-block st-section st-video st-video--{{ layout }}"
+         id="steamory-video-{{ position }}">
+  <div class="container">
+    <div class="st-video__inner">
+
+      <div class="st-video__frame">
+        {% if video_url %}
+          <video src="{{ video_url }}"
+                 {% if poster %}poster="{{ poster }}"{% endif %}
+                 controls playsinline preload="none"></video>
+        {% else %}
+          {# lite-youtube ships a click-to-load facade, so the page is not
+             charged for the YouTube player until someone presses play. #}
+          <lite-youtube videoid="{{ youtube_id }}" playlabel="{{ title|default('play') }}"></lite-youtube>
+        {% endif %}
+      </div>
+
+      {% if title or description or cta_label %}
+        <div class="st-video__body">
+          {% if title %}<h2 class="st-section__title">{{ title }}</h2>{% endif %}
+          {% if description %}<p class="st-video__desc">{{ description }}</p>{% endif %}
+          {% if cta_label %}
+            <a href="{{ cta_url|default('#') }}" class="st-btn st-btn--primary">{{ cta_label }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+{% endif %}

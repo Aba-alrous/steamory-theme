@@ -107,6 +107,9 @@
  *                      comparison table, testimonials rail, closing CTA.
  * Home Products........Products row with size presets and shine, and the
  *                      section divider.
+ * Home Extra...........Promo bar, platform gateway, logo strip, category
+ *                      cards, deal of the month, video section, and the
+ *                      product whose cover is a looping video.
  *
  * Loaded last on purpose: source order is what lets this layer win at equal
  * specificity, so nothing here needs !important and upstream Raed files stay
@@ -121,4 +124,5 @@
 @import './06-steamory/home-hero';
 @import './06-steamory/home-sections';
 @import './06-steamory/home-products';
+@import './06-steamory/home-extra';
 @import './06-steamory/settings';

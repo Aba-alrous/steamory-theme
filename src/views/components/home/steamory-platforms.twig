@@ -1,0 +1,49 @@
+{#
+| Variable          | Type   | Description                                          |
+|-------------------|--------|------------------------------------------------------|
+| title             | string | Section heading                                      |
+| description       | string | Supporting line                                      |
+| items[]           | array  | The platform tiles                                   |
+| items[].image     | string | Artwork behind the tile                              |
+| items[].title     | string | Platform name                                        |
+| items[].subtitle  | string | Short line under the name                            |
+| items[].url       | string | Where the tile leads                                 |
+| position          | int    | Sorting number, starts at zero                       |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set description = component.description %}
+{% set items = component.items %}
+
+{% set tiles = items|default([])|filter((item) => item.title or item.image) %}
+{% if tiles is not empty %}
+<section data-testid="store-home-steamory-platforms"
+         class="s-block st-section st-gate"
+         id="steamory-platforms-{{ position }}">
+  <div class="container">
+    {% if title %}
+      <div class="st-section__head">
+        <div>
+          <h2 class="st-section__title">{{ title }}</h2>
+          {% if description %}<p class="st-section__desc">{{ description }}</p>{% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="st-gate__grid">
+      {% for tile in tiles %}
+        <a href="{{ tile.url|default('#') }}" class="st-gate__tile">
+          {% if tile.image %}
+            <img src="{{ tile.image }}" alt="" loading="lazy" class="st-gate__art">
+          {% endif %}
+          <span class="st-gate__veil" aria-hidden="true"></span>
+          <span class="st-gate__text">
+            <strong>{{ tile.title }}</strong>
+            {% if tile.subtitle %}<em>{{ tile.subtitle }}</em>{% endif %}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

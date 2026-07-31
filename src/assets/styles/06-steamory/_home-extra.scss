@@ -1,0 +1,549 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — promo bar, platform gateway, logo strip, category cards,
+   deal of the month, video section and video-cover product.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── promo bar (site-wide, rendered from master.twig) ───────────────────── */
+
+.st-promo {
+  position: relative;
+  z-index: 30;
+  font-size: 0.875rem;
+
+  &--accent {
+    background: var(--st-accent-grad);
+    color: var(--st-accent-ink);
+  }
+
+  &--dark {
+    background-color: var(--st-surface);
+    color: var(--st-text);
+    border-bottom: 1px solid var(--st-line);
+  }
+}
+
+.st-promo__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+}
+
+.st-promo__text {
+  font-weight: 600;
+}
+
+.st-promo__cta {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  &:hover {
+    color: inherit;
+    opacity: 0.75;
+  }
+}
+
+/* Salla's countdown renders its own boxes; on a thin bar it needs to sit
+   inline and inherit the bar's colour instead. */
+.st-promo__count {
+  --salla-count-down-color: currentColor;
+  display: inline-flex;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── platform gateway ───────────────────────────────────────────────────── */
+
+.st-gate__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+
+.st-gate__tile {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 13rem;
+  padding: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  background-color: var(--st-surface);
+  isolation: isolate;
+  transition: border-color 0.4s var(--st-ease), transform 0.4s var(--st-ease);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+
+    .st-gate__art {
+      transform: scale(1.06);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.st-gate__art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--st-ease);
+}
+
+.st-gate__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 11, 0.95) 0%,
+    rgba(10, 14, 11, 0.55) 55%,
+    rgba(10, 14, 11, 0.2) 100%
+  );
+}
+
+.st-gate__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  strong {
+    font-family: var(--st-font-display);
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--st-text);
+  }
+
+  em {
+    font-style: normal;
+    font-size: 0.8125rem;
+    color: var(--st-muted);
+  }
+}
+
+/* ── logo strip ─────────────────────────────────────────────────────────── */
+
+.st-logos {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.st-logos__title {
+  margin: 0 0 1.25rem;
+  text-align: center;
+  color: var(--st-muted-2);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+
+.st-logos__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.st-logos__item img {
+  height: clamp(1.6rem, 3vw, 2.25rem);
+  width: auto;
+  object-fit: contain;
+}
+
+/* Muted by default keeps a row of mismatched brand colours from competing
+   with the page; colour returns on hover. */
+.st-logos--muted .st-logos__item img {
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter 0.35s var(--st-ease), opacity 0.35s var(--st-ease);
+}
+
+.st-logos--muted .st-logos__item:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* ── category cards ─────────────────────────────────────────────────────── */
+
+.st-cats__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .st-cats--cols-2 .st-cats__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .st-cats--cols-3 .st-cats__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .st-cats--cols-4 .st-cats__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.st-cats__card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  background-color: var(--st-surface);
+  transition: border-color 0.4s var(--st-ease), transform 0.4s var(--st-ease);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+
+    .st-cats__media img {
+      transform: scale(1.06);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.st-cats__media {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--st-bg);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--st-ease);
+  }
+}
+
+.st-cats__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem 1.1rem;
+
+  strong {
+    font-family: var(--st-font-display);
+    font-weight: 700;
+    font-size: 0.9688rem;
+    color: var(--st-text);
+  }
+
+  em {
+    font-style: normal;
+    font-size: 0.8125rem;
+    color: var(--st-muted-2);
+  }
+}
+
+/* ── deal of the month ──────────────────────────────────────────────────── */
+
+.st-deal__card {
+  position: relative;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  background-color: var(--st-surface);
+  box-shadow: var(--st-shadow-card);
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+  }
+}
+
+.st-deal__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.st-deal__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 11, 0.96) 20%,
+    rgba(10, 14, 11, 0.75) 100%
+  );
+}
+
+.st-deal__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--st-radius-sm);
+  border: 1px solid var(--st-line);
+}
+
+.st-deal__eyebrow {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 0.9rem;
+  border-radius: 999px;
+  background: var(--st-accent-grad);
+  color: var(--st-accent-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.st-deal__title {
+  font-family: var(--st-font-display);
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.3;
+  margin: 0;
+
+  a {
+    color: var(--st-text);
+
+    &:hover {
+      color: var(--st-accent);
+    }
+  }
+}
+
+.st-deal__desc {
+  margin: 0.75rem 0 0;
+  color: var(--st-muted);
+  line-height: 1.9;
+}
+
+.st-deal__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 1.1rem 0;
+  font-family: var(--st-font-display);
+
+  strong {
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--st-accent);
+    line-height: 1;
+  }
+
+  span {
+    color: var(--st-muted-2);
+    text-decoration-line: line-through;
+  }
+}
+
+.st-deal__actions {
+  margin-top: 1.25rem;
+}
+
+/* ── video section ──────────────────────────────────────────────────────── */
+
+.st-video__inner {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+}
+
+.st-video--split .st-video__inner {
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+}
+
+.st-video__frame {
+  overflow: hidden;
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  background-color: var(--st-bg);
+  box-shadow: var(--st-shadow-card);
+
+  video,
+  lite-youtube {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.st-video__desc {
+  margin: 1rem 0 1.75rem;
+  color: var(--st-muted);
+  line-height: 1.95;
+}
+
+/* ── product with a video cover ─────────────────────────────────────────── */
+
+.st-vprod__card {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  background-color: var(--st-bg-raise);
+  box-shadow: var(--st-shadow-card);
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: stretch;
+  }
+}
+
+/* The media is first in the markup, so by default it lands in the first grid
+   column — the inline start, which is the right-hand side in Arabic and
+   matches the reference layout. `--media-end` moves it to the other side with
+   `order`, leaving the DOM order alone so the product name is still read
+   before the video by a screen reader. */
+.st-vprod--media-end .st-vprod__media {
+  @media (min-width: 900px) {
+    order: 1;
+  }
+}
+
+.st-vprod__media {
+  position: relative;
+  background-color: #000;
+  min-height: 15rem;
+
+  video,
+  img,
+  lite-youtube {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  video,
+  img {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (max-width: 899px) {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+}
+
+.st-vprod__body {
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+}
+
+.st-vprod__eyebrow {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--st-accent-line);
+  border-radius: 999px;
+  background-color: var(--st-accent-soft);
+  color: var(--st-accent-hi);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.st-vprod__title {
+  font-family: var(--st-font-display);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.3;
+  margin: 0;
+
+  a {
+    color: var(--st-accent);
+
+    &:hover {
+      color: var(--st-accent-hi);
+    }
+  }
+}
+
+.st-vprod__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 1rem 0 1.5rem;
+  font-family: var(--st-font-display);
+
+  strong {
+    font-weight: 800;
+    font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+    color: var(--st-text);
+    line-height: 1;
+  }
+
+  span {
+    color: var(--st-muted-2);
+    text-decoration-line: line-through;
+    font-size: 1rem;
+  }
+}
+
+.st-vprod__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+  }
+
+  strong {
+    font-family: var(--st-font-display);
+    font-weight: 700;
+    color: var(--st-text);
+    font-size: 0.9375rem;
+  }
+
+  span {
+    color: var(--st-muted);
+    font-size: 0.875rem;
+  }
+}
+
+.st-vprod__meta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: var(--st-accent-grad);
+  color: var(--st-accent-ink);
+  font-size: 1.1rem;
+}
+
+.st-vprod__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+
+  > * {
+    flex: 1 1 12rem;
+  }
+}

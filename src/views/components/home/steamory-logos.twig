@@ -1,0 +1,38 @@
+{#
+| Variable        | Type   | Description                                            |
+|-----------------|--------|--------------------------------------------------------|
+| title           | string | Optional heading                                       |
+| items[]         | array  | The logos                                              |
+| items[].image   | string | Logo artwork, ideally a transparent PNG or SVG         |
+| items[].url     | string | Optional link                                          |
+| grayscale       | bool   | Mute the logos until hovered                           |
+| position        | int    | Sorting number, starts at zero                         |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set items = component.items %}
+{% set grayscale = component.grayscale %}
+
+{% set logos = items|default([])|filter((item) => item.image) %}
+{% if logos is not empty %}
+<section data-testid="store-home-steamory-logos"
+         class="s-block st-logos {{ grayscale ? 'st-logos--muted' : '' }}"
+         id="steamory-logos-{{ position }}">
+  <div class="container">
+    {% if title %}<p class="st-logos__title">{{ title }}</p>{% endif %}
+    <div class="st-logos__row">
+      {% for logo in logos %}
+        {% if logo.url %}
+          <a href="{{ logo.url }}" class="st-logos__item">
+            <img src="{{ logo.image }}" alt="" loading="lazy">
+          </a>
+        {% else %}
+          <span class="st-logos__item">
+            <img src="{{ logo.image }}" alt="" loading="lazy">
+          </span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

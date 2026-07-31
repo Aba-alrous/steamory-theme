@@ -1,0 +1,45 @@
+{#
+| Variable          | Type   | Description                                          |
+|-------------------|--------|------------------------------------------------------|
+| title             | string | Section heading                                      |
+| items[]           | array  | The category cards                                   |
+| items[].image     | string | Card artwork                                         |
+| items[].title     | string | Category name                                        |
+| items[].count     | string | Optional line, e.g. 120 لعبة                          |
+| items[].url       | string | Where the card leads                                 |
+| columns           | string | 2 | 3 | 4 cards per row on desktop                    |
+| position          | int    | Sorting number, starts at zero                       |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set items = component.items %}
+{% set columns = component.columns %}
+
+{% set cards = items|default([])|filter((item) => item.title or item.image) %}
+{% if cards is not empty %}
+<section data-testid="store-home-steamory-categories"
+         class="s-block st-section st-cats st-cats--cols-{{ columns|default('4') }}"
+         id="steamory-categories-{{ position }}">
+  <div class="container">
+    {% if title %}
+      <div class="st-section__head"><h2 class="st-section__title">{{ title }}</h2></div>
+    {% endif %}
+
+    <div class="st-cats__grid">
+      {% for card in cards %}
+        <a href="{{ card.url|default('#') }}" class="st-cats__card">
+          <span class="st-cats__media">
+            {% if card.image %}
+              <img src="{{ card.image }}" alt="" loading="lazy">
+            {% endif %}
+          </span>
+          <span class="st-cats__text">
+            <strong>{{ card.title }}</strong>
+            {% if card.count %}<em>{{ card.count }}</em>{% endif %}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

@@ -142,6 +142,141 @@
         },
         {
             "type": "static",
+            "id": "st-line-promo",
+            "format": "line"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "st-banner-promo",
+            "value": "<div class='rounded-lg' style=\"background:linear-gradient(135deg,#0e1410 0%,#16211a 100%);border:1px solid rgba(94,227,106,.38);display:flex;justify-content:center;align-items:center;padding:15px;margin-bottom:20px !important;flex-direction:column;gap:6px;\"><h6 style='color:#5ee36a;font-size:15px;font-weight:bold;margin:0;'>شريط العرض العلوي</h6><span style='color:#a7b8ab;font-size:12px;'>يظهر في كل صفحات المتجر</span></div>",
+            "variant": "h6"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "إظهار شريط العرض أعلى الصفحة",
+            "description": "يظهر في كل الصفحات وليس الرئيسية فقط",
+            "id": "st_promo_enabled",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "نص العرض",
+            "multilanguage": true,
+            "id": "st_promo_text",
+            "value": "خصم 30% على جميع الباقات",
+            "required": false,
+            "format": "text",
+            "description": null,
+            "placeholder": "مثال: خصم 30% على جميع الباقات",
+            "minLength": 0,
+            "maxLength": 120
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "نص الرابط",
+            "multilanguage": true,
+            "id": "st_promo_label",
+            "value": "تسوّق الآن",
+            "required": false,
+            "format": "text",
+            "description": null,
+            "placeholder": null,
+            "minLength": 0,
+            "maxLength": 40
+        },
+        {
+            "type": "items",
+            "icon": "sicon-link",
+            "label": "رابط العرض",
+            "id": "st_promo_url",
+            "value": null,
+            "required": false,
+            "format": "variable-list",
+            "searchable": true,
+            "source": "custom",
+            "sources": [
+                {
+                    "label": "منتج",
+                    "key": "products",
+                    "value": "products"
+                },
+                {
+                    "label": "تصنيف",
+                    "key": "categories",
+                    "value": "categories"
+                },
+                {
+                    "label": "منتجات مع وسم",
+                    "key": "products_tags",
+                    "value": "products_tags"
+                },
+                {
+                    "label": "صفحة تعريفية",
+                    "key": "pages",
+                    "value": "pages"
+                },
+                {
+                    "label": "التخفيضات",
+                    "key": "offers_link",
+                    "value": "offers_link"
+                },
+                {
+                    "label": "رابط خارجي",
+                    "key": "custom",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "type": "string",
+            "icon": "sicon-calendar-date",
+            "label": "تاريخ انتهاء العرض",
+            "id": "st_promo_ends_at",
+            "value": null,
+            "required": false,
+            "format": "date",
+            "description": "اتركه فارغاً لإخفاء العدّاد. ينتهي العد عند هذا التاريخ.",
+            "placeholder": null
+        },
+        {
+            "id": "st_promo_style",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "لون الشريط",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-list",
+            "selected": [
+                {
+                    "label": "أخضر بارز",
+                    "value": "accent",
+                    "key": "b89c494a-b069-4532-8935-1352a26b1a38"
+                }
+            ],
+            "options": [
+                {
+                    "label": "أخضر بارز",
+                    "value": "accent",
+                    "key": "b89c494a-b069-4532-8935-1352a26b1a38"
+                },
+                {
+                    "label": "داكن هادئ",
+                    "value": "dark",
+                    "key": "5145d1c8-eaa9-4860-8f5d-8183531f0d84"
+                }
+            ],
+            "source": "Manual",
+            "required": true
+        },
+        {
+            "type": "static",
             "id": "st-line-whatsapp",
             "format": "line"
         },
@@ -2486,6 +2621,904 @@
                     ],
                     "source": "Manual",
                     "required": true
+                }
+            ]
+        },
+        {
+            "key": "9cd4dd39-59bc-49df-ac25-403457022b9e",
+            "title": {
+                "ar": "STM · منتج بغلاف فيديو",
+                "en": "STM · Product with video cover"
+            },
+            "icon": "sicon-play-circle",
+            "path": "home.steamory-video-product",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "vprod-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>بطاقة عريضة: بيانات المنتج على جهة، ومقطع فيديو يعمل تلقائياً بلا صوت على الجهة الأخرى. <strong style=\"color:#5ee36a;\">ارفع الفيديو على أي استضافة وضع رابط ملف mp4 مباشر</strong>، أو استخدم رابط يوتيوب (يشتغل بالضغط لا تلقائياً).</div>"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "المنتج",
+                    "id": "products",
+                    "format": "dropdown-list",
+                    "description": "اختر منتجاً واحداً",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "minLength": 1,
+                    "maxLength": 1,
+                    "value": []
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-play-circle",
+                    "label": "رابط ملف الفيديو (mp4)",
+                    "multilanguage": false,
+                    "id": "video_url",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": "رابط مباشر لملف mp4 أو webm. هذا الخيار وحده هو الذي يعمل تلقائياً بلا صوت.",
+                    "placeholder": "https://example.com/trailer.mp4",
+                    "minLength": 0,
+                    "maxLength": 400
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-play-circle",
+                    "label": "رابط يوتيوب (بديل)",
+                    "multilanguage": false,
+                    "id": "youtube_url",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": "يُستخدم فقط إذا تُرك حقل mp4 فارغاً. يوتيوب لا يسمح بالتشغيل التلقائي هنا.",
+                    "placeholder": "https://youtube.com/watch?v=...",
+                    "minLength": 0,
+                    "maxLength": 400
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "label": "صورة الغلاف قبل التحميل",
+                    "id": "poster",
+                    "value": null,
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": "تظهر قبل أن يبدأ الفيديو. اتركها فارغة لاستخدام صورة المنتج.",
+                    "settings": {
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص علوي صغير",
+                    "multilanguage": true,
+                    "id": "eyebrow",
+                    "value": "إصدار جديد",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-calendar-date",
+                    "label": "عنوان المعلومة",
+                    "multilanguage": true,
+                    "id": "meta_label",
+                    "value": "تاريخ الإصدار",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "قيمة المعلومة",
+                    "multilanguage": true,
+                    "id": "meta_value",
+                    "value": "20 مارس",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 60
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-shapes",
+                    "label": "أيقونة المعلومة",
+                    "id": "meta_icon",
+                    "value": "sicon-calendar-date",
+                    "required": false,
+                    "format": "icon",
+                    "class": "form--inline",
+                    "description": null
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص زر التفاصيل",
+                    "multilanguage": true,
+                    "id": "details_label",
+                    "value": "تفاصيل أكثر",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "id": "media_side",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "جهة الفيديو",
+                    "description": "في المتجر العربي: (بداية السطر) تعني يمين الشاشة",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "جهة بداية السطر — يمين (يُنصح به)",
+                            "value": "start",
+                            "key": "4a6633ee-d741-4a81-86ce-d1c08f4f251e"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "الجهة المقابلة — يسار",
+                            "value": "end",
+                            "key": "43811aca-cfa6-4f38-88f6-e9197f91fb3b"
+                        },
+                        {
+                            "label": "جهة بداية السطر — يمين (يُنصح به)",
+                            "value": "start",
+                            "key": "4a6633ee-d741-4a81-86ce-d1c08f4f251e"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "key": "b30f1678-712b-4dc1-8b56-fc53e87f76df",
+            "title": {
+                "ar": "STM · بوابة اختيار المنصة",
+                "en": "STM · Platform gateway"
+            },
+            "icon": "sicon-grid",
+            "path": "home.steamory-platforms",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "gate-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>بطاقات كبيرة بصور توجّه العميل حسب منصته أو اهتمامه — Steam، PlayStation، Xbox، أو أي تقسيم تختاره.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "وش منصتك؟",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "نص توضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البطاقات",
+                    "description": null,
+                    "item_label": "بطاقة",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "value": [
+                        {
+                            "items.title": "Steam",
+                            "items.subtitle": "مكتبة ضخمة بأسعار تنافسية"
+                        },
+                        {
+                            "items.title": "PlayStation",
+                            "items.subtitle": "حسابات وألعاب رقمية"
+                        },
+                        {
+                            "items.title": "Xbox",
+                            "items.subtitle": "Game Pass وألعاب مختارة"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "صورة البطاقة",
+                            "id": "items.image",
+                            "value": null,
+                            "format": "image",
+                            "required": true,
+                            "placeholder": null,
+                            "description": "* المقاس المناسب 800×600 بكسل",
+                            "settings": {
+                                "width": 800,
+                                "height": 600
+                            }
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "العنوان",
+                            "multilanguage": true,
+                            "id": "items.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": "مثال: Steam",
+                            "minLength": 0,
+                            "maxLength": 40
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "نص فرعي",
+                            "multilanguage": true,
+                            "id": "items.subtitle",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": "مثال: أكثر من 1000 لعبة",
+                            "minLength": 0,
+                            "maxLength": 60
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "الرابط",
+                            "id": "items.url",
+                            "value": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "منتجات مع وسم",
+                                    "key": "products_tags",
+                                    "value": "products_tags"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "df886ba9-bf2d-411d-93c6-b3170c597bc6",
+            "title": {
+                "ar": "STM · شريط شعارات المنصات",
+                "en": "STM · Platform logos"
+            },
+            "icon": "sicon-award-ribbon",
+            "path": "home.steamory-logos",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "logos-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>صف شعارات يبني ثقة سريعة. يُفضّل صور PNG شفافة أو SVG.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص فوق الشعارات",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "نعمل مع أشهر المنصات",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الشعارات",
+                    "description": null,
+                    "item_label": "شعار",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 12,
+                    "value": [],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الشعار",
+                            "id": "items.image",
+                            "value": null,
+                            "format": "image",
+                            "required": true,
+                            "placeholder": null,
+                            "description": "* يُفضّل PNG شفاف بارتفاع 80 بكسل",
+                            "settings": {
+                                "width": 240,
+                                "height": 80
+                            }
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط (اختياري)",
+                            "id": "items.url",
+                            "value": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "منتجات مع وسم",
+                                    "key": "products_tags",
+                                    "value": "products_tags"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "عرض الشعارات بالأبيض والأسود حتى مرور المؤشر",
+                    "description": "يمنع تضارب ألوان الشعارات مع هوية المتجر",
+                    "id": "grayscale",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                }
+            ]
+        },
+        {
+            "key": "c9a3789d-10a8-4272-9909-29d4d5fbaa59",
+            "title": {
+                "ar": "STM · بطاقات التصنيفات",
+                "en": "STM · Category cards"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.steamory-categories",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "cats-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شبكة تصنيفات بصور. تكتب العناوين والروابط يدوياً، فتقدر تجمع أي تصنيفات أو وسوم تحت اسم واحد.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "تصفّح حسب التصنيف",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "التصنيفات",
+                    "description": null,
+                    "item_label": "تصنيف",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 12,
+                    "value": [],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الصورة",
+                            "id": "items.image",
+                            "value": null,
+                            "format": "image",
+                            "required": true,
+                            "placeholder": null,
+                            "description": "* المقاس المناسب 640×480 بكسل",
+                            "settings": {
+                                "width": 640,
+                                "height": 480
+                            }
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "اسم التصنيف",
+                            "multilanguage": true,
+                            "id": "items.title",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 40
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "نص فرعي",
+                            "multilanguage": true,
+                            "id": "items.count",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": "مثال: 120 لعبة",
+                            "minLength": 0,
+                            "maxLength": 40
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "الرابط",
+                            "id": "items.url",
+                            "value": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "منتجات مع وسم",
+                                    "key": "products_tags",
+                                    "value": "products_tags"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "columns",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عدد البطاقات في الصف",
+                    "description": "على شاشة الكمبيوتر. الجوال يعرض بطاقتين دائماً.",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "أربع (يُنصح به)",
+                            "value": "4",
+                            "key": "5a425686-b7bb-4f3d-9fb9-684c84758772"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "بطاقتان",
+                            "value": "2",
+                            "key": "ae94c710-963c-4e45-89c1-9587506909a7"
+                        },
+                        {
+                            "label": "ثلاث",
+                            "value": "3",
+                            "key": "77d6b15a-bac5-43b0-96d3-f63828f88d2a"
+                        },
+                        {
+                            "label": "أربع (يُنصح به)",
+                            "value": "4",
+                            "key": "5a425686-b7bb-4f3d-9fb9-684c84758772"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "key": "30a795fb-3cab-42ca-ac09-f20142a2fd20",
+            "title": {
+                "ar": "STM · صفقة الشهر",
+                "en": "STM · Deal of the month"
+            },
+            "icon": "sicon-clock",
+            "path": "home.steamory-deal",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "deal-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>منتج واحد بارز مع عدّاد تنازلي ينتهي في التاريخ الذي تحدده. العدّاد من مكوّنات سلة نفسها، فيدعم اللغة والتنسيق تلقائياً.</div>"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "المنتج",
+                    "id": "products",
+                    "format": "dropdown-list",
+                    "description": "اختر منتجاً واحداً",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "minLength": 1,
+                    "maxLength": 1,
+                    "value": []
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "شارة علوية",
+                    "multilanguage": true,
+                    "id": "eyebrow",
+                    "value": "صفقة الشهر",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "نص تشويقي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-calendar-date",
+                    "label": "تاريخ انتهاء العرض",
+                    "id": "ends_at",
+                    "value": null,
+                    "required": false,
+                    "format": "date",
+                    "description": "يختفي العدّاد تلقائياً بعد هذا التاريخ",
+                    "placeholder": null
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "label": "صورة خلفية (اختياري)",
+                    "id": "background",
+                    "value": null,
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": "* المقاس المناسب 1400×600 بكسل",
+                    "settings": {
+                        "width": 1400,
+                        "height": 600
+                    }
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص زر الشراء",
+                    "multilanguage": true,
+                    "id": "cta_label",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "اتركه فارغاً لاستخدام نص سلة الافتراضي",
+                    "minLength": 0,
+                    "maxLength": 40
+                }
+            ]
+        },
+        {
+            "key": "5e0d4860-bd56-4483-a855-bc2b9fa58ed9",
+            "title": {
+                "ar": "STM · قسم فيديو",
+                "en": "STM · Video section"
+            },
+            "icon": "sicon-play-circle",
+            "path": "home.steamory-video",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "video-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>فيديو شرح بعرض الصفحة أو بجانب نص. فيديو يوتيوب لا يُحمَّل إلا عند الضغط على زر التشغيل، فلا يبطّئ الصفحة.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "كيف تشتغل الخدمة؟",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "النص",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 400
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-play-circle",
+                    "label": "رابط يوتيوب",
+                    "multilanguage": false,
+                    "id": "youtube_url",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "https://youtube.com/watch?v=...",
+                    "minLength": 0,
+                    "maxLength": 400
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-play-circle",
+                    "label": "رابط ملف mp4 (بديل)",
+                    "multilanguage": false,
+                    "id": "video_url",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": "إذا عبّأته يُستخدم بدل رابط يوتيوب",
+                    "placeholder": "https://example.com/video.mp4",
+                    "minLength": 0,
+                    "maxLength": 400
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "label": "صورة الغلاف",
+                    "id": "poster",
+                    "value": null,
+                    "format": "image",
+                    "required": false,
+                    "placeholder": null,
+                    "description": "تظهر قبل تشغيل ملف mp4",
+                    "settings": {
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                {
+                    "id": "layout",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "التخطيط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "فيديو بجانب النص (يُنصح به)",
+                            "value": "split",
+                            "key": "75da1e84-0c0f-42d8-b877-4b77a08b80f3"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "فيديو بجانب النص (يُنصح به)",
+                            "value": "split",
+                            "key": "75da1e84-0c0f-42d8-b877-4b77a08b80f3"
+                        },
+                        {
+                            "label": "فيديو بعرض الصفحة",
+                            "value": "wide",
+                            "key": "a85b2502-ad16-4462-afb9-22a939ad359a"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص الزر (اختياري)",
+                    "multilanguage": true,
+                    "id": "cta_label",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "id": "cta_url",
+                    "value": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
                 }
             ]
         },

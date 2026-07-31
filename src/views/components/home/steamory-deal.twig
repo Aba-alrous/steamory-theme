@@ -1,0 +1,72 @@
+{#
+| Variable      | Type      | Description                                           |
+|---------------|-----------|-------------------------------------------------------|
+| products      | Product[] | The deal product, first one is used                   |
+| eyebrow       | string    | Small label above the name                            |
+| description   | string    | Short pitch under the name                            |
+| ends_at       | string    | Date the offer ends, drives the countdown             |
+| background    | string    | Optional artwork behind the block                     |
+| cta_label     | string    | Label for the button                                  |
+| position      | int       | Sorting number, starts at zero                        |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set products = component.products %}
+{% set eyebrow = component.eyebrow %}
+{% set description = component.description %}
+{% set ends_at = component.ends_at %}
+{% set background = component.background %}
+{% set cta_label = component.cta_label %}
+
+{% set product = products|first %}
+{% if product %}
+<section data-testid="store-home-steamory-deal"
+         class="s-block st-section st-deal"
+         id="steamory-deal-{{ position }}">
+  <div class="container">
+    <div class="st-deal__card">
+      {% if background %}
+        <img src="{{ background }}" alt="" class="st-deal__bg" loading="lazy">
+        <span class="st-deal__veil" aria-hidden="true"></span>
+      {% endif %}
+
+      <div class="st-deal__media">
+        <a href="{{ product.url }}" aria-label="{{ product.name }}">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
+        </a>
+      </div>
+
+      <div class="st-deal__body">
+        {% if eyebrow %}<span class="st-deal__eyebrow">{{ eyebrow }}</span>{% endif %}
+
+        <h2 class="st-deal__title"><a href="{{ product.url }}">{{ product.name }}</a></h2>
+        {% if description %}<p class="st-deal__desc">{{ description }}</p>{% endif %}
+
+        <div class="st-deal__price">
+          {% if product.is_on_sale %}
+            <strong>{{ product.sale_price|money }}</strong>
+            <span>{{ product.regular_price|money }}</span>
+          {% else %}
+            <strong>{{ product.price|money }}</strong>
+          {% endif %}
+        </div>
+
+        {% if ends_at %}
+          {# Salla's own countdown, so the ticking, the labels and the
+             translations stay the platform's job. #}
+          <salla-count-down date="{{ ends_at }}" boxed labeled></salla-count-down>
+        {% endif %}
+
+        <div class="st-deal__actions">
+          <salla-add-product-button
+            width="wide"
+            product-id="{{ product.id }}"
+            product-status="{{ product.status }}"
+            product-type="{{ product.type }}">
+            {% if cta_label %}<span>{{ cta_label }}</span>{% endif %}
+          </salla-add-product-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
