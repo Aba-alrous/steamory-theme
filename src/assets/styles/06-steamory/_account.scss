@@ -1,0 +1,122 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — customer account and blog
+   These templates use the light Tailwind utilities as plain classes, so the
+   dark-surface remap already covers them. What is left is the handful of
+   places where Raed bakes light colours into its own rules with @apply,
+   which that remap cannot reach.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── tags ───────────────────────────────────────────────────────────────── */
+
+.tag {
+  border-color: var(--st-line);
+  color: var(--st-muted);
+
+  &--primary {
+    color: var(--st-accent);
+    border-color: var(--st-accent-line);
+    background-color: var(--st-accent-soft);
+  }
+}
+
+/* ── profile photo dropzone ─────────────────────────────────────────────────
+   FilePond paints its own light drop label on top of Raed's, so both the
+   wrapper and the label need the dark surface. */
+
+.form--user-profile .s-file-upload-wrapper .filepond--drop-label {
+  background-color: var(--st-surface);
+  border-color: var(--st-line-strong);
+  color: var(--st-muted);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+  }
+}
+
+.filepond--panel-root,
+.filepond--drip {
+  background-color: var(--st-surface);
+}
+
+.filepond--item-panel {
+  background-color: var(--st-surface-3);
+}
+
+.profile-filepond-placholder-icon i {
+  color: var(--st-muted-2);
+}
+
+/* ── profile header ─────────────────────────────────────────────────────── */
+
+.profile-header {
+  background-color: var(--st-bg-raise);
+  border-bottom: 1px solid var(--st-line);
+}
+
+/* ── account navigation ─────────────────────────────────────────────────── */
+
+.user-menu-item,
+.profile-nav a {
+  color: var(--st-muted);
+
+  &:hover {
+    color: var(--st-accent-hi);
+  }
+
+  &.active,
+  &.is-active {
+    color: var(--st-accent);
+  }
+}
+
+/* ── order status chips ─────────────────────────────────────────────────────
+   Salla colours these by status; only the neutral ones need re-basing so
+   they do not sit as pale blocks on the dark canvas. */
+
+.s-order-status,
+.order-status {
+  border: 1px solid var(--st-line);
+}
+
+/* ── blog ───────────────────────────────────────────────────────────────── */
+
+.blog-entry,
+.article-entry {
+  background-color: var(--st-bg-raise);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  overflow: hidden;
+
+  &:hover {
+    border-color: var(--st-accent-line);
+  }
+}
+
+.article-content,
+.blog-content {
+  color: var(--st-muted);
+  line-height: 1.95;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  strong,
+  b {
+    color: var(--st-text);
+  }
+
+  a {
+    color: var(--st-accent);
+
+    &:hover {
+      color: var(--st-accent-hi);
+    }
+  }
+
+  blockquote {
+    border-inline-start: 3px solid var(--st-accent);
+    background-color: var(--st-surface);
+    color: var(--st-text);
+  }
+}
