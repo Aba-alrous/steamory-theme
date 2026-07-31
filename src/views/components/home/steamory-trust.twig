@@ -12,13 +12,36 @@
 {% set items = component.items %}
 {% set overlap = component.overlap %}
 
+{# Per-section colour choices. `custom` is merchant-typed, so it is validated
+   against a hex pattern before reaching the style attribute — anything else
+   would let arbitrary text into inline CSS. #}
+{% set palette = {
+  'theme': 'var(--color-primary)',
+  'green': '#5ee36a',
+  'white': 'var(--st-text)',
+  'muted': 'var(--st-muted)'
+} %}
+
+{% set icon_custom = component.icon_color_custom matches '/^#[0-9a-fA-F]{3,8}$/'
+  ? component.icon_color_custom : null %}
+{% set icon_color = component.icon_color == 'custom'
+  ? (icon_custom ?: 'var(--st-accent)')
+  : palette[component.icon_color]|default('var(--st-accent)') %}
+
+{% set text_custom = component.text_color_custom matches '/^#[0-9a-fA-F]{3,8}$/'
+  ? component.text_color_custom : null %}
+{% set text_color = component.text_color == 'custom'
+  ? (text_custom ?: 'var(--st-text)')
+  : palette[component.text_color]|default('var(--st-text)') %}
+
 {# An unconfigured collection would render as an empty glass bar, so the whole
    section is skipped until at least one item has content. #}
 {% set trust_items = items|default([])|filter((item) => item.value or item.label) %}
 {% if trust_items is not empty %}
 <section data-testid="store-home-steamory-trust"
          class="s-block st-trust {{ overlap ? 'st-trust--overlap' : '' }}"
-         id="steamory-trust-{{ position }}">
+         id="steamory-trust-{{ position }}"
+         style="--st-trust-icon: {{ icon_color }}; --st-trust-text: {{ text_color }};">
   <div class="container">
     <div class="st-trust__bar">
       {% for item in trust_items %}

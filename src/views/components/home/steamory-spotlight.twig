@@ -14,11 +14,33 @@
 {% set perks = component.perks %}
 {% set image = component.image %}
 
+{# Per-section colour choices; `custom` is merchant-typed so it is validated
+   against a hex pattern before it can reach the inline style attribute. #}
+{% set palette = {
+  'theme': 'var(--color-primary)',
+  'green': '#5ee36a',
+  'white': 'var(--st-text)',
+  'muted': 'var(--st-muted)'
+} %}
+
+{% set price_custom = component.price_color_custom matches '/^#[0-9a-fA-F]{3,8}$/'
+  ? component.price_color_custom : null %}
+{% set price_color = component.price_color == 'custom'
+  ? (price_custom ?: 'var(--st-accent)')
+  : palette[component.price_color]|default('var(--st-accent)') %}
+
+{% set title_custom = component.title_color_custom matches '/^#[0-9a-fA-F]{3,8}$/'
+  ? component.title_color_custom : null %}
+{% set title_color = component.title_color == 'custom'
+  ? (title_custom ?: 'var(--st-text)')
+  : palette[component.title_color]|default('var(--st-text)') %}
+
 {% set product = products|first %}
 {% if product %}
 <section data-testid="store-home-steamory-spotlight"
          class="s-block st-section st-spotlight"
-         id="steamory-spotlight-{{ position }}">
+         id="steamory-spotlight-{{ position }}"
+         style="--st-spot-price: {{ price_color }}; --st-spot-title: {{ title_color }};">
   <div class="container">
     <div class="st-spotlight__card">
 

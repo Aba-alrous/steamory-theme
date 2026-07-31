@@ -819,6 +819,143 @@
                     "required": false,
                     "value": true,
                     "selected": true
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "st-colors-ecedfa49",
+                    "value": "<div class='rounded-lg' style=\"background:linear-gradient(135deg,#0e1410 0%,#16211a 100%);border:1px solid rgba(94,227,106,.38);padding:12px 15px;margin-bottom:16px !important;\"><h6 style='color:#5ee36a;font-size:14px;font-weight:bold;margin:0;'>ألوان هذا القسم</h6></div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "icon_color",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "لون الأيقونات",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-paint-bucket",
+                    "selected": [
+                        {
+                            "label": "يتبع لون المتجر (من لوحة التصميم)",
+                            "value": "theme",
+                            "key": "41573566-723d-4f10-aabc-66e26cec370f"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يتبع لون المتجر (من لوحة التصميم)",
+                            "value": "theme",
+                            "key": "41573566-723d-4f10-aabc-66e26cec370f"
+                        },
+                        {
+                            "label": "أخضر الهوية",
+                            "value": "green",
+                            "key": "0d0b5cbb-8864-4945-ac10-65c53dfb806f"
+                        },
+                        {
+                            "label": "أبيض",
+                            "value": "white",
+                            "key": "8a342e10-2c77-4efc-983c-ae660b0a6470"
+                        },
+                        {
+                            "label": "رمادي فاتح",
+                            "value": "muted",
+                            "key": "a2d506c9-b547-463c-bf78-09c7645ef023"
+                        },
+                        {
+                            "label": "لون مخصص",
+                            "value": "custom",
+                            "key": "0d09b9bb-1b14-4f48-8754-605e03c83768"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-eyedropper",
+                    "label": "لون الأيقونات — الكود",
+                    "description": "اكتب كود اللون بصيغة hex، مثال: #5ee36a",
+                    "id": "icon_color_custom",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "placeholder": "#5ee36a",
+                    "minLength": 0,
+                    "maxLength": 9,
+                    "conditions": [
+                        {
+                            "id": "icon_color",
+                            "operation": "=",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "id": "text_color",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "لون الأرقام",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-paint-bucket",
+                    "selected": [
+                        {
+                            "label": "أبيض",
+                            "value": "white",
+                            "key": "58d3640c-03de-47a8-b047-882bf516d4c6"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يتبع لون المتجر (من لوحة التصميم)",
+                            "value": "theme",
+                            "key": "e4e9fe6a-c2ed-445b-ac32-93a06c7545c7"
+                        },
+                        {
+                            "label": "أخضر الهوية",
+                            "value": "green",
+                            "key": "f1e3b803-f72c-4de0-97e7-dd5db3c9a95f"
+                        },
+                        {
+                            "label": "أبيض",
+                            "value": "white",
+                            "key": "58d3640c-03de-47a8-b047-882bf516d4c6"
+                        },
+                        {
+                            "label": "رمادي فاتح",
+                            "value": "muted",
+                            "key": "1dbd5a7c-b186-4a4b-afe7-e804bf195612"
+                        },
+                        {
+                            "label": "لون مخصص",
+                            "value": "custom",
+                            "key": "05e5426f-0fd4-4919-9db1-004944809bf6"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-eyedropper",
+                    "label": "لون الأرقام — الكود",
+                    "description": "اكتب كود اللون بصيغة hex، مثال: #5ee36a",
+                    "id": "text_color_custom",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "placeholder": "#5ee36a",
+                    "minLength": 0,
+                    "maxLength": 9,
+                    "conditions": [
+                        {
+                            "id": "text_color",
+                            "operation": "=",
+                            "value": "custom"
+                        }
+                    ]
                 }
             ]
         },
@@ -1050,6 +1187,143 @@
                             "placeholder": "مثال: تفعيل فوري خلال دقائق",
                             "minLength": 0,
                             "maxLength": 120
+                        }
+                    ]
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "st-colors-8d3e3e16",
+                    "value": "<div class='rounded-lg' style=\"background:linear-gradient(135deg,#0e1410 0%,#16211a 100%);border:1px solid rgba(94,227,106,.38);padding:12px 15px;margin-bottom:16px !important;\"><h6 style='color:#5ee36a;font-size:14px;font-weight:bold;margin:0;'>ألوان هذا القسم</h6></div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "price_color",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "لون السعر والشارة",
+                    "description": "يطبَّق على السعر وعلى الشارة الصغيرة فوق الاسم",
+                    "labelHTML": null,
+                    "icon": "sicon-paint-bucket",
+                    "selected": [
+                        {
+                            "label": "يتبع لون المتجر (من لوحة التصميم)",
+                            "value": "theme",
+                            "key": "8136cbe1-5ef7-496e-9bfe-1fa1fc08d2cb"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يتبع لون المتجر (من لوحة التصميم)",
+                            "value": "theme",
+                            "key": "8136cbe1-5ef7-496e-9bfe-1fa1fc08d2cb"
+                        },
+                        {
+                            "label": "أخضر الهوية",
+                            "value": "green",
+                            "key": "3f1fa9e2-2564-4d22-ae27-08ef60be1785"
+                        },
+                        {
+                            "label": "أبيض",
+                            "value": "white",
+                            "key": "2432552a-c263-425e-90b4-772222c182e8"
+                        },
+                        {
+                            "label": "رمادي فاتح",
+                            "value": "muted",
+                            "key": "9fd7563e-a257-4752-950f-edbc5dc99206"
+                        },
+                        {
+                            "label": "لون مخصص",
+                            "value": "custom",
+                            "key": "d014dd20-62d8-4e14-bc4a-4e440b7a96d8"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-eyedropper",
+                    "label": "لون السعر والشارة — الكود",
+                    "description": "اكتب كود اللون بصيغة hex، مثال: #5ee36a",
+                    "id": "price_color_custom",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "placeholder": "#5ee36a",
+                    "minLength": 0,
+                    "maxLength": 9,
+                    "conditions": [
+                        {
+                            "id": "price_color",
+                            "operation": "=",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "id": "title_color",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "لون اسم المنتج",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-paint-bucket",
+                    "selected": [
+                        {
+                            "label": "أبيض",
+                            "value": "white",
+                            "key": "6b72ed3b-0bcc-45fa-a426-82feadfbde64"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يتبع لون المتجر (من لوحة التصميم)",
+                            "value": "theme",
+                            "key": "081a10d1-ed14-4e45-9043-11db0cd690bb"
+                        },
+                        {
+                            "label": "أخضر الهوية",
+                            "value": "green",
+                            "key": "35b12e6a-4553-44c1-bc50-10705efce9a1"
+                        },
+                        {
+                            "label": "أبيض",
+                            "value": "white",
+                            "key": "6b72ed3b-0bcc-45fa-a426-82feadfbde64"
+                        },
+                        {
+                            "label": "رمادي فاتح",
+                            "value": "muted",
+                            "key": "e6d28894-57e5-4e45-8102-ec2ee602a259"
+                        },
+                        {
+                            "label": "لون مخصص",
+                            "value": "custom",
+                            "key": "ad54cb9d-d9d2-49e2-a596-0681840fdcd8"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-eyedropper",
+                    "label": "لون اسم المنتج — الكود",
+                    "description": "اكتب كود اللون بصيغة hex، مثال: #5ee36a",
+                    "id": "title_color_custom",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "placeholder": "#5ee36a",
+                    "minLength": 0,
+                    "maxLength": 9,
+                    "conditions": [
+                        {
+                            "id": "title_color",
+                            "operation": "=",
+                            "value": "custom"
                         }
                     ]
                 }
