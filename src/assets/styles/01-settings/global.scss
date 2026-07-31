@@ -29,12 +29,29 @@ $main-text-color: var(--main-text-color);
   /* accent — --color-primary is what Salla's design panel writes, so the
      merchant keeps real control; brand green is only the fallback. */
   --st-accent: var(--color-primary, #5ee36a);
+  --st-accent-ink: #06130a;
+
+  /* Brand-green literals first. Every one is overridden just below by a value
+     derived from --st-accent; a browser without color-mix keeps these, and one
+     with it follows the merchant's colour instead. Without the derivation the
+     theme mixes two accents on any store whose primary is not green — red
+     figures beside green underlines. */
   --st-accent-hi: #8af59a;
   --st-accent-lo: #37c24c;
   --st-accent-soft: rgba(94, 227, 106, 0.12);
   --st-accent-line: rgba(94, 227, 106, 0.38);
-  --st-accent-ink: #06130a;
   --st-accent-grad: linear-gradient(180deg, #b6f8c0 0%, #5ee36a 48%, #37c24c 100%);
+
+  --st-accent-hi: color-mix(in srgb, var(--st-accent) 62%, white);
+  --st-accent-lo: color-mix(in srgb, var(--st-accent) 78%, black);
+  --st-accent-soft: color-mix(in srgb, var(--st-accent) 12%, transparent);
+  --st-accent-line: color-mix(in srgb, var(--st-accent) 38%, transparent);
+  --st-accent-grad: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--st-accent) 55%, white) 0%,
+    var(--st-accent) 48%,
+    color-mix(in srgb, var(--st-accent) 78%, black) 100%
+  );
 
   /* shape and motion */
   --st-radius: 20px;

@@ -577,7 +577,7 @@
                 "en": "STM · Animated cover wall hero",
                 "ar": "STM · بنر متحرك بجدار أغلفة"
             },
-            "icon": "sicon-game-controller-alt",
+            "icon": "sicon-inbox-full",
             "path": "home.steamory-hero",
             "is_default": true,
             "fields": [
@@ -882,7 +882,7 @@
                     "maxLength": 6,
                     "value": [
                         {
-                            "items.icon": "sicon-game-controller-alt",
+                            "items.icon": "sicon-inbox-full",
                             "items.value": "+1000",
                             "items.label": "لعبة في المكتبة"
                         },
@@ -1941,7 +1941,7 @@
                             "items.text": "نراسلك على واتساب مباشرة بعد الطلب لتأكيد تفاصيل التفعيل."
                         },
                         {
-                            "items.icon": "sicon-game-controller-alt",
+                            "items.icon": "sicon-inbox-full",
                             "items.title": "ابدأ اللعب",
                             "items.text": "نفعّل المكتبة على حسابك وتصير جاهزة للتحميل واللعب فوراً."
                         }
@@ -2729,7 +2729,7 @@
                     "icon": "sicon-shapes",
                     "label": "الأيقونة",
                     "id": "icon",
-                    "value": "sicon-game-controller-alt",
+                    "value": "sicon-inbox-full",
                     "required": false,
                     "format": "icon",
                     "class": "form--inline",
@@ -4104,7 +4104,7 @@
                             "links.url__type": "offers_link"
                         },
                         {
-                            "links.icon": "sicon-game-controller-alt",
+                            "links.icon": "sicon-inbox-full",
                             "links.title": "منتج رقمي",
                             "links.url__type": "offers_link"
                         },
