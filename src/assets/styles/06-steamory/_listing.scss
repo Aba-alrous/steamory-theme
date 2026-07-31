@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — category / product listing, filters, and the thank-you page
+   These pages are built almost entirely from Salla's live web components,
+   so the work here is on the `s-*` classes they emit in light DOM.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── breadcrumb ─────────────────────────────────────────────────────────── */
+
+.breadcrumbs,
+salla-breadcrumb {
+  color: var(--st-muted-2);
+  font-size: 0.8125rem;
+
+  a {
+    color: var(--st-muted);
+
+    &:hover {
+      color: var(--st-accent);
+    }
+  }
+}
+
+/* ── filters sidebar ────────────────────────────────────────────────────── */
+
+.s-filters-widget-container {
+  background-color: var(--st-bg-raise);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius-sm);
+}
+
+.s-filters-widget-title,
+.s-filters-widget-header {
+  color: var(--st-text);
+  font-family: var(--st-font-display);
+  font-weight: 700;
+}
+
+.s-filters-widget-active-arrow {
+  color: var(--st-accent);
+}
+
+.s-filters-widget-search-input {
+  background-color: var(--st-surface);
+  border-color: var(--st-line);
+  color: var(--st-text);
+
+  &::placeholder {
+    color: var(--st-muted-2);
+  }
+}
+
+.s-filters-checkbox {
+  border-color: var(--st-line-strong);
+  background-color: var(--st-surface-2);
+
+  &:checked {
+    background-color: var(--st-accent);
+    border-color: var(--st-accent);
+  }
+}
+
+.s-filters-radio {
+  /* answers `@apply !bg-white` in the Salla design-system layer */
+  background-color: var(--st-surface-2) !important;
+  border-color: var(--st-line-strong);
+}
+
+.s-filters-label,
+.s-filters-widget-container label {
+  color: var(--st-muted);
+}
+
+/* ── price range ────────────────────────────────────────────────────────── */
+
+.s-price-range-bar {
+  background-color: var(--st-surface-3);
+}
+
+.s-price-range-bar-selected,
+.s-price-range-progress {
+  background-color: var(--st-accent);
+}
+
+.s-price-range-number-input {
+  background-color: var(--st-surface);
+  border-color: var(--st-line);
+  color: var(--st-text);
+
+  &:focus {
+    border-color: var(--st-accent-line);
+  }
+}
+
+/* ── sorting and the toolbar above the grid ─────────────────────────────── */
+
+.filters-trigger,
+.s-sort-trigger {
+  border: 1px solid var(--st-line-strong);
+  border-radius: 999px;
+  color: var(--st-text);
+  background-color: rgba(255, 255, 255, 0.02);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+    color: var(--st-accent-hi);
+  }
+}
+
+/* ── empty state ────────────────────────────────────────────────────────── */
+
+.s-products-list-placeholder {
+  color: var(--st-muted);
+
+  span {
+    background-color: var(--st-surface);
+    color: var(--st-muted-2);
+  }
+}
+
+.s-search-no-results .s-search-input {
+  border-color: var(--st-line);
+  background-color: var(--st-surface);
+  color: var(--st-text);
+}
+
+/* ── pagination ─────────────────────────────────────────────────────────── */
+
+.s-pagination-item,
+.s-products-list-pagination a {
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius-sm);
+  color: var(--st-muted);
+  background-color: var(--st-surface);
+
+  &:hover {
+    border-color: var(--st-accent-line);
+    color: var(--st-accent-hi);
+  }
+
+  &.is-active,
+  &[aria-current='page'] {
+    background: var(--st-accent-grad);
+    border-color: transparent;
+    color: var(--st-accent-ink);
+    font-weight: 700;
+  }
+}
+
+/* ── thank-you page ─────────────────────────────────────────────────────────
+   Raed's `.thankyou-block` is a white card with green-100 confirmation
+   circles. Both are re-derived here: the card sits on the dark surface, and
+   the success mark uses the brand accent rather than Tailwind's green ramp,
+   which reads as a different green next to it. */
+
+.thankyou-block {
+  background-color: var(--st-bg-raise);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius);
+  color: var(--st-text);
+
+  &:hover {
+    box-shadow: var(--st-shadow-card);
+  }
+
+  &.sent {
+    color: var(--st-accent);
+
+    &::before {
+      background-color: var(--st-accent-soft);
+      color: var(--st-accent);
+      border: 1px solid var(--st-accent-line);
+    }
+  }
+}
+
+.thanks-item {
+  color: var(--st-muted);
+
+  strong,
+  b {
+    color: var(--st-text);
+  }
+}
+
+/* Order summary and status blocks Salla renders on the same page. */
+.s-order-summary,
+.s-order-details,
+.s-thankyou-summary {
+  background-color: var(--st-surface);
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius-sm);
+  color: var(--st-text);
+}

@@ -102,6 +102,8 @@
  * Header & Footer......Shared page frame, glass sticky nav, dark mobile menu.
  * Product Card.........The store's main unit of persuasion.
  * Product Page.........Product shell, tabs, options, sticky bar and cart.
+ * Listing..............Category grid, filters sidebar, sorting, pagination
+ *                      and the thank-you page.
  * Home Hero............Tilted, self-scrolling wall of merchant cover art.
  * Home Sections........Trust bar, marquee, steps, value, FAQ, spotlight,
  *                      comparison table, testimonials rail, closing CTA.
@@ -121,6 +123,7 @@
 @import './06-steamory/header-footer';
 @import './06-steamory/product-card';
 @import './06-steamory/product-page';
+@import './06-steamory/listing';
 @import './06-steamory/home-hero';
 @import './06-steamory/home-sections';
 @import './06-steamory/home-products';

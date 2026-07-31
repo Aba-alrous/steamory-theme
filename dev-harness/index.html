@@ -427,6 +427,41 @@
   </script>
 
   <div class="container py-8">
+    <div class="h-label">category listing: filters, sorting, pagination</div>
+    <div class="flex gap-6 items-start mb-6">
+      <div class="s-filters-widget-container w-72 flex-none">
+        <p class="s-filters-widget-title">التصنيفات</p>
+        <input class="s-filters-widget-search-input" placeholder="ابحث عن تصنيف">
+        <label class="flex items-center gap-2 mt-3">
+          <input type="checkbox" class="s-filters-checkbox" checked><span class="s-filters-label">الباقات</span>
+        </label>
+        <label class="flex items-center gap-2 mt-2">
+          <input type="radio" class="s-filters-radio"><span class="s-filters-label">حسابات جاهزة</span>
+        </label>
+        <div class="s-price-range-bar mt-4" style="height:6px;position:relative"></div>
+        <input class="s-price-range-number-input mt-3" value="149">
+      </div>
+      <div class="flex-1">
+        <div class="breadcrumbs mb-3"><a href="#">الرئيسية</a> / <a href="#">الباقات</a> / بكج الأسطورة</div>
+        <button class="filters-trigger px-4 py-2 mb-4">تصفية النتائج</button>
+        <div class="s-products-list-placeholder text-center py-8">
+          <span class="inline-flex">🔍</span>
+          <p>لا توجد نتائج مطابقة</p>
+        </div>
+        <div class="flex gap-2 justify-center">
+          <a href="#" class="s-pagination-item px-3 py-2" aria-current="page">1</a>
+          <a href="#" class="s-pagination-item px-3 py-2">2</a>
+          <a href="#" class="s-pagination-item px-3 py-2">3</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-label">thank-you page</div>
+    <div class="thankyou-block sent mb-4 p-8">
+      <p>تم استلام طلبك بنجاح</p>
+    </div>
+    <p class="thanks-item mb-6">رقم الطلب: <strong>#48210</strong></p>
+
     <div class="h-label">product page + cart surfaces</div>
     <div class="product-entry p-5 mb-4">
       <div class="product-details">
