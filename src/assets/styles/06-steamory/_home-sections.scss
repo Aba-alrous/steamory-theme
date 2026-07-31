@@ -121,15 +121,10 @@
   padding-bottom: clamp(2rem, 4vw, 3.5rem);
   overflow: hidden;
 
-  /* Speed presets, applied to the track below. */
-  --st-marquee-duration: 58s;
-
-  &--slow {
-    --st-marquee-duration: 86s;
-  }
-  &--fast {
-    --st-marquee-duration: 38s;
-  }
+  /* Each strip sets its own --st-marquee-duration inline, worked out from its
+     tile count so the perceived speed stays the same however many covers were
+     uploaded. This is only the fallback. */
+  --st-marquee-duration: 30s;
 }
 
 .st-marquee__row {
@@ -161,7 +156,9 @@
   animation: st-marquee-slide var(--st-marquee-duration) linear infinite;
 }
 
-.st-marquee__row--2 .st-marquee__track {
+/* Direction is chosen per strip in the design panel. The keyframes always
+   travel one way; reversing the animation is what sends a strip the other. */
+.st-marquee__row--reverse .st-marquee__track {
   animation-direction: reverse;
 }
 
@@ -637,18 +634,86 @@
   display: flex;
   gap: 1rem;
   width: max-content;
+}
+
+/* ── display mode: auto-scrolling rail ──────────────────────────────────── */
+
+.st-testi--auto .st-testi__track {
   animation: st-marquee-slide 70s linear infinite;
 }
 
-.st-testi__rail:hover .st-testi__track {
+.st-testi--auto .st-testi__rail:hover .st-testi__track {
   animation-play-state: paused;
 }
 
+/* ── display mode: dragged by hand ──────────────────────────────────────────
+   No animation; the rail scrolls, snaps, and steamory-drag.js adds the
+   click-and-pull gesture a mouse user expects when there are no arrows. */
+
+.st-testi--drag .st-testi__rail {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  cursor: grab;
+  padding-inline: max(1rem, calc((100vw - var(--container, 1280px)) / 2));
+
+  /* The scrollbar under a full-bleed rail is more noise than help. */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+    scroll-snap-type: none;
+  }
+}
+
+.st-testi--drag .st-testi__card {
+  scroll-snap-align: start;
+}
+
+/* ── display mode: static grid ──────────────────────────────────────────── */
+
+.st-testi__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .st-testi--cols-2 .st-testi__grid,
+  .st-testi--cols-3 .st-testi__grid,
+  .st-testi--cols-4 .st-testi__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .st-testi--cols-3 .st-testi__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .st-testi--cols-4 .st-testi__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* In grid mode the cards are direct children of the grid, so the wrapper that
+   the rail modes need has to stop being a box of its own. */
+.st-testi__grid > .contents {
+  display: contents;
+}
+
+.st-testi--grid .st-testi__card {
+  width: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .st-testi__track {
+  .st-testi--auto .st-testi__track {
     animation: none;
   }
-  .st-testi__rail {
+  .st-testi--auto .st-testi__rail {
     overflow-x: auto;
   }
 }

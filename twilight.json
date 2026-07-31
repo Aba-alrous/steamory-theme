@@ -1129,7 +1129,7 @@
                     "type": "collection",
                     "format": "collection",
                     "label": "الأغلفة",
-                    "description": "الصور تتوزع على الصفوف تلقائياً. يُنصح بـ 8 صور أو أكثر.",
+                    "description": "الصور تملأ الشريط تلقائياً بالتكرار إذا كان عددها قليلاً. حدّد لكل صورة شريطها.",
                     "item_label": "غلاف",
                     "icon": "sicon-list-add",
                     "required": false,
@@ -1151,6 +1151,17 @@
                                 "width": 600,
                                 "height": 900
                             }
+                        },
+                        {
+                            "type": "boolean",
+                            "icon": "sicon-toggle-off",
+                            "label": "ضع هذه الصورة في الشريط الثاني",
+                            "description": "يظهر فقط عند اختيار شريطين",
+                            "id": "rows.second_row",
+                            "format": "switch",
+                            "required": false,
+                            "value": false,
+                            "selected": false
                         }
                     ]
                 },
@@ -1159,7 +1170,7 @@
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "عدد الصفوف",
-                    "description": "الصفّان يتحركان في اتجاهين متعاكسين. يحتاج 4 صور فأكثر.",
+                    "description": "عند اختيار شريطين، حدّد لكل صورة شريطها من قائمة الصور أعلاه.",
                     "labelHTML": null,
                     "icon": "sicon-list",
                     "selected": [
@@ -1189,7 +1200,7 @@
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "سرعة الحركة",
-                    "description": null,
+                    "description": "السرعة ثابتة مهما زاد عدد الصور — الشريط الطويل لم يعد أبطأ.",
                     "labelHTML": null,
                     "icon": "sicon-list",
                     "selected": [
@@ -1218,6 +1229,73 @@
                     ],
                     "source": "Manual",
                     "required": true
+                },
+                {
+                    "id": "direction_1",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اتجاه الشريط الأول",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "من اليمين إلى اليسار",
+                            "value": "rtl",
+                            "key": "1cafe930-3892-48d3-b54f-47b4d6dc8630"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "من اليمين إلى اليسار",
+                            "value": "rtl",
+                            "key": "1cafe930-3892-48d3-b54f-47b4d6dc8630"
+                        },
+                        {
+                            "label": "من اليسار إلى اليمين",
+                            "value": "ltr",
+                            "key": "d53c6adf-cb7f-4fc6-93b1-1161e3170630"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "direction_2",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اتجاه الشريط الثاني",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "من اليسار إلى اليمين",
+                            "value": "ltr",
+                            "key": "a339d7b0-35a8-4ccc-a4e4-79247481880d"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "من اليمين إلى اليسار",
+                            "value": "rtl",
+                            "key": "f804afd7-3b13-4a32-b2e2-e7bbd4f61dac"
+                        },
+                        {
+                            "label": "من اليسار إلى اليمين",
+                            "value": "ltr",
+                            "key": "a339d7b0-35a8-4ccc-a4e4-79247481880d"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true,
+                    "conditions": [
+                        {
+                            "id": "rows_count",
+                            "operation": "=",
+                            "value": "2"
+                        }
+                    ]
                 }
             ]
         },
@@ -2166,6 +2244,83 @@
                             "placeholder": null,
                             "minLength": 0,
                             "maxLength": 300
+                        }
+                    ]
+                },
+                {
+                    "id": "display",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "طريقة العرض",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "شريط متحرك تلقائياً",
+                            "value": "auto",
+                            "key": "2a867cf1-923b-4f32-80af-39f3c4b5ed62"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "شريط متحرك تلقائياً",
+                            "value": "auto",
+                            "key": "2a867cf1-923b-4f32-80af-39f3c4b5ed62"
+                        },
+                        {
+                            "label": "شريط أحرّكه بالماوس",
+                            "value": "drag",
+                            "key": "8e5380fd-8553-4c16-a14f-146f2f89fd5e"
+                        },
+                        {
+                            "label": "شبكة ثابتة (مربعات)",
+                            "value": "grid",
+                            "key": "bf3e4356-f649-460b-ace7-2c9199693b9d"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "columns",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عدد الأعمدة في الشبكة",
+                    "description": "يُستخدم مع الشبكة الثابتة فقط",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "ثلاثة (يُنصح به)",
+                            "value": "3",
+                            "key": "10d6973c-344e-4a97-9eab-87851b14abdc"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "عمودان",
+                            "value": "2",
+                            "key": "32bc9049-937c-4211-80fb-4cb6fe6d4436"
+                        },
+                        {
+                            "label": "ثلاثة (يُنصح به)",
+                            "value": "3",
+                            "key": "10d6973c-344e-4a97-9eab-87851b14abdc"
+                        },
+                        {
+                            "label": "أربعة",
+                            "value": "4",
+                            "key": "8756a371-93a8-4b88-8f7a-3030ea4e7aa9"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true,
+                    "conditions": [
+                        {
+                            "id": "display",
+                            "operation": "=",
+                            "value": "grid"
                         }
                     ]
                 }
@@ -3519,6 +3674,195 @@
                             "value": "custom"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "key": "1f249f44-c1b6-4cea-96bf-82d8cc7861c6",
+            "title": {
+                "ar": "STM · شركاؤنا (شريط متحرك)",
+                "en": "STM · Partners strip"
+            },
+            "icon": "sicon-users",
+            "path": "home.steamory-partners",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "partners-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>شريط يتحرك تلقائياً. أضف اسم الشريك وشعاره وخلاص. لو كان العدد قليلاً تُكرَّر العناصر تلقائياً حتى يمتلئ الشريط.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "شركاؤنا",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "نص توضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الشركاء",
+                    "description": null,
+                    "item_label": "شريك",
+                    "icon": "sicon-list-add",
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 40,
+                    "value": [],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "label": "الشعار",
+                            "id": "items.logo",
+                            "value": null,
+                            "format": "image",
+                            "required": false,
+                            "placeholder": null,
+                            "description": "* يُفضّل PNG شفاف بارتفاع 80 بكسل",
+                            "settings": {
+                                "width": 240,
+                                "height": 80
+                            }
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "اسم الشريك",
+                            "multilanguage": true,
+                            "id": "items.name",
+                            "value": null,
+                            "required": false,
+                            "format": "text",
+                            "description": null,
+                            "placeholder": null,
+                            "minLength": 0,
+                            "maxLength": 60
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط (اختياري)",
+                            "id": "items.url",
+                            "value": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "direction",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اتجاه الحركة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "من اليمين إلى اليسار",
+                            "value": "rtl",
+                            "key": "c602474e-43ba-4bb0-aef1-2b89729c1800"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "من اليمين إلى اليسار",
+                            "value": "rtl",
+                            "key": "c602474e-43ba-4bb0-aef1-2b89729c1800"
+                        },
+                        {
+                            "label": "من اليسار إلى اليمين",
+                            "value": "ltr",
+                            "key": "c2e41e59-4966-4d85-a756-b830c0d98a0a"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "speed",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "السرعة",
+                    "description": "ثابتة مهما زاد عدد الشركاء",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "عادية (يُنصح بها)",
+                            "value": "normal",
+                            "key": "022d3365-ea3e-4a0e-8f8c-03ab6d86fdf6"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "بطيئة",
+                            "value": "slow",
+                            "key": "345e954a-09d1-4e4d-b260-fd214aa0b252"
+                        },
+                        {
+                            "label": "عادية (يُنصح بها)",
+                            "value": "normal",
+                            "key": "022d3365-ea3e-4a0e-8f8c-03ab6d86fdf6"
+                        },
+                        {
+                            "label": "سريعة",
+                            "value": "fast",
+                            "key": "258e4f30-0cfe-401b-97b9-5c0318a69a97"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "عرض الشعارات بالأبيض والأسود حتى مرور المؤشر",
+                    "description": "يمنع تضارب ألوان الشعارات مع هوية المتجر",
+                    "id": "grayscale",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
                 }
             ]
         },

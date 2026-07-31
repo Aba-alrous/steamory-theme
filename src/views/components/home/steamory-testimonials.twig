@@ -15,11 +15,13 @@
 {% set summary_value = component.summary_value %}
 {% set summary_label = component.summary_label %}
 {% set items = component.items %}
+{% set display = component.display|default('auto') %}
+{% set columns = component.columns|default('3') %}
 
 {% set review_items = items|default([])|filter((item) => item.text or item.name) %}
 {% if review_items is not empty %}
 <section data-testid="store-home-steamory-testimonials"
-         class="s-block st-section st-testi"
+         class="s-block st-section st-testi st-testi--{{ display }} st-testi--cols-{{ columns }}"
          id="steamory-testimonials-{{ position }}">
 
   <div class="container">
@@ -34,11 +36,17 @@
     </div>
   </div>
 
-  {# Full-bleed rail: the cards run past the container edge so the row reads as
-     continuous motion rather than a boxed carousel. Pauses on hover. #}
-  <div class="st-testi__rail" data-count="{{ review_items|length }}">
-    <div class="st-testi__track">
-      {% for pass in 1..2 %}
+  {# Three layouts share one card. `auto` is a full-bleed self-scrolling rail;
+     `drag` is the same rail but scrolled by hand; `grid` drops the rail and
+     lays the cards out in a static block. Only `auto` needs the second pass
+     of duplicated cards that closes the animation loop. #}
+  {% set is_grid = display == 'grid' %}
+  {% set passes = display == 'auto' ? 2 : 1 %}
+
+  <div class="{{ is_grid ? 'container st-testi__grid' : 'st-testi__rail' }}"
+       {% if display == 'drag' %}data-st-drag{% endif %}>
+    <div class="{{ is_grid ? 'contents' : 'st-testi__track' }}">
+      {% for pass in 1..passes %}
         {% for item in review_items %}
           <figure class="st-testi__card" {{ pass == 2 ? 'aria-hidden="true"' : '' }}>
             <div class="st-testi__stars" aria-label="{{ item.stars|default(5) }} من 5">

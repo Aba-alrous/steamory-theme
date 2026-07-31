@@ -1,31 +1,38 @@
 {#
-| Variable         | Type   | Description                                             |
-|------------------|--------|---------------------------------------------------------|
-| title            | string | Optional section heading                                |
-| rows[]           | array  | Cover art, split across the rows automatically          |
-| rows[].image     | string | Cover artwork                                           |
-| rows_count       | string | How many rows to lay the covers out on: 1 or 2          |
-| speed            | string | slow | normal | fast                                     |
-| position         | int    | Sorting number, starts at zero                          |
+| Variable            | Type   | Description                                          |
+|---------------------|--------|------------------------------------------------------|
+| title               | string | Optional section heading                             |
+| rows[]              | array  | The cover art                                        |
+| rows[].image        | string | Cover artwork                                        |
+| rows[].second_row   | bool   | Put this cover on the second strip instead           |
+| rows_count          | string | 1 or 2 strips                                        |
+| direction_1         | string | rtl | ltr — travel direction of the first strip     |
+| direction_2         | string | rtl | ltr — travel direction of the second strip    |
+| speed               | string | slow | normal | fast                                  |
+| position            | int    | Sorting number, starts at zero                       |
 #}
 {# twilight.json fields arrive on `component`. #}
 {% set title = component.title %}
 {% set rows = component.rows %}
 {% set rows_count = component.rows_count %}
-{% set speed = component.speed %}
+{% set direction_1 = component.direction_1|default('rtl') %}
+{% set direction_2 = component.direction_2|default('ltr') %}
+{% set speed = component.speed|default('normal') %}
 
-{% set covers = rows|default([])|filter((item) => item.image)|map((item) => item.image) %}
+{% set all_covers = rows|default([])|filter((item) => item.image) %}
 
-{# Skip the section entirely until at least one cover has been uploaded,
-   otherwise it renders as vertical padding and nothing else. #}
-{% if covers is not empty %}
+{% if all_covers is not empty %}
 
-{# Two rows unless the merchant asks for one — and never two when there are so
-   few covers that the second row would look sparse. #}
-{% set wants_two = rows_count != '1' and covers|length > 3 %}
+{% set two_strips = rows_count != '1' %}
+
+{# Seconds each tile should take to cross the strip. The track length changes
+   with the number of covers, so a fixed duration made a long strip crawl —
+   pacing per tile is what keeps "fast" actually fast at any count. #}
+{% set pace = { 'slow': 2.4, 'normal': 1.3, 'fast': 0.55 } %}
+{% set per_tile = pace[speed]|default(1.3) %}
 
 <section data-testid="store-home-steamory-marquee"
-         class="s-block st-marquee st-marquee--{{ speed|default('normal') }}"
+         class="s-block st-marquee"
          id="steamory-marquee-{{ position }}">
 
   {% if title %}
@@ -34,28 +41,44 @@
     </div>
   {% endif %}
 
-  {% for row_number in (wants_two ? [1, 2] : [1]) %}
-    {# Alternating covers rather than a first-half/second-half split, so both
-       rows stay visually mixed however many images were uploaded. #}
-    {% set row_covers = wants_two
-      ? covers|filter((cover, index) => index % 2 == (row_number - 1))
-      : covers %}
+  {% for strip in (two_strips ? [1, 2] : [1]) %}
 
-    {% if row_covers is not empty %}
-      <div class="st-marquee__row st-marquee__row--{{ row_number }}" aria-hidden="true">
-        {# Rendered twice: the track shifts by 50%, so the second pass closes
-           the loop with no visible jump. #}
+    {% if two_strips %}
+      {# Covers are assigned per image from the panel; anything left unassigned
+         falls to the first strip. #}
+      {% set strip_covers = all_covers|filter((item) =>
+        (strip == 2) == (item.second_row ? true : false)) %}
+    {% else %}
+      {% set strip_covers = all_covers %}
+    {% endif %}
+
+    {% if strip_covers is not empty %}
+      {# With only a few covers the strip would be mostly empty space, so the
+         set is repeated enough times to fill it before the loop is built. #}
+      {% set repeat = (12 / strip_covers|length)|round(0, 'ceil') %}
+      {% set repeat = repeat < 1 ? 1 : repeat %}
+      {% set set_size = strip_covers|length * repeat %}
+      {% set direction = strip == 2 ? direction_2 : direction_1 %}
+
+      <div class="st-marquee__row st-marquee__row--{{ strip }} {{ direction == 'ltr' ? 'st-marquee__row--reverse' : '' }}"
+           aria-hidden="true"
+           style="--st-marquee-duration: {{ (set_size * per_tile)|round(1) }}s;">
+        {# The set is rendered twice on top of the repeats: the track shifts by
+           50%, so the second half is what closes the loop with no jump. #}
         <div class="st-marquee__track">
           {% for pass in 1..2 %}
-            {% for cover in row_covers %}
-              <div class="st-marquee__tile">
-                <img src="{{ cover }}" alt="" loading="lazy" decoding="async">
-              </div>
+            {% for copy in 1..repeat %}
+              {% for item in strip_covers %}
+                <div class="st-marquee__tile">
+                  <img src="{{ item.image }}" alt="" loading="lazy" decoding="async">
+                </div>
+              {% endfor %}
             {% endfor %}
           {% endfor %}
         </div>
       </div>
     {% endif %}
+
   {% endfor %}
 </section>
 {% endif %}

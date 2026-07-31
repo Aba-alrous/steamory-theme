@@ -60,6 +60,8 @@
 
     <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
     <script defer src="{{ 'main-menu.js'|asset }}"></script>
+    {# Drag-to-scroll for STEAMORY rails set to the draggable display mode. #}
+    <script defer src="{{ 'steamory-drag.js'|asset }}"></script>
     {% if theme.settings.get('enable_add_product_toast', true) %}
         <script defer src="{{ 'add-product-toast.js'|asset }}"></script>
     {% endif %}

@@ -1,0 +1,72 @@
+{#
+| Variable         | Type   | Description                                          |
+|------------------|--------|------------------------------------------------------|
+| title            | string | Section heading                                      |
+| description      | string | Supporting line                                      |
+| items[]          | array  | The partners                                         |
+| items[].logo     | string | Partner logo                                         |
+| items[].name     | string | Partner name, shown beside the logo                  |
+| items[].url      | string | Optional link                                        |
+| direction        | string | rtl | ltr — travel direction                          |
+| speed            | string | slow | normal | fast                                  |
+| grayscale        | bool   | Mute the logos until hovered                         |
+| position         | int    | Sorting number, starts at zero                       |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set description = component.description %}
+{% set items = component.items %}
+{% set direction = component.direction|default('rtl') %}
+{% set speed = component.speed|default('normal') %}
+{% set grayscale = component.grayscale %}
+
+{% set partners = items|default([])|filter((item) => item.logo or item.name) %}
+
+{% if partners is not empty %}
+  {# Same pacing approach as the cover strip: seconds per item rather than a
+     fixed duration, so the speed does not depend on how many partners exist. #}
+  {% set pace = { 'slow': 3.2, 'normal': 1.8, 'fast': 0.9 } %}
+  {% set per_item = pace[speed]|default(1.8) %}
+
+  {# Repeat the set so a short partner list still fills the strip. #}
+  {% set repeat = (8 / partners|length)|round(0, 'ceil') %}
+  {% set repeat = repeat < 1 ? 1 : repeat %}
+  {% set set_size = partners|length * repeat %}
+
+<section data-testid="store-home-steamory-partners"
+         class="s-block st-section st-partners {{ grayscale ? 'st-partners--muted' : '' }}"
+         id="steamory-partners-{{ position }}">
+
+  {% if title or description %}
+    <div class="container">
+      <div class="st-section__head">
+        <div>
+          {% if title %}<h2 class="st-section__title">{{ title }}</h2>{% endif %}
+          {% if description %}<p class="st-section__desc">{{ description }}</p>{% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="st-partners__rail {{ direction == 'ltr' ? 'st-partners__rail--reverse' : '' }}"
+       style="--st-marquee-duration: {{ (set_size * per_item)|round(1) }}s;">
+    <div class="st-partners__track">
+      {% for pass in 1..2 %}
+        {% for copy in 1..repeat %}
+          {% for partner in partners %}
+            {% set tag = partner.url ? 'a' : 'span' %}
+            <{{ tag }} class="st-partners__item"
+              {% if partner.url %}href="{{ partner.url }}" target="_blank" rel="noopener"{% endif %}
+              {{ pass == 2 ? 'aria-hidden="true" tabindex="-1"' : '' }}>
+              {% if partner.logo %}
+                <img src="{{ partner.logo }}" alt="{{ partner.name|default('') }}" loading="lazy">
+              {% endif %}
+              {% if partner.name %}<span class="st-partners__name">{{ partner.name }}</span>{% endif %}
+            </{{ tag }}>
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

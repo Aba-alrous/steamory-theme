@@ -175,6 +175,94 @@
   opacity: 1;
 }
 
+/* ── partners strip ─────────────────────────────────────────────────────────
+   A logo strip that moves on its own. Each strip sets its own duration inline
+   from its item count, so the pace does not change with how many partners
+   were added. */
+
+.st-partners {
+  overflow: hidden;
+}
+
+.st-partners__rail {
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+
+  &:hover .st-partners__track {
+    animation-play-state: paused;
+  }
+}
+
+.st-partners__track {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  width: max-content;
+  animation: st-marquee-slide var(--st-marquee-duration, 30s) linear infinite;
+}
+
+.st-partners__rail--reverse .st-partners__track {
+  animation-direction: reverse;
+}
+
+.st-partners__item {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid var(--st-line);
+  border-radius: var(--st-radius-sm);
+  background-color: var(--st-surface);
+  transition: border-color 0.3s var(--st-ease);
+
+  img {
+    height: 2rem;
+    width: auto;
+    max-width: 7rem;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+a.st-partners__item:hover {
+  border-color: var(--st-accent-line);
+}
+
+.st-partners__name {
+  font-family: var(--st-font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--st-text);
+  white-space: nowrap;
+}
+
+.st-partners--muted .st-partners__item img {
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition: filter 0.35s var(--st-ease), opacity 0.35s var(--st-ease);
+}
+
+.st-partners--muted .st-partners__item:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .st-partners__track {
+    animation: none;
+  }
+  .st-partners__rail {
+    overflow-x: auto;
+  }
+}
+
 /* ── category cards ─────────────────────────────────────────────────────── */
 
 .st-cats__grid {

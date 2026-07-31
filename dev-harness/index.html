@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>STEAMORY theme — visual harness</title>
   <link rel="stylesheet" href="/app.css">
+  <!-- The same bundle master.twig loads, so the drag rails can be tested here. -->
+  <script defer src="/steamory-drag.js"></script>
 
   <!-- Faithful copy of what master.twig injects after app.css. Salla writes
        the merchant's panel font and colour here, so the harness has to include
@@ -278,10 +280,32 @@
     </div>
   </section>
 
-  <section class="s-block st-marquee st-marquee--normal">
-    <div class="st-marquee__row st-marquee__row--1" aria-hidden="true"><div class="st-marquee__track" id="mq1"></div></div>
-    <div class="st-marquee__row st-marquee__row--2" aria-hidden="true"><div class="st-marquee__track" id="mq2"></div></div>
+  <section class="s-block st-marquee">
+    <div class="st-marquee__row st-marquee__row--1" aria-hidden="true" style="--st-marquee-duration: 11s;">
+      <div class="st-marquee__track" id="mq1"></div>
+    </div>
+    <div class="st-marquee__row st-marquee__row--2 st-marquee__row--reverse" aria-hidden="true" style="--st-marquee-duration: 11s;">
+      <div class="st-marquee__track" id="mq2"></div>
+    </div>
   </section>
+
+  <!-- Mirrors home.steamory-partners -->
+  <section class="s-block st-section st-partners st-partners--muted" id="partnersTest">
+    <div class="container"><div class="st-section__head"><div><h2 class="st-section__title">شركاؤنا</h2></div></div></div>
+    <div class="st-partners__rail" style="--st-marquee-duration: 14.4s;">
+      <div class="st-partners__track" id="ptrack"></div>
+    </div>
+  </section>
+  <script>
+    const logo = n => "data:image/svg+xml;utf8," + encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 80'><rect width='240' height='80' fill='none'/><text x='120' y='52' fill='#eef4ee' font-size='30' text-anchor='middle' font-family='sans-serif'>LOGO ${n}</text></svg>`);
+    const pt = document.getElementById('ptrack');
+    for (let pass = 0; pass < 2; pass++)
+      for (let copy = 0; copy < 2; copy++)
+        for (let i = 1; i <= 4; i++)
+          pt.insertAdjacentHTML('beforeend',
+            `<a class="st-partners__item" href="#"><img src="${logo(i)}" alt=""><span class="st-partners__name">شريك ${i}</span></a>`);
+  </script>
 
   <section class="s-block st-section st-steps">
     <div class="container">
@@ -329,12 +353,13 @@
     </div>
   </section>
 
-  <section class="s-block st-section st-testi">
+  <section class="s-block st-section st-testi st-testi--auto st-testi--cols-3" id="testiTest">
     <div class="container">
       <div class="st-section__head"><h2 class="st-section__title">وش يقولون عنّا؟</h2>
         <div class="st-testi__summary"><strong>4.9</strong><span>من 98 تقييماً</span></div></div>
     </div>
-    <div class="st-testi__rail"><div class="st-testi__track" id="tr"></div></div>
+    <div class="st-testi__rail" id="testiRail"><div class="st-testi__track" id="tr"></div></div>
+    <div class="container st-testi__grid" id="testiGrid" hidden><div class="contents" id="trGrid"></div></div>
   </section>
 
   <section class="s-block st-cta st-cta--accent">
@@ -517,11 +542,14 @@
         for (let i = 0; i < 10; i++) el.insertAdjacentHTML('beforeend', tile(i + offset));
     }
     const reviews = [['أحمد', 'وصلني التفعيل بسرعة، تعامل محترم.'], ['نورة', 'أفضل سعر لقيته، وخدمة ممتازة.'], ['خالد', 'المكتبة ضخمة فعلاً، أنصح بها.']];
+    const card = ([name, text]) =>
+      `<figure class="st-testi__card"><div class="st-testi__stars">${'<i class="sicon-star2"></i>'.repeat(5)}</div>
+       <blockquote class="st-testi__text">${text}</blockquote><figcaption class="st-testi__name">${name}</figcaption></figure>`;
     const tr = document.getElementById('tr');
-    for (let pass = 0; pass < 2; pass++)
-      reviews.forEach(([name, text]) => tr.insertAdjacentHTML('beforeend',
-        `<figure class="st-testi__card"><div class="st-testi__stars">${'<i class="sicon-star2"></i>'.repeat(5)}</div>
-         <blockquote class="st-testi__text">${text}</blockquote><figcaption class="st-testi__name">${name}</figcaption></figure>`));
+    for (let pass = 0; pass < 2; pass++) reviews.forEach(r => tr.insertAdjacentHTML('beforeend', card(r)));
+    // grid mode renders a single pass, no duplicated cards
+    const trGrid = document.getElementById('trGrid');
+    reviews.forEach(r => trGrid.insertAdjacentHTML('beforeend', card(r)));
     // Default design-panel state, so the harness matches a fresh install.
     document.body.classList.add('st-brand-fonts', 'st-grain-normal', 'st-radius-round');
   </script>
