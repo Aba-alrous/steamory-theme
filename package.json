@@ -11,6 +11,7 @@
     "preinstall": "npx only-allow pnpm",
     "test": "echo \"Error: no test specified\" && exit 1",
     "check": "node scripts/check-fields.js",
+    "docs": "node scripts/build-docs.js",
     "production": "node scripts/check-fields.js && webpack --mode production",
     "prod": "webpack --mode production",
     "development": "webpack --mode development",

@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل استخدام ثيم ستيموري</title>
+<meta name="description" content="دليل التاجر لثيم ستيموري: شرح عناصر الصفحة الرئيسية وخيارات التصميم ومقاسات الصور.">
+<link rel="stylesheet" href="/fonts/fonts-local.css">
+<style>
+  :root{
+    --bg:#0a0e0b; --raise:#0e1410; --surface:#121a14; --surface-2:#16211a;
+    --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.17);
+    --text:#eef4ee; --muted:#a7b8ab; --muted-2:#7e937f;
+    --accent:#5ee36a; --accent-hi:#8af59a; --accent-soft:rgba(94,227,106,.12);
+    --accent-line:rgba(94,227,106,.38); --ink:#06130a;
+    --display:'Alexandria','IBM Plex Sans Arabic',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.9;font-size:16px}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  h1{font-family:var(--display);font-weight:900;font-size:clamp(1.8rem,5vw,3rem);margin:0 0 12px;line-height:1.2}
+  .lede{color:var(--muted);max-width:44rem;margin:0}
+  .badge{display:inline-block;padding:5px 14px;border:1px solid var(--accent-line);
+         background:var(--accent-soft);color:var(--accent-hi);border-radius:999px;
+         font-size:.8rem;margin-bottom:18px}
+  h2{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3vw,2rem);
+     margin:56px 0 6px;scroll-margin-top:20px}
+  h2::after{content:'';display:block;width:52px;height:3px;border-radius:99px;
+            background:linear-gradient(180deg,#b6f8c0,var(--accent),#37c24c);margin-top:12px}
+  h3{font-family:var(--display);font-weight:700;font-size:1.1rem;margin:0 0 8px}
+  .section-lede{color:var(--muted);margin:16px 0 28px;max-width:44rem}
+  .card{background:var(--raise);border:1px solid var(--line);border-radius:16px;
+        padding:22px;margin-bottom:16px}
+  .intro{color:var(--muted);margin:0 0 16px;font-size:.94rem}
+  .intro strong{color:var(--accent)}
+  .table-wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:34rem}
+  th,td{text-align:start;padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  thead th{border-top:0;color:var(--muted-2);font-size:.78rem;font-weight:600;
+           text-transform:uppercase;letter-spacing:.06em}
+  .f-name{font-weight:600;white-space:nowrap}
+  .f-kind{color:var(--muted-2);font-size:.86rem;white-space:nowrap}
+  .f-note{color:var(--muted);font-size:.9rem}
+  tr.sub .f-name{font-weight:400;color:var(--muted)}
+  .indent{display:inline-block;width:14px;border-top:1px solid var(--line-2);
+          margin-inline-end:8px;vertical-align:middle}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 8px;padding:0;list-style:none}
+  .toc a{display:inline-block;padding:6px 12px;border:1px solid var(--line);
+         border-radius:999px;color:var(--muted);text-decoration:none;font-size:.85rem}
+  .toc a:hover{border-color:var(--accent-line);color:var(--accent-hi)}
+  .tip{border-inline-start:3px solid var(--accent);background:var(--surface);
+       padding:14px 18px;border-radius:0 12px 12px 0;margin:18px 0;color:var(--muted)}
+  .tip strong{color:var(--text)}
+  footer{margin-top:72px;padding:28px 0 56px;border-top:1px solid var(--line);
+         color:var(--muted-2);font-size:.86rem}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="badge">دليل التاجر</span>
+  <h1>ثيم ستيموري</h1>
+  <p class="lede">ثيم داكن مصمّم لمتاجر الألعاب والمنتجات الرقمية. تبني صفحتك الرئيسية من عناصر جاهزة تضيفها وترتّبها وتعدّلها من لوحة تصميم متجرك، بدون أي كود.</p>
+</header>
+
+<h2 id="start">كيف تبدأ</h2>
+<p class="section-lede">من لوحة تحكم متجرك: <strong>المتجر وقنوات البيع ← تصميم الثيم ← تخصيص</strong>. ستجد لوحة جانبية فيها <strong>عناصر الصفحة</strong>، ومنها تضيف العناصر وترتّبها بالسحب.</p>
+
+<div class="tip">
+  <strong>تمييز عناصر الثيم:</strong> كل عنصر مطوّر خصيصاً لهذا الثيم يبدأ اسمه بـ <strong>STM ·</strong> وتجدها كلها مجتمعة في أعلى قائمة الإضافة.
+</div>
+
+<h2 id="design">خيارات التصميم</h2>
+<p class="section-lede">خيارات عامة تنطبق على المتجر كله، وتجدها في نفس لوحة التخصيص ضمن إعدادات الثيم.</p>
+<article class="card">
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+      <tbody>
+      <tr>
+        <td class="f-name">استخدام خطوط الثيم (Alexandria + IBM Plex Sans Arabic)</td>
+        <td class="f-kind">مفتاح تشغيل</td>
+        <td class="f-note">أطفئها إذا أردت استخدام الخط المختار من لوحة تصميم سلة بدلاً من خطوط الهوية</td>
+      </tr>
+      <tr>
+        <td class="f-name">حبيبات الصورة (Grain)</td>
+        <td class="f-kind">قائمة اختيار</td>
+        <td class="f-note">طبقة حبيبات خفيفة تكسر سطوع الخلفيات الداكنة الكبيرة</td>
+      </tr>
+      <tr>
+        <td class="f-name">انحناء الحواف</td>
+        <td class="f-kind">قائمة اختيار</td>
+        <td class="f-note">يطبّق على البطاقات والأقسام والأزرار</td>
+      </tr>
+      <tr>
+        <td class="f-name">تبديل خلفيات الأقسام بالتناوب</td>
+        <td class="f-kind">مفتاح تشغيل</td>
+        <td class="f-note">يعطي الصفحة إيقاعاً بصرياً بتغيير خلفية كل قسم ثانٍ</td>
+      </tr>
+      <tr>
+        <td class="f-name">ارتفاع البطاقات عند مرور المؤشر</td>
+        <td class="f-kind">مفتاح تشغيل</td>
+        <td class="f-note">—</td>
+      </tr>
+      <tr>
+        <td class="f-name">إظهار شريط العرض أعلى الصفحة</td>
+        <td class="f-kind">مفتاح تشغيل</td>
+        <td class="f-note">يظهر في كل الصفحات وليس الرئيسية فقط</td>
+      </tr>
+      <tr>
+        <td class="f-name">نص العرض</td>
+        <td class="f-kind">نص</td>
+        <td class="f-note">—</td>
+      </tr>
+      <tr>
+        <td class="f-name">نص الرابط</td>
+        <td class="f-kind">نص</td>
+        <td class="f-note">—</td>
+      </tr>
+      <tr>
+        <td class="f-name">رابط العرض</td>
+        <td class="f-kind">قائمة اختيار</td>
+        <td class="f-note">—</td>
+      </tr>
+      <tr>
+        <td class="f-name">تاريخ انتهاء العرض</td>
+        <td class="f-kind">تاريخ</td>
+        <td class="f-note">اتركه فارغاً لإخفاء العدّاد. ينتهي العد عند هذا التاريخ.</td>
+      </tr>
+      <tr>
+        <td class="f-name">لون الشريط</td>
+        <td class="f-kind">قائمة اختيار</td>
+        <td class="f-note">—</td>
+      </tr>
+      <tr>
+        <td class="f-name">إظهار زر واتساب عائم</td>
+        <td class="f-kind">مفتاح تشغيل</td>
+        <td class="f-note">—</td>
+      </tr>
+      <tr>
+        <td class="f-name">رقم واتساب</td>
+        <td class="f-kind">نص</td>
+        <td class="f-note">بالصيغة الدولية بدون + أو أصفار، مثال: 966550635847</td>
+      </tr>
+      <tr>
+        <td class="f-name">الرسالة الجاهزة</td>
+        <td class="f-kind">نص</td>
+        <td class="f-note">النص الذي يظهر للعميل مكتوباً مسبقاً عند فتح المحادثة</td>
+      </tr></tbody>
+    </table>
+  </div>
+</article>
+
+<div class="tip">
+  <strong>الألوان:</strong> اللون الأساسي الذي تختاره من لوحة تصميم سلة ينعكس تلقائياً على الأسعار والأيقونات والأزرار وكل التدرّجات في الثيم. بعض العناصر تتيح لك تجاوز هذا اللون داخل القسم نفسه.
+</div>
+
+<h2 id="components">عناصر الصفحة الرئيسية</h2>
+<p class="section-lede">19 عنصراً، كل واحد منها يُضاف ويُكرَّر ويُرتَّب كما تشاء.</p>
+<ul class="toc">
+  <li><a href="#home.steamory-hero">بنر متحرك بجدار أغلفة</a></li>
+  <li><a href="#home.steamory-trust">شريط الأرقام والثقة</a></li>
+  <li><a href="#home.steamory-marquee">شريط أغلفة متحرك</a></li>
+  <li><a href="#home.steamory-spotlight">منتج مميز بعرض كامل</a></li>
+  <li><a href="#home.steamory-products">شريط المنتجات</a></li>
+  <li><a href="#home.steamory-compare">جدول مقارنة الباقات</a></li>
+  <li><a href="#home.steamory-steps">خطوات الشراء</a></li>
+  <li><a href="#home.steamory-value">لماذا نحن / المميزات</a></li>
+  <li><a href="#home.steamory-testimonials">آراء العملاء (شريط متحرك)</a></li>
+  <li><a href="#home.steamory-faq">الأسئلة الشائعة</a></li>
+  <li><a href="#home.steamory-cta">شريط دعوة للشراء</a></li>
+  <li><a href="#home.steamory-divider">فاصل بين الأقسام</a></li>
+  <li><a href="#home.steamory-video-product">منتج بغلاف فيديو</a></li>
+  <li><a href="#home.steamory-platforms">بوابة اختيار المنصة</a></li>
+  <li><a href="#home.steamory-logos">شريط شعارات المنصات</a></li>
+  <li><a href="#home.steamory-categories">بطاقات التصنيفات</a></li>
+  <li><a href="#home.steamory-deal">صفقة الشهر</a></li>
+  <li><a href="#home.steamory-video">قسم فيديو</a></li>
+  <li><a href="#home.steamory-partners">شركاؤنا (شريط متحرك)</a></li>
+</ul>
+
+  <article class="card" id="home.steamory-hero">
+    <h3>STM · بنر متحرك بجدار أغلفة</h3>
+    <p class="intro">بنر بعرض الشاشة كاملة، خلفيته جدار مائل من أغلفة الألعاب يتحرك تلقائياً. <strong style='color:#5ee36a;'>أضف صور الألعاب يدوياً</strong> من قائمة الأغلفة أدناه — كل ما زادت الصور صار الجدار أغنى. المقاس المناسب لكل غلاف 600×900 بكسل (طولي).</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">نص علوي صغير</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">شارة صغيرة تظهر فوق العنوان الرئيسي</td>
+        </tr>
+        <tr>
+          <td class="f-name">العنوان الرئيسي</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">يظهر بخط عريض جداً مع تدرّج معدني</td>
+        </tr>
+        <tr>
+          <td class="f-name">النص التوضيحي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص الزر الرئيسي</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط الزر الرئيسي</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص الزر الثانوي</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط الزر الثانوي</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">أغلفة الألعاب</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">الصور التي يتكوّن منها الجدار المتحرك. يُنصح بـ 8 صور أو أكثر.</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>صورة الغلاف</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">* المقاس المناسب 600×900 بكسل (طولي) — المقاس: 600×900 بكسل</td>
+        </tr>
+        <tr>
+          <td class="f-name">ارتفاع البنر</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">قوة تعتيم الخلفية</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">زِدها إذا كانت الأغلفة فاتحة وتؤثر على وضوح النص</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-trust">
+    <h3>STM · شريط الأرقام والثقة</h3>
+    <p class="intro">شريط زجاجي بأرقام متجرك. <strong style="color:#5ee36a;">فعّل "الإزاحة للأعلى"</strong> إذا وضعته مباشرة تحت البنر ليتراكب معه.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العناصر</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">يُنصح بـ 3 أو 4 عناصر</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الأيقونة</td>
+          <td class="f-kind">أيقونة</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الرقم</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الوصف</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">إزاحة الشريط للأعلى ليتراكب مع القسم السابق</td>
+          <td class="f-kind">مفتاح تشغيل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون الأيقونات</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون الأيقونات — الكود</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">اكتب كود اللون بصيغة hex، مثال: #5ee36a</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون الأرقام</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون الأرقام — الكود</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">اكتب كود اللون بصيغة hex، مثال: #5ee36a</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-marquee">
+    <h3>STM · شريط أغلفة متحرك</h3>
+    <p class="intro">صفّان من أغلفة الألعاب يتحركان في اتجاهين متعاكسين ويتوقفان عند مرور المؤشر. <strong style="color:#5ee36a;">أضف الصور يدوياً</strong> وحدّد لكل صورة رقم صفّها.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان (اختياري)</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">الأغلفة</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">الصور تملأ الشريط تلقائياً بالتكرار إذا كان عددها قليلاً. حدّد لكل صورة شريطها.</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>صورة الغلاف</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">* المقاس المناسب 600×900 بكسل (طولي) — المقاس: 600×900 بكسل</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>ضع هذه الصورة في الشريط الثاني</td>
+          <td class="f-kind">مفتاح تشغيل</td>
+          <td class="f-note">يظهر فقط عند اختيار شريطين</td>
+        </tr>
+        <tr>
+          <td class="f-name">عدد الصفوف</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">عند اختيار شريطين، حدّد لكل صورة شريطها من قائمة الصور أعلاه.</td>
+        </tr>
+        <tr>
+          <td class="f-name">سرعة الحركة</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">السرعة ثابتة مهما زاد عدد الصور — الشريط الطويل لم يعد أبطأ.</td>
+        </tr>
+        <tr>
+          <td class="f-name">اتجاه الشريط الأول</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">اتجاه الشريط الثاني</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-spotlight">
+    <h3>STM · منتج مميز بعرض كامل</h3>
+    <p class="intro">بطاقة أفقية بعرض الصفحة لمنتج واحد، مع قائمة مزايا وزر إضافة للسلة. مناسبة لباقتك الرئيسية.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">المنتج</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">اختر منتجاً واحداً</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص علوي صغير</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">صورة بديلة (اختياري)</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">اتركها فارغة لاستخدام صورة المنتج نفسها — المقاس: 880×1100 بكسل</td>
+        </tr>
+        <tr>
+          <td class="f-name">المزايا</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">تظهر كقائمة بعلامات صح</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>نص الميزة</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون السعر والشارة</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">يطبَّق على السعر وعلى الشارة الصغيرة فوق الاسم</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون السعر والشارة — الكود</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">اكتب كود اللون بصيغة hex، مثال: #5ee36a</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون اسم المنتج</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">لون اسم المنتج — الكود</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">اكتب كود اللون بصيغة hex، مثال: #5ee36a</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-products">
+    <h3>STM · شريط المنتجات</h3>
+    <p class="intro">صف منتجات مرتب بعرض الصفحة. تتحكم في <strong style="color:#5ee36a;">عدد المنتجات في الصف</strong> و<strong style="color:#5ee36a;">حجم البطاقة</strong>، وتقدر تشغّل تأثير اللمعة عند مرور المؤشر أو تطفيه. على الجوال يظهر منتجان في الصف دائماً مهما كان الإعداد.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص توضيحي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">المنتجات</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">اختر المنتجات بالترتيب الذي تريد ظهورها به</td>
+        </tr>
+        <tr>
+          <td class="f-name">عدد المنتجات في الصف</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">على شاشة الكمبيوتر. الجوال يعرض منتجين دائماً.</td>
+        </tr>
+        <tr>
+          <td class="f-name">حجم البطاقة</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">يتحكم في نسبة صورة المنتج وحجم الخط</td>
+        </tr>
+        <tr>
+          <td class="f-name">تأثير اللمعة عند مرور المؤشر</td>
+          <td class="f-kind">مفتاح تشغيل</td>
+          <td class="f-note">لمعة تمر على صورة المنتج. تُعطَّل تلقائياً لمن يفضّل تقليل الحركة في نظامه.</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص رابط (عرض الكل)</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط (عرض الكل)</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-compare">
+    <h3>STM · جدول مقارنة الباقات</h3>
+    <p class="intro">جدول يقارن باقتين. <strong style="color:#5ee36a;">اختر منتجين بالترتيب</strong> — الأول يظهر في العمود الأول. الصور والأسعار تُسحب من المنتجين تلقائياً.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">المنتجان</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">اختر منتجين بالترتيب</td>
+        </tr>
+        <tr>
+          <td class="f-name">صفوف المقارنة</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>بند المقارنة</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>قيمة المنتج الأول</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>قيمة المنتج الثاني</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-steps">
+    <h3>STM · خطوات الشراء</h3>
+    <p class="intro">لوحات مرقّمة تلقائياً بأرقام كبيرة مفرّغة. الترتيب هو ترتيب العناصر أدناه.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">النص التوضيحي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">الخطوات</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الأيقونة</td>
+          <td class="f-kind">أيقونة</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>عنوان الخطوة</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>شرح الخطوة</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-value">
+    <h3>STM · لماذا نحن / المميزات</h3>
+    <p class="intro">بطاقات مزايا بأيقونات في إطار أخضر. مناسبة لقسم "لماذا نحن".</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">النص التوضيحي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">المزايا</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الأيقونة</td>
+          <td class="f-kind">أيقونة</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الشرح</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-testimonials">
+    <h3>STM · آراء العملاء (شريط متحرك)</h3>
+    <p class="intro">شريط آراء يتحرك تلقائياً ويتوقف عند مرور المؤشر، مع ملخّص تقييم بارز.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">التقييم البارز</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">وصف التقييم</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">الآراء</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>اسم العميل</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>عدد النجوم</td>
+          <td class="f-kind">رقم</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>نص الرأي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">طريقة العرض</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">عدد الأعمدة في الشبكة</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">يُستخدم مع الشبكة الثابتة فقط</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-faq">
+    <h3>STM · الأسئلة الشائعة</h3>
+    <p class="intro">أسئلة قابلة للفتح والإغلاق بدون جافاسكربت، تعمل بالكيبورد.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">الأسئلة</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>السؤال</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الجواب</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">عدد الأعمدة</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-cta">
+    <h3>STM · شريط دعوة للشراء</h3>
+    <p class="intro">شريط ختامي بخلفية خضراء بارزة أو داكنة هادئة. أفضل مكان له آخر الصفحة.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">النص التوضيحي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص الزر الرئيسي</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط الزر الرئيسي</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص الزر الثانوي</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط الزر الثانوي</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نمط الشريط</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-divider">
+    <h3>STM · فاصل بين الأقسام</h3>
+    <p class="intro">فاصل بصري يفصل قسماً عن قسم — مثلاً بين الباقات وبين الحسابات الأوكرانية. اختر النمط الذي يناسب المكان، وتحكّم في المسافة حوله.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">نمط الفاصل</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">النص في المنتصف</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">الأيقونة</td>
+          <td class="f-kind">أيقونة</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">المسافة حول الفاصل</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-video-product">
+    <h3>STM · منتج بغلاف فيديو</h3>
+    <p class="intro">بطاقة عريضة: بيانات المنتج على جهة، ومقطع فيديو يعمل تلقائياً بلا صوت على الجهة الأخرى. <strong style="color:#5ee36a;">ارفع الفيديو على أي استضافة وضع رابط ملف mp4 مباشر</strong>، أو استخدم رابط يوتيوب (يشتغل بالضغط لا تلقائياً).</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">المنتج</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">اختر منتجاً واحداً</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط ملف الفيديو (mp4)</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">رابط مباشر لملف mp4 أو webm. هذا الخيار وحده هو الذي يعمل تلقائياً بلا صوت.</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط يوتيوب (بديل)</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">يُستخدم فقط إذا تُرك حقل mp4 فارغاً. يوتيوب لا يسمح بالتشغيل التلقائي هنا.</td>
+        </tr>
+        <tr>
+          <td class="f-name">صورة الغلاف قبل التحميل</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">تظهر قبل أن يبدأ الفيديو. اتركها فارغة لاستخدام صورة المنتج. — المقاس: 1280×720 بكسل</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص علوي صغير</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">عنوان المعلومة</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">قيمة المعلومة</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">أيقونة المعلومة</td>
+          <td class="f-kind">أيقونة</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص زر التفاصيل</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">جهة الفيديو</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">في المتجر العربي: (بداية السطر) تعني يمين الشاشة</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-platforms">
+    <h3>STM · بوابة اختيار المنصة</h3>
+    <p class="intro">بطاقات كبيرة بصور توجّه العميل حسب منصته أو اهتمامه — Steam، PlayStation، Xbox، أو أي تقسيم تختاره.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص توضيحي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">البطاقات</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>صورة البطاقة</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">* المقاس المناسب 800×600 بكسل — المقاس: 800×600 بكسل</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>نص فرعي</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الرابط</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-logos">
+    <h3>STM · شريط شعارات المنصات</h3>
+    <p class="intro">صف شعارات يبني ثقة سريعة. يُفضّل صور PNG شفافة أو SVG.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">نص فوق الشعارات</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">الشعارات</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الشعار</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">* يُفضّل PNG شفاف بارتفاع 80 بكسل — المقاس: 240×80 بكسل</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>رابط (اختياري)</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">عرض الشعارات بالأبيض والأسود حتى مرور المؤشر</td>
+          <td class="f-kind">مفتاح تشغيل</td>
+          <td class="f-note">يمنع تضارب ألوان الشعارات مع هوية المتجر</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-categories">
+    <h3>STM · بطاقات التصنيفات</h3>
+    <p class="intro">شبكة تصنيفات بصور. تكتب العناوين والروابط يدوياً، فتقدر تجمع أي تصنيفات أو وسوم تحت اسم واحد.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">التصنيفات</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الصورة</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">* المقاس المناسب 640×480 بكسل — المقاس: 640×480 بكسل</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>اسم التصنيف</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>نص فرعي</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الرابط</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">عدد البطاقات في الصف</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">على شاشة الكمبيوتر. الجوال يعرض بطاقتين دائماً.</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-deal">
+    <h3>STM · صفقة الشهر</h3>
+    <p class="intro">منتج واحد بارز مع عدّاد تنازلي ينتهي في التاريخ الذي تحدده. العدّاد من مكوّنات سلة نفسها، فيدعم اللغة والتنسيق تلقائياً.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">المنتج</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">اختر منتجاً واحداً</td>
+        </tr>
+        <tr>
+          <td class="f-name">شارة علوية</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص تشويقي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">تاريخ انتهاء العرض</td>
+          <td class="f-kind">تاريخ</td>
+          <td class="f-note">يختفي العدّاد تلقائياً بعد هذا التاريخ</td>
+        </tr>
+        <tr>
+          <td class="f-name">صورة خلفية (اختياري)</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">* المقاس المناسب 1400×600 بكسل — المقاس: 1400×600 بكسل</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص زر الشراء</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-video">
+    <h3>STM · قسم فيديو</h3>
+    <p class="intro">فيديو شرح بعرض الصفحة أو بجانب نص. فيديو يوتيوب لا يُحمَّل إلا عند الضغط على زر التشغيل، فلا يبطّئ الصفحة.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">النص</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط يوتيوب</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط ملف mp4 (بديل)</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">إذا عبّأته يُستخدم بدل رابط يوتيوب</td>
+        </tr>
+        <tr>
+          <td class="f-name">صورة الغلاف</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">تظهر قبل تشغيل ملف mp4 — المقاس: 1280×720 بكسل</td>
+        </tr>
+        <tr>
+          <td class="f-name">التخطيط</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص الزر (اختياري)</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">رابط الزر</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card" id="home.steamory-partners">
+    <h3>STM · شركاؤنا (شريط متحرك)</h3>
+    <p class="intro">شريط يتحرك تلقائياً. أضف اسم الشريك وشعاره وخلاص. لو كان العدد قليلاً تُكرَّر العناصر تلقائياً حتى يمتلئ الشريط.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>الخيار</th><th>النوع</th><th>ملاحظات</th></tr></thead>
+        <tbody>
+        <tr>
+          <td class="f-name">العنوان</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">نص توضيحي</td>
+          <td class="f-kind">نص طويل</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">الشركاء</td>
+          <td class="f-kind">قائمة عناصر</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>الشعار</td>
+          <td class="f-kind">صورة</td>
+          <td class="f-note">* يُفضّل PNG شفاف بارتفاع 80 بكسل — المقاس: 240×80 بكسل</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>اسم الشريك</td>
+          <td class="f-kind">نص</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr class="sub">
+          <td class="f-name"><span class="indent"></span>رابط (اختياري)</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">اتجاه الحركة</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">—</td>
+        </tr>
+        <tr>
+          <td class="f-name">السرعة</td>
+          <td class="f-kind">قائمة اختيار</td>
+          <td class="f-note">ثابتة مهما زاد عدد الشركاء</td>
+        </tr>
+        <tr>
+          <td class="f-name">عرض الشعارات بالأبيض والأسود حتى مرور المؤشر</td>
+          <td class="f-kind">مفتاح تشغيل</td>
+          <td class="f-note">يمنع تضارب ألوان الشعارات مع هوية المتجر</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </article>
+
+<h2 id="images">مقاسات الصور</h2>
+<p class="section-lede">التزم بهذه المقاسات لتظهر الصور بأفضل جودة وبدون اقتصاص غير متوقع.</p>
+<article class="card">
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>العنصر</th><th>الصورة</th><th>المقاس</th></tr></thead>
+      <tbody>
+        <tr><td class="f-name">بنر متحرك بجدار أغلفة</td>
+                      <td class="f-note">صورة الغلاف</td>
+                      <td class="f-kind">600×900 بكسل</td></tr>
+        <tr><td class="f-name">شريط أغلفة متحرك</td>
+                      <td class="f-note">صورة الغلاف</td>
+                      <td class="f-kind">600×900 بكسل</td></tr>
+        <tr><td class="f-name">منتج مميز بعرض كامل</td>
+                      <td class="f-note">صورة بديلة (اختياري)</td>
+                      <td class="f-kind">880×1100 بكسل</td></tr>
+        <tr><td class="f-name">منتج بغلاف فيديو</td>
+                      <td class="f-note">صورة الغلاف قبل التحميل</td>
+                      <td class="f-kind">1280×720 بكسل</td></tr>
+        <tr><td class="f-name">بوابة اختيار المنصة</td>
+                      <td class="f-note">صورة البطاقة</td>
+                      <td class="f-kind">800×600 بكسل</td></tr>
+        <tr><td class="f-name">شريط شعارات المنصات</td>
+                      <td class="f-note">الشعار</td>
+                      <td class="f-kind">240×80 بكسل</td></tr>
+        <tr><td class="f-name">بطاقات التصنيفات</td>
+                      <td class="f-note">الصورة</td>
+                      <td class="f-kind">640×480 بكسل</td></tr>
+        <tr><td class="f-name">صفقة الشهر</td>
+                      <td class="f-note">صورة خلفية (اختياري)</td>
+                      <td class="f-kind">1400×600 بكسل</td></tr>
+        <tr><td class="f-name">قسم فيديو</td>
+                      <td class="f-note">صورة الغلاف</td>
+                      <td class="f-kind">1280×720 بكسل</td></tr>
+        <tr><td class="f-name">شركاؤنا (شريط متحرك)</td>
+                      <td class="f-note">الشعار</td>
+                      <td class="f-kind">240×80 بكسل</td></tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<h2 id="inherited">عناصر إضافية</h2>
+<p class="section-lede">عناصر أساسية متوفرة أيضاً بجانب عناصر الثيم.</p>
+<article class="card">
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>العنصر</th><th>الوصف</th></tr></thead>
+      <tbody>
+        <tr><td class="f-name"> صور متحركة (محسنة)</td>
+                      <td class="f-note">Enhances Animated Images</td></tr>
+        <tr><td class="f-name">روابط سريعة</td>
+                      <td class="f-note">Quick Links</td></tr>
+        <tr><td class="f-name">منتجات متحركة مع خلفية</td>
+                      <td class="f-note">Animated products with a background</td></tr>
+        <tr><td class="f-name">صور مربعة (محسنة)</td>
+                      <td class="f-note">Enhanced square images</td></tr>
+        <tr><td class="f-name">الماركات التجارية</td>
+                      <td class="f-note">Brands</td></tr>
+        <tr><td class="f-name">آراء عملاء مخصصة</td>
+                      <td class="f-note">Custom testimonials</td></tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<h2 id="support">الدعم</h2>
+<p class="section-lede">لأي استفسار أو مشكلة في الثيم، تواصل معنا عبر البريد
+  <a href="mailto:aba.alrous@hotmail.com">aba.alrous@hotmail.com</a>
+  أو من <a href="https://stmory.com">stmory.com</a>.</p>
+
+<footer>
+  دليل ثيم ستيموري — يُحدَّث تلقائياً مع كل تحديث للثيم.
+</footer>
+
+</div>
+</body>
+</html>
