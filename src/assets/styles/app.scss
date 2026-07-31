@@ -105,6 +105,8 @@
  * Home Hero............Tilted, self-scrolling wall of merchant cover art.
  * Home Sections........Trust bar, marquee, steps, value, FAQ, spotlight,
  *                      comparison table, testimonials rail, closing CTA.
+ * Home Products........Products row with size presets and shine, and the
+ *                      section divider.
  *
  * Loaded last on purpose: source order is what lets this layer win at equal
  * specificity, so nothing here needs !important and upstream Raed files stay
@@ -118,4 +120,5 @@
 @import './06-steamory/product-page';
 @import './06-steamory/home-hero';
 @import './06-steamory/home-sections';
+@import './06-steamory/home-products';
 @import './06-steamory/settings';

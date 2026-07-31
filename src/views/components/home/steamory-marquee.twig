@@ -2,21 +2,28 @@
 | Variable         | Type   | Description                                             |
 |------------------|--------|---------------------------------------------------------|
 | title            | string | Optional section heading                                |
-| rows             | array  | Rows of cover art, each scrolling the opposite way      |
+| rows[]           | array  | Cover art, split across the rows automatically          |
 | rows[].image     | string | Cover artwork                                           |
-| rows[].row       | string | Which row the cover belongs to: 1 or 2                  |
+| rows_count       | string | How many rows to lay the covers out on: 1 or 2          |
 | speed            | string | slow | normal | fast                                     |
 | position         | int    | Sorting number, starts at zero                          |
 #}
 {# twilight.json fields arrive on `component`. #}
 {% set title = component.title %}
 {% set rows = component.rows %}
+{% set rows_count = component.rows_count %}
 {% set speed = component.speed %}
+
+{% set covers = rows|default([])|filter((item) => item.image)|map((item) => item.image) %}
 
 {# Skip the section entirely until at least one cover has been uploaded,
    otherwise it renders as vertical padding and nothing else. #}
-{% set has_covers = rows|default([])|filter((item) => item.image) is not empty %}
-{% if has_covers %}
+{% if covers is not empty %}
+
+{# Two rows unless the merchant asks for one — and never two when there are so
+   few covers that the second row would look sparse. #}
+{% set wants_two = rows_count != '1' and covers|length > 3 %}
+
 <section data-testid="store-home-steamory-marquee"
          class="s-block st-marquee st-marquee--{{ speed|default('normal') }}"
          id="steamory-marquee-{{ position }}">
@@ -27,18 +34,22 @@
     </div>
   {% endif %}
 
-  {% for row_number in ['1', '2'] %}
-    {# Only render a row that actually has covers assigned to it. #}
-    {% set row_items = rows|filter((item) => item.image and (item.row|default('1')) == row_number) %}
-    {% if row_items is not empty %}
+  {% for row_number in (wants_two ? [1, 2] : [1]) %}
+    {# Alternating covers rather than a first-half/second-half split, so both
+       rows stay visually mixed however many images were uploaded. #}
+    {% set row_covers = wants_two
+      ? covers|filter((cover, index) => index % 2 == (row_number - 1))
+      : covers %}
+
+    {% if row_covers is not empty %}
       <div class="st-marquee__row st-marquee__row--{{ row_number }}" aria-hidden="true">
         {# Rendered twice: the track shifts by 50%, so the second pass closes
            the loop with no visible jump. #}
         <div class="st-marquee__track">
           {% for pass in 1..2 %}
-            {% for item in row_items %}
+            {% for cover in row_covers %}
               <div class="st-marquee__tile">
-                <img src="{{ item.image }}" alt="" loading="lazy" decoding="async">
+                <img src="{{ cover }}" alt="" loading="lazy" decoding="async">
               </div>
             {% endfor %}
           {% endfor %}

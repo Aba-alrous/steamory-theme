@@ -1,0 +1,41 @@
+{#
+| Variable   | Type   | Description                                                |
+|------------|--------|------------------------------------------------------------|
+| style      | string | line | glow | icon | text | dots                            |
+| text       | string | Label shown in the middle, for the text style              |
+| icon       | string | SallaIcons css class `sicon-*`, for the icon style         |
+| spacing    | string | small | medium | large                                    |
+| position   | int    | Sorting number, starts at zero                             |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set style = component.style|default('glow') %}
+{% set text = component.text %}
+{% set icon = component.icon %}
+{% set spacing = component.spacing|default('medium') %}
+
+<section data-testid="store-home-steamory-divider"
+         class="s-block st-divider st-divider--{{ style }} st-divider--gap-{{ spacing }}"
+         id="steamory-divider-{{ position }}"
+         aria-hidden="true">
+  <div class="container">
+    <div class="st-divider__inner">
+      <span class="st-divider__rule"></span>
+
+      {% if style == 'text' and text %}
+        <span class="st-divider__label">{{ text }}</span>
+      {% elseif style == 'icon' %}
+        <span class="st-divider__badge">
+          <i class="{{ icon|default('sicon-game-controller-alt') }}"></i>
+        </span>
+      {% elseif style == 'dots' %}
+        <span class="st-divider__dots"><i></i><i></i><i></i></span>
+      {% endif %}
+
+      {# The second rule only exists for the styles that put something in the
+         middle; a plain line needs one continuous rule, not two halves. #}
+      {% if style in ['text', 'icon', 'dots'] %}
+        <span class="st-divider__rule"></span>
+      {% endif %}
+    </div>
+  </div>
+</section>

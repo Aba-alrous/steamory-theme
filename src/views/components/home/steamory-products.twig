@@ -1,0 +1,58 @@
+{#
+| Variable          | Type      | Description                                        |
+|-------------------|-----------|----------------------------------------------------|
+| title             | string    | Section heading                                    |
+| description       | string    | Supporting line under the heading                  |
+| products          | Product[] | The products to show, in the chosen order          |
+| columns           | string    | How many cards per row on desktop: 2, 3 or 4       |
+| card_size         | string    | 1 compact | 2 medium | 3 large                     |
+| hover_effect      | bool      | Sweep a shine across the card on hover             |
+| display_all_label | string    | Label for the "show all" link                      |
+| display_all_url   | string    | Where the "show all" link points                   |
+| position          | int       | Sorting number, starts at zero                     |
+#}
+{# twilight.json fields arrive on `component`. #}
+{% set title = component.title %}
+{% set description = component.description %}
+{% set products = component.products %}
+{% set columns = component.columns %}
+{% set card_size = component.card_size %}
+{% set hover_effect = component.hover_effect %}
+{% set display_all_label = component.display_all_label %}
+{% set display_all_url = component.display_all_url %}
+
+{% if products is not empty %}
+<section data-testid="store-home-steamory-products"
+         class="s-block st-section st-prow
+                st-prow--cols-{{ columns|default('4') }}
+                st-prow--size-{{ card_size|default('2') }}
+                {{ hover_effect ? 'st-prow--shine' : '' }}"
+         id="steamory-products-{{ position }}">
+  <div class="container">
+
+    {% if title or display_all_label %}
+      <div class="st-section__head">
+        <div>
+          {% if title %}<h2 class="st-section__title">{{ title }}</h2>{% endif %}
+          {% if description %}<p class="st-section__desc">{{ description }}</p>{% endif %}
+        </div>
+        {% if display_all_label and display_all_url %}
+          <a href="{{ display_all_url }}" class="st-prow__all">
+            {{ display_all_label }}
+            <i class="sicon-keyboard_arrow_left" aria-hidden="true"></i>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="st-prow__grid">
+      {% for product in products %}
+        {# Salla's own card, so cart, wishlist, stock state and pricing stay the
+           platform's job; only the frame around it is this theme's. #}
+        <custom-salla-product-card product="{{ product }}"></custom-salla-product-card>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}

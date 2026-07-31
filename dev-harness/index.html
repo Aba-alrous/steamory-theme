@@ -342,6 +342,57 @@
     </div>
   </section>
 
+  <!-- Mirrors home.steamory-products and home.steamory-divider -->
+  <section class="s-block st-section st-prow st-prow--cols-4 st-prow--size-3 st-prow--shine" id="prowTest">
+    <div class="container">
+      <div class="st-section__head">
+        <div><h2 class="st-section__title">الأكثر مبيعاً</h2></div>
+        <a href="#" class="st-prow__all">عرض الكل</a>
+      </div>
+      <div class="st-prow__grid" id="prowGrid"></div>
+    </div>
+  </section>
+
+  <section class="s-block st-divider st-divider--glow st-divider--gap-medium">
+    <div class="container"><div class="st-divider__inner"><span class="st-divider__rule"></span></div></div>
+  </section>
+
+  <section class="s-block st-divider st-divider--text st-divider--gap-medium">
+    <div class="container"><div class="st-divider__inner">
+      <span class="st-divider__rule"></span>
+      <span class="st-divider__label">الحسابات الأوكرانية</span>
+      <span class="st-divider__rule"></span>
+    </div></div>
+  </section>
+
+  <section class="s-block st-divider st-divider--icon st-divider--gap-small">
+    <div class="container"><div class="st-divider__inner">
+      <span class="st-divider__rule"></span>
+      <span class="st-divider__badge"><i class="sicon-game-controller-alt"></i></span>
+      <span class="st-divider__rule"></span>
+    </div></div>
+  </section>
+
+  <script>
+    // Four cards using the same markup the Salla card component emits.
+    const grid = document.getElementById('prowGrid');
+    for (let i = 1; i <= 4; i++) {
+      grid.insertAdjacentHTML('beforeend', `
+        <div class="s-product-card-entry s-product-card-vertical">
+          <div class="s-product-card-image">
+            <a href="#"><img class="s-product-card-image-cover" alt="" src="${cover(i)}"></a>
+          </div>
+          <div class="s-product-card-content">
+            <div class="s-product-card-content-main">
+              <h3 class="s-product-card-content-title"><a href="#">منتج رقم ${i}</a></h3>
+              <p class="s-product-card-content-subtitle opacity-80">وصف قصير للمنتج</p>
+            </div>
+            <div class="s-product-card-content-sub"><h4 class="s-product-card-price">${i * 25}.00 ر.س</h4></div>
+          </div>
+        </div>`);
+    }
+  </script>
+
   <div class="container py-8">
     <div class="h-label">product page + cart surfaces</div>
     <div class="product-entry p-5 mb-4">

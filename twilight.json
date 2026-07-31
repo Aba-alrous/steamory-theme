@@ -994,7 +994,7 @@
                     "type": "collection",
                     "format": "collection",
                     "label": "الأغلفة",
-                    "description": "يُنصح بـ 8 صور أو أكثر لكل صف",
+                    "description": "الصور تتوزع على الصفوف تلقائياً. يُنصح بـ 8 صور أو أكثر.",
                     "item_label": "غلاف",
                     "icon": "sicon-list-add",
                     "required": false,
@@ -1016,38 +1016,38 @@
                                 "width": 600,
                                 "height": 900
                             }
-                        },
-                        {
-                            "id": "rows.row",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "الصف",
-                            "description": "أي صف تظهر فيه هذه الصورة",
-                            "labelHTML": null,
-                            "icon": "sicon-list",
-                            "selected": [
-                                {
-                                    "label": "الصف الأول",
-                                    "value": "1",
-                                    "key": "e7c889e0-8dc9-452b-bf4d-ba716cee7aab"
-                                }
-                            ],
-                            "options": [
-                                {
-                                    "label": "الصف الأول",
-                                    "value": "1",
-                                    "key": "e7c889e0-8dc9-452b-bf4d-ba716cee7aab"
-                                },
-                                {
-                                    "label": "الصف الثاني",
-                                    "value": "2",
-                                    "key": "d4b0dfef-f9d4-42de-8226-1f053bda9ed5"
-                                }
-                            ],
-                            "source": "Manual",
-                            "required": true
                         }
                     ]
+                },
+                {
+                    "id": "rows_count",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عدد الصفوف",
+                    "description": "الصفّان يتحركان في اتجاهين متعاكسين. يحتاج 4 صور فأكثر.",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "صفّان (يُنصح به)",
+                            "value": "2",
+                            "key": "a7b959b1-d8bb-4758-85d6-7f1bdfcf5259"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "صفّان (يُنصح به)",
+                            "value": "2",
+                            "key": "a7b959b1-d8bb-4758-85d6-7f1bdfcf5259"
+                        },
+                        {
+                            "label": "صف واحد",
+                            "value": "1",
+                            "key": "dbebf54b-6992-4d28-a957-5ec6e0a2f28d"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
                 },
                 {
                     "id": "speed",
@@ -1323,6 +1323,207 @@
                         {
                             "id": "title_color",
                             "operation": "=",
+                            "value": "custom"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "c594d905-b68d-46cc-a22e-48528e89cfed",
+            "title": {
+                "ar": "STM · شريط المنتجات",
+                "en": "STM · Products row"
+            },
+            "icon": "sicon-list-view",
+            "path": "home.steamory-products",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "prow-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>صف منتجات مرتب بعرض الصفحة. تتحكم في <strong style=\"color:#5ee36a;\">عدد المنتجات في الصف</strong> و<strong style=\"color:#5ee36a;\">حجم البطاقة</strong>، وتقدر تشغّل تأثير اللمعة عند مرور المؤشر أو تطفيه. على الجوال يظهر منتجان في الصف دائماً مهما كان الإعداد.</div>"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "العنوان",
+                    "multilanguage": true,
+                    "id": "title",
+                    "value": "الأكثر مبيعاً",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 90
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "نص توضيحي",
+                    "multilanguage": true,
+                    "id": "description",
+                    "value": null,
+                    "required": false,
+                    "format": "textarea",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "المنتجات",
+                    "id": "products",
+                    "format": "dropdown-list",
+                    "description": "اختر المنتجات بالترتيب الذي تريد ظهورها به",
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "minLength": 1,
+                    "maxLength": 12,
+                    "value": []
+                },
+                {
+                    "id": "columns",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عدد المنتجات في الصف",
+                    "description": "على شاشة الكمبيوتر. الجوال يعرض منتجين دائماً.",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "أربعة منتجات (يُنصح به)",
+                            "value": "4",
+                            "key": "4d0b4bb8-7fb7-4122-8463-9f32bcbe07f6"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "منتجان",
+                            "value": "2",
+                            "key": "6644e341-5565-4d68-b201-e1d82efa1990"
+                        },
+                        {
+                            "label": "ثلاثة منتجات",
+                            "value": "3",
+                            "key": "66fc7492-720c-4807-8734-91efadfca643"
+                        },
+                        {
+                            "label": "أربعة منتجات (يُنصح به)",
+                            "value": "4",
+                            "key": "4d0b4bb8-7fb7-4122-8463-9f32bcbe07f6"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "card_size",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "حجم البطاقة",
+                    "description": "يتحكم في نسبة صورة المنتج وحجم الخط",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "حجم 2 — متوسط (صورة مربعة)",
+                            "value": "2",
+                            "key": "4500ba98-9966-480f-ac50-5f51b24956ec"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "حجم 1 — مضغوط (صورة عريضة، بدون وصف)",
+                            "value": "1",
+                            "key": "ebd27d48-ac50-4d72-9b05-f10de283c1f0"
+                        },
+                        {
+                            "label": "حجم 2 — متوسط (صورة مربعة)",
+                            "value": "2",
+                            "key": "4500ba98-9966-480f-ac50-5f51b24956ec"
+                        },
+                        {
+                            "label": "حجم 3 — كبير (صورة طولية بارزة)",
+                            "value": "3",
+                            "key": "261a5d8b-c5f5-41a0-950f-f0afc1f7927b"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "تأثير اللمعة عند مرور المؤشر",
+                    "description": "لمعة تمر على صورة المنتج. تُعطَّل تلقائياً لمن يفضّل تقليل الحركة في نظامه.",
+                    "id": "hover_effect",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص رابط (عرض الكل)",
+                    "multilanguage": true,
+                    "id": "display_all_label",
+                    "value": "عرض الكل",
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط (عرض الكل)",
+                    "id": "display_all_url",
+                    "value": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
                             "value": "custom"
                         }
                     ]
@@ -2144,6 +2345,143 @@
                             "label": "داكن هادئ",
                             "value": "dark",
                             "key": "bc4fa1d2-740b-4b49-8dd5-229302a4b147"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "key": "d3a9c17c-32fa-4e00-a593-6fddb7a4bd50",
+            "title": {
+                "ar": "STM · فاصل بين الأقسام",
+                "en": "STM · Section divider"
+            },
+            "icon": "sicon-minus",
+            "path": "home.steamory-divider",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "divider-note",
+                    "value": "<div style='background-color:#0e1410;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#eef4ee;font-size:14px;line-height:1.8;'>فاصل بصري يفصل قسماً عن قسم — مثلاً بين الباقات وبين الحسابات الأوكرانية. اختر النمط الذي يناسب المكان، وتحكّم في المسافة حوله.</div>"
+                },
+                {
+                    "id": "style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نمط الفاصل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "خط متوهّج (يُنصح به)",
+                            "value": "glow",
+                            "key": "a6c68253-1be9-4ff4-9c74-4505d12bd803"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "خط متوهّج (يُنصح به)",
+                            "value": "glow",
+                            "key": "a6c68253-1be9-4ff4-9c74-4505d12bd803"
+                        },
+                        {
+                            "label": "خط بسيط",
+                            "value": "line",
+                            "key": "4871994b-8162-4bc5-b85f-701a89d1a95b"
+                        },
+                        {
+                            "label": "خط مع أيقونة في المنتصف",
+                            "value": "icon",
+                            "key": "cbcc03d4-984d-4268-8215-b214b4244bcc"
+                        },
+                        {
+                            "label": "خط مع نص في المنتصف",
+                            "value": "text",
+                            "key": "5353688e-0891-4de8-b719-2da6e246f29e"
+                        },
+                        {
+                            "label": "ثلاث نقاط",
+                            "value": "dots",
+                            "key": "61491cfb-5186-477d-92fb-ec424d3de7d6"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "النص في المنتصف",
+                    "multilanguage": true,
+                    "id": "text",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "description": null,
+                    "placeholder": "مثال: الحسابات الأوكرانية",
+                    "minLength": 0,
+                    "maxLength": 40,
+                    "conditions": [
+                        {
+                            "id": "style",
+                            "operation": "=",
+                            "value": "text"
+                        }
+                    ]
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-shapes",
+                    "label": "الأيقونة",
+                    "id": "icon",
+                    "value": "sicon-game-controller-alt",
+                    "required": false,
+                    "format": "icon",
+                    "class": "form--inline",
+                    "description": null,
+                    "conditions": [
+                        {
+                            "id": "style",
+                            "operation": "=",
+                            "value": "icon"
+                        }
+                    ]
+                },
+                {
+                    "id": "spacing",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "المسافة حول الفاصل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "متوسطة (يُنصح بها)",
+                            "value": "medium",
+                            "key": "9898f7a5-055a-498a-9f6f-e8deccd6d1d2"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "صغيرة",
+                            "value": "small",
+                            "key": "7fae7892-9368-4442-a9de-8a726a6712a8"
+                        },
+                        {
+                            "label": "متوسطة (يُنصح بها)",
+                            "value": "medium",
+                            "key": "9898f7a5-055a-498a-9f6f-e8deccd6d1d2"
+                        },
+                        {
+                            "label": "كبيرة",
+                            "value": "large",
+                            "key": "64774d0b-ec90-48fb-ad82-95ff26b38bdc"
                         }
                     ],
                     "source": "Manual",

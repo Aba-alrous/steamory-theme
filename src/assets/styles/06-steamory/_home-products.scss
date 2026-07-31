@@ -1,0 +1,228 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   STEAMORY — products row and section divider
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── products row ───────────────────────────────────────────────────────── */
+
+.st-prow__grid {
+  display: grid;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  /* Two per row on phones whatever the desktop setting is — one card per row
+     wastes the screen, three is unreadable. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .st-prow--cols-2 .st-prow__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .st-prow--cols-3 .st-prow__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .st-prow--cols-4 .st-prow__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Card sizes. The image ratio is what actually changes the perceived size —
+   the grid already decides the width — so each preset sets its own aspect
+   and type scale, and every card in the row stays the same height. */
+.st-prow__grid > * {
+  height: 100%;
+}
+
+.st-prow--size-1 {
+  .s-product-card-image img {
+    aspect-ratio: 4 / 3;
+  }
+  .s-product-card-content-title {
+    font-size: 0.875rem;
+  }
+  .s-product-card-content-subtitle {
+    display: none;
+  }
+}
+
+.st-prow--size-2 {
+  .s-product-card-image img {
+    aspect-ratio: 1 / 1;
+  }
+  .s-product-card-content-title {
+    font-size: 0.9375rem;
+  }
+}
+
+.st-prow--size-3 {
+  .s-product-card-image img {
+    aspect-ratio: 2 / 3;
+  }
+  .s-product-card-content-title {
+    font-size: 1.0625rem;
+  }
+}
+
+.st-prow__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--st-accent);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--st-accent-hi);
+  }
+}
+
+/* Shine sweep, switched on per section from the design panel. A moving
+   highlight rather than a scale, so nothing reflows on hover. */
+.st-prow--shine .s-product-card-image {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -60%;
+    bottom: -60%;
+    inset-inline-start: -70%;
+    width: 45%;
+    pointer-events: none;
+    transform: rotate(18deg) translateX(0);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.06) 35%,
+      rgba(255, 255, 255, 0.22) 50%,
+      rgba(255, 255, 255, 0.06) 65%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.25s var(--st-ease);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .st-prow--shine .s-product-card-entry:hover .s-product-card-image::after {
+    opacity: 1;
+    animation: st-shine 0.85s var(--st-ease);
+  }
+}
+
+@keyframes st-shine {
+  from {
+    transform: rotate(18deg) translateX(0);
+  }
+  to {
+    /* Travels well past the card so the highlight leaves the frame cleanly. */
+    transform: rotate(18deg) translateX(420%);
+  }
+}
+
+/* The sweep is a light wash, so it has to flip direction in RTL or it reads
+   as entering from the wrong edge. */
+[dir='rtl'] .st-prow--shine .s-product-card-image::after {
+  transform: rotate(-18deg) translateX(0);
+}
+
+[dir='rtl'] .st-prow--shine .s-product-card-entry:hover .s-product-card-image::after {
+  animation-name: st-shine-rtl;
+}
+
+@keyframes st-shine-rtl {
+  from {
+    transform: rotate(-18deg) translateX(0);
+  }
+  to {
+    transform: rotate(-18deg) translateX(-420%);
+  }
+}
+
+/* ── divider ────────────────────────────────────────────────────────────── */
+
+.st-divider {
+  &--gap-small {
+    padding: 1.25rem 0;
+  }
+  &--gap-medium {
+    padding: 2.75rem 0;
+  }
+  &--gap-large {
+    padding: 4.5rem 0;
+  }
+}
+
+.st-divider__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.st-divider__rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--st-line-strong),
+    transparent
+  );
+}
+
+/* A plain rule fades from the edges; the glow variant carries the accent in
+   its centre instead, which is the version that suits a dark page. */
+.st-divider--glow .st-divider__rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--st-accent-line) 35%,
+    var(--st-accent) 50%,
+    var(--st-accent-line) 65%,
+    transparent
+  );
+  box-shadow: 0 0 18px -2px var(--st-accent-line);
+}
+
+.st-divider__label {
+  flex: none;
+  font-family: var(--st-font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--st-muted);
+  text-transform: uppercase;
+}
+
+.st-divider__badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--st-accent-line);
+  background-color: var(--st-accent-soft);
+  color: var(--st-accent);
+  font-size: 1.15rem;
+}
+
+.st-divider__dots {
+  flex: none;
+  display: inline-flex;
+  gap: 0.4rem;
+
+  i {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: var(--st-accent);
+    opacity: 0.5;
+
+    &:nth-child(2) {
+      opacity: 1;
+    }
+  }
+}
