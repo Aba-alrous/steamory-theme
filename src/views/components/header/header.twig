@@ -31,10 +31,9 @@
               </button>
           {% endif %}
 
-          {# Search bar #}
-          <div class="header-search flex-1">
-            <salla-search data-testid="store-header-search" inline oval height="36"></salla-search>
-          </div>
+          {# The search bar lives in layouts/master.twig, not here. Webview mode
+             in the Salla mobile app hides the header, so a search that only
+             existed inside it would be unreachable there. #}
       </div>
 
       <salla-contacts data-testid="store-header-contacts" is-header></salla-contacts>

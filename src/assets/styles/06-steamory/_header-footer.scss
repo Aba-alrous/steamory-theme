@@ -111,6 +111,23 @@
   box-shadow: var(--st-shadow-deep);
 }
 
+/* ── search strip ───────────────────────────────────────────────────────────
+   Rendered from master.twig rather than the header component so it survives
+   Webview mode, where the app hides header and footer. Styled as a quiet band
+   under the nav so it reads as part of the header on desktop. */
+
+.st-searchbar {
+  background-color: var(--st-bg-raise);
+  border-bottom: 1px solid var(--st-line);
+  padding: 0.75rem 0;
+
+  salla-search {
+    display: block;
+    max-width: 44rem;
+    margin-inline: auto;
+  }
+}
+
 /* ── header buttons and cart ────────────────────────────────────────────── */
 
 .header-btn__icon {

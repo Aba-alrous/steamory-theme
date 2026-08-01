@@ -141,6 +141,16 @@
     {% endif %}
 
     {% component 'header.header' %}
+
+    {# Search lives here rather than inside the header component: Webview mode
+       in the Salla mobile app hides the header and footer, so a search bar
+       placed there would be unreachable in the app. As its own strip it is
+       available on every page and in every mode. #}
+    <div class="st-searchbar">
+      <div class="container">
+        <salla-search data-testid="store-header-search" inline oval height="40"></salla-search>
+      </div>
+    </div>
     <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
     {% block content %}{% endblock %}
     </main>
